@@ -16,8 +16,7 @@
                                 <p class="mb-0">{{$course->course_title}}</p>
                             </div>
                             <div class="btn-group">
-                                <a href="{{ route('add.section', $course -> id) }}" class="btn btn-primary px-5">Add
-                                    Section </a>
+                                <a href="{{ route('add.section', $course -> id) }}" class="btn btn-primary px-5">Thêm bài học </a>
                             </div>
                         </div>
                     </div>
@@ -92,9 +91,9 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('edit.section',$item->id) }}" class="btn btn-info"
-                                               title="Edit"><i class="lni lni-eraser"></i> </a>
+                                               title="Chính sửa"><i class="lni lni-eraser"></i> </a>
                                             <a href="{{ route('delete.section',$item->id) }}"
-                                               class="btn btn-sm btn-danger" id="delete"><i
+                                               class="btn btn-sm btn-danger" id="Xóa"><i
                                                     class="lni lni-trash"></i></a>
                                         </td>
                                     </tr>

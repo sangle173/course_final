@@ -346,10 +346,10 @@ class CourseController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Course Section Added Successfully',
+            'message' => 'Thêm mới bài học thành công',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('add.course.lecture', $cid)->with($notification);
     }// End Method
 
     public function SaveLecture(Request $request)

@@ -10,7 +10,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Course</li>
+                    <li class="breadcrumb-item active" aria-current="page">Thêm mới khóa học</li>
                 </ol>
             </nav>
         </div>
@@ -20,33 +20,33 @@
 
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="mb-4">Add Course</h5>
+            <h5 class="mb-4">Thêm khóa học</h5>
 
             <form id="myForm" action="{{ route('store.course') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Course Name</label>
+                    <label for="input1" class="form-label">Tên khóa học</label>
                     <input type="text" name="course_name" class="form-control" id="input1"  >
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Course Title </label>
+                    <label for="input1" class="form-label">Tiêu đề </label>
                     <input type="text" name="course_title" class="form-control" id="input1"  >
                 </div>
 
 
 
                 <div class="form-group col-md-6">
-                    <label for="input2" class="form-label">Course Image </label>
-                    <input class="form-control" name="course_image" type="file" id="image">
+                    <label for="input2" class="form-label">Ảnh đại diện </label>
+                    <input class="form-control" name="course_image" type="file" id="image" accept="image/png, img/jpg">
                 </div>
 
                 <div class="col-md-6">
                     <img id="showImage" src="{{ url('upload/no_image.jpg')}}" alt="Admin" class="rounded-circle p-1 bg-primary" width="100">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Course Intro Video </label>
+                    <label for="input1" class="form-label">Video giới thiệu </label>
                     <input type="file" name="video" class="form-control"  accept="video/mp4, video/webm" >
                 </div>
 
@@ -55,9 +55,9 @@
                 </div>
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Course Category </label>
+                <label for="input1" class="form-label">Danh mục </label>
                 <select name="category_id" class="form-select mb-3" aria-label="Default select example">
-                    <option selected="" disabled>Open this select menu</option>
+                    <option selected="" disabled>Chọn danh mục</option>
                     @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
                     @endforeach
@@ -67,7 +67,7 @@
 
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Course Subcategory </label>
+                <label for="input1" class="form-label">Danh mục con </label>
                 <select name="subcategory_id" class="form-select mb-3" aria-label="Default select example">
                     <option> </option>
                 </select>
@@ -75,60 +75,60 @@
 
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Certificate Available </label>
+                <label for="input1" class="form-label">Chứng chỉ? </label>
                 <select name="certificate" class="form-select mb-3" aria-label="Default select example">
-               <option selected="" disabled>Open this select menu</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+               <option selected="" disabled>Vui lòng chọn</option>
+                    <option value="Yes">Có</option>
+                    <option value="No">Không</option>
                 </select>
             </div>
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Course Label </label>
+                <label for="input1" class="form-label">Nhãn </label>
                 <select name="label" class="form-select mb-3" aria-label="Default select example">
-               <option selected="" disabled>Open this select menu</option>
-                    <option value="Begginer">Begginer</option>
-                    <option value="Middle">Middle</option>
-                    <option value="Advance">Advance</option>
+               <option selected="" disabled>Vui lòng chọn</option>
+                    <option value="Begginer">Mới bắt đầu</option>
+                    <option value="Middle">Vừa</option>
+                    <option value="Advance">Nâng cao</option>
                 </select>
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Course Price </label>
+                <label for="input1" class="form-label">Giá khóa học </label>
                 <input type="text" name="selling_price" class="form-control" id="input1"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Discount Price </label>
+                <label for="input1" class="form-label">Giảm giá </label>
                 <input type="text" name="discount_price" class="form-control" id="input1"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Duration </label>
+                <label for="input1" class="form-label">Thời lượng </label>
                 <input type="text" name="duration" class="form-control" id="input1"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Resources </label>
+                <label for="input1" class="form-label">Tài nguyên </label>
                 <input type="text" name="resources" class="form-control" id="input1"  >
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Course Prerequisites </label>
-                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Prerequisites ..." rows="3"></textarea>
+                <label for="input1" class="form-label">Điều kiện tiên quyết </label>
+                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Điều kiện ..." rows="3"></textarea>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Course Description </label>
+                <label for="input1" class="form-label">Mô tả khóa học </label>
                 <textarea name="description" class="form-control" id="myeditorinstance"></textarea>
             </div>
 
 
-            <p>Course Goals </p>
+            <p>Mục tiêu khóa học </p>
 
 <!--   //////////// Goal Option /////////////// -->
 
@@ -136,12 +136,12 @@
 
             <div class="col-md-6">
                   <div class="mb-3">
-                        <label for="goals" class="form-label"> Goals </label>
-                        <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals ">
+                        <label for="goals" class="form-label"> Mục tiêu </label>
+                        <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Mục tiêu ">
                   </div>
             </div>
             <div class="form-group col-md-6" style="padding-top: 30px;">
-                  <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
+                  <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Thêm..</a>
             </div>
      </div> <!---end row-->
 
@@ -154,22 +154,22 @@
                 <div class="col-md-4">
                     <div class="form-check">
         <input class="form-check-input" type="checkbox" name="bestseller" value="1" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">BestSeller</label>
+          <label class="form-check-label" for="flexCheckDefault">Bán chạy</label>
                     </div>
                 </div>
 
 
              <div class="col-md-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="featured" value="1" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Featured</label>
+                    <input class="form-check-input" type="checkbox" name="featured" value="1" id="flexCheckDefault1">
+                    <label class="form-check-label" for="flexCheckDefault1">Nổi bật</label>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="highestrated" value="1" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">Highest Rated</label>
+                    <input class="form-check-input" type="checkbox" name="highestrated" value="1" id="flexCheckDefault2">
+                    <label class="form-check-label" for="flexCheckDefault2">Đánh giá cao nhất</label>
                 </div>
             </div>
 
@@ -178,7 +178,7 @@
 
                 <div class="col-md-12">
                     <div class="d-md-flex d-grid align-items-center gap-3">
-          <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+          <button type="submit" class="btn btn-primary px-4">Tạo mới khóa học</button>
 
                     </div>
                 </div>
@@ -200,11 +200,11 @@
 
                 <div class="form-group col-md-6">
                    <label for="goals">Goals</label>
-                   <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals  ">
+                   <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Mục tiêu  ">
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
-                   <span class="btn btn-success btn-sm addeventmore"><i class="fa fa-plus-circle">Add</i></span>
-                   <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Remove</i></span>
+                   <span class="btn btn-success btn-sm addeventmore"><i class="fa fa-plus-circle">Thêm</i></span>
+                   <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Xóa</i></span>
                 </div>
              </div>
           </div>
@@ -273,11 +273,10 @@
             },
             messages :{
                 course_name: {
-                    required : 'Please Enter Course Name',
+                    required : 'Vui lòng nhập tên khóa học',
                 },
                 course_title: {
-                    required : 'Please Enter Course Title',
-                },
+                    required : 'Vui lòng nhập tiêu đề
 
 
             },

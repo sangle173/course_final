@@ -225,6 +225,7 @@ class AdminController extends Controller
         $user->address = $request->address;
         $user->password = Hash::make($request->password);
         $user->role = 'admin';
+        $user->create_by = Auth::user()->id;
         $user->status = '1';
         $user->save();
 
@@ -255,6 +256,7 @@ class AdminController extends Controller
         $user->address = $request->address;
         $user->password = Hash::make($request->password);
         $user->role = 'instructor';
+        $user->create_by = Auth::user()->id;
         $user->status = '1';
         $user->save();
 
@@ -284,6 +286,7 @@ class AdminController extends Controller
         $user->address = $request->address;
         $user->password = Hash::make($request->password);
         $user->role = 'user';
+        $user->create_by = Auth::user()->id;
         $user->status = '1';
         $user->save();
 
@@ -354,11 +357,6 @@ class AdminController extends Controller
         $user->status = '1';
         $user->save();
 
-//        $user->roles()->detach();
-//        if ($request->roles) {
-//            $user->assignRole($request->roles);
-//        }
-
         $notification = array(
             'message' => 'Instructor Updated Successfully',
             'alert-type' => 'success'
@@ -377,12 +375,6 @@ class AdminController extends Controller
         $user->role = 'user';
         $user->status = '1';
         $user->save();
-
-//        $user->roles()->detach();
-//        if ($request->roles) {
-//            $user->assignRole($request->roles);
-//        }
-
         $notification = array(
             'message' => 'User Updated Successfully',
             'alert-type' => 'success'

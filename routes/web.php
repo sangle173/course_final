@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\InstructorCategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -312,6 +313,28 @@ Route::post('/instructor/profile/store', [InstructorController::class, 'Instruct
 Route::get('/instructor/change/password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change.password');
 Route::post('/instructor/password/update', [InstructorController::class, 'InstructorPasswordUpdate'])->name('instructor.password.update');
 
+// Category All Route
+    Route::controller(InstructorCategoryController::class)->group(function(){
+//    Route::get('/all/category','AllCategory')->name('all.category')->middleware('permission:category.all');;
+        Route::get('instructor/all/category','AllCategory')->name('instructor.all.category');
+        Route::get('instructor/add/category','AddCategory')->name('instructor.add.category');
+        Route::post('instructor/store/category','StoreCategory')->name('instructor.store.category');
+        Route::get('instructor/edit/category/{id}','EditCategory')->name('instructor.edit.category');
+        Route::post('instructor/update/category','UpdateCategory')->name('instructor.update.category');
+        Route::get('instructor/delete/category/{id}','DeleteCategory')->name('instructor.delete.category');
+    });
+
+    // SubCategory All Route
+    Route::controller(InstructorCategoryController::class)->group(function(){
+//    Route::get('/all/subcategory','AllSubCategory')->name('all.subcategory')->middleware('permission:subcategory.all');
+        Route::get('instructor/all/subcategory','AllSubCategory')->name('instructor.all.subcategory');
+        Route::get('instructor/add/subcategory','AddSubCategory')->name('instructor.add.subcategory');
+        Route::post('instructor/store/subcategory','StoreSubCategory')->name('instructor.store.subcategory');
+        Route::get('instructor/edit/subcategory/{id}','EditSubCategory')->name('instructor.edit.subcategory');
+        Route::post('instructor/update/subcategory','UpdateSubCategory')->name('instructor.update.subcategory');
+        Route::get('instructor/delete/subcategory/{id}','DeleteSubCategory')->name('instructor.delete.subcategory');
+
+    });
 
 // Instructor All Route
 Route::controller(CourseController::class)->group(function(){
@@ -443,4 +466,12 @@ Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog');
 Route::post('/mark-notification-as-read/{notification}', [CartController::class, 'MarkAsRead']);
 
 ///// End Route Accessable for All
-
+// Instructor All Route
+Route::controller(InstructorController::class)->group(function(){
+    Route::get('instructor/all/user','InstructorAllUser')->name('instructor.all.user');
+    Route::get('instructor/add/user','InstructorAddUser')->name('instructor.add.user');
+    Route::post('instructor/store/user','InstructorStoreUser')->name('instructor.store.user');
+    Route::get('instructor/edit/user/{id}','InstructorEditUser')->name('instructor.edit.user');
+    Route::post('instructor/update/user/{id}','InstructorUpdateUser')->name('instructor.update.user');
+    Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
+});

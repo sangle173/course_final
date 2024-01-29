@@ -9,13 +9,13 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">All Course</li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách khóa học</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.course') }}" class="btn btn-primary px-5">Add Course </a>
+                    <a href="{{ route('add.course') }}" class="btn btn-primary px-5">Thêm khóa học </a>
                 </div>
             </div>
         </div>
@@ -27,13 +27,13 @@
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                         <tr>
-                            <th>Sl</th>
-                            <th>Image</th>
-                            <th>Course Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Discount</th>
-                            <th>Action</th>
+                            <th>#</th>
+                            <th>Ảnh</th>
+                            <th>Tên khóa học</th>
+                            <th>Danh mục</th>
+                            <th>Giá</th>
+                            <th>Thời hạn</th>
+                            <th>Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -45,20 +45,19 @@
                                          style="width: 70px; height:40px;"></td>
                                 <td>{{ $item->course_name }}</td>
                                 <td>{{ $item['category']['category_name'] }}</td>
-                                <td>{{ $item->selling_price }}</td>
                                 <td>{{ $item->discount_price }}</td>
+                                <td>{{ $item->duration }}</td>
                                 <td>
                                     <a href="{{ route('add.course.lecture',$item->id) }}" class="btn btn-warning"
-                                       title="Lecture"><i class="lni lni-list"></i> </a>
+                                       title="Thêm bài học"><i class="lni lni-list"></i> </a>
 
-                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info" title="Edit"><i
+                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info" title="Chỉnh sửa"><i
                                             class="lni lni-eraser"></i> </a>
                                     <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger" id="delete"
-                                       title="delete"><i class="lni lni-trash"></i> </a>
+                                       title="Xóa"><i class="lni lni-trash"></i> </a>
                                 </td>
                             </tr>
                         @endforeach
-
                         </tbody>
 
                     </table>

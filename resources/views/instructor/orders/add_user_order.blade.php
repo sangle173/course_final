@@ -1,7 +1,7 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('instructor.instructor_dashboard')
+@section('instructor')
 
-<div class="page-content">
+    <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="ps-3">

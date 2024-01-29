@@ -4,24 +4,24 @@
 
 <div class="page-content">
     <!--breadcrumb-->
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3"> 
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Course</li>
+                    <li class="breadcrumb-item active" aria-current="page">Chính sửa khóa học/li>
                 </ol>
             </nav>
         </div>
-         
+
     </div>
     <!--end breadcrumb-->
- 
+
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="mb-4">Edit Course</h5>
-            
+            <h5 class="mb-4">Chỉnh sửa khóa học</h5>
+
             <form id="myForm" action="{{ route('update.course') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
 
@@ -29,24 +29,24 @@
 
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Course Name</label>
+                    <label for="input1" class="form-label">Tên khóa họ</label>
                     <input type="text" name="course_name" class="form-control" id="input1" value="{{ $course->course_name }}" >
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Course Title </label>
+                    <label for="input1" class="form-label">Tiêu đề </label>
                     <input type="text" name="course_title" class="form-control" id="input1"  value="{{ $course->course_title }}"  >
                 </div>
-  
-                 
+
+
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Course Category </label>
+                <label for="input1" class="form-label">Danh mục </label>
                 <select name="category_id" class="form-select mb-3" aria-label="Default select example">
-                    <option selected="" disabled>Open this select menu</option>
-                    @foreach ($categories as $cat) 
+                    <option selected="" disabled>Chọn danh mục</option>
+                    @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}" {{ $cat->id == $course->category_id ? 'selected' : '' }} >{{ $cat->category_name }}</option>
                     @endforeach
-                    
+
                 </select>
             </div>
 
@@ -54,75 +54,75 @@
             <div class="form-group col-md-6">
                 <label for="input1" class="form-label">Course Subcategory </label>
                 <select name="subcategory_id" class="form-select mb-3" aria-label="Default select example">
-                    <option selected="" disabled>Open this select menu</option>
-                    @foreach ($subcategories as $subcat) 
+                    <option selected="" disabled>Danh mục con</option>
+                    @foreach ($subcategories as $subcat)
                     <option value="{{ $subcat->id }}" {{ $subcat->id == $course->subcategory_id ? 'selected' : '' }}>{{ $subcat->subcategory_name }}</option>
                     @endforeach
-                    
+
                 </select>
             </div>
 
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Certificate Available </label>
+                <label for="input1" class="form-label">Chứng chỉ? </label>
                 <select name="certificate" class="form-select mb-3" aria-label="Default select example">
-               <option selected="" disabled>Open this select menu</option> 
-                    <option value="Yes" {{ $course->certificate == 'Yes' ? 'selected' : '' }}>Yes</option>
-                    <option value="No" {{ $course->certificate == 'No' ? 'selected' : '' }}>No</option>
+               <option selected="" disabled>Open this select menu</option>
+                    <option value="Yes" {{ $course->certificate == 'Yes' ? 'selected' : '' }}>Có</option>
+                    <option value="No" {{ $course->certificate == 'No' ? 'selected' : '' }}>Không</option>
                 </select>
             </div>
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Course Label </label>
+                <label for="input1" class="form-label">Nhãn </label>
                 <select name="label" class="form-select mb-3" aria-label="Default select example">
-               <option selected="" disabled>Open this select menu</option> 
-                    <option value="Begginer" {{ $course->label == 'Begginer' ? 'selected' : '' }}>Begginer</option>
-                    <option value="Middle" {{ $course->label == 'Middle' ? 'selected' : '' }}>Middle</option>
-                    <option value="Advance" {{ $course->label == 'Advance' ? 'selected' : '' }}>Advance</option>
+               <option selected="" disabled>Vui lòng chọn</option>
+                    <option value="Begginer" {{ $course->label == 'Begginer' ? 'selected' : '' }}>Mới bắt đầu</option>
+                    <option value="Middle" {{ $course->label == 'Middle' ? 'selected' : '' }}>Vừa</option>
+                    <option value="Advance" {{ $course->label == 'Advance' ? 'selected' : '' }}>Nâng cao</option>
                 </select>
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Course Price </label>
+                <label for="input1" class="form-label">Giá khóa học </label>
                 <input type="text" name="selling_price" class="form-control" id="input1"  value="{{ $course->selling_price }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Discount Price </label>
+                <label for="input1" class="form-label">Giảm giá </label>
                 <input type="text" name="discount_price" class="form-control" id="input1"  value="{{ $course->discount_price }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Duration </label>
+                <label for="input1" class="form-label">Thời lượng </label>
                 <input type="text" name="duration" class="form-control" id="input1"  value="{{ $course->duration }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Resources </label>
+                <label for="input1" class="form-label">Tài nguyên </label>
                 <input type="text" name="resources" class="form-control" id="input1"  value="{{ $course->resources }}" >
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Course Prerequisites </label>
-                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Prerequisites ..." rows="3">{{ $course->prerequisites }}</textarea>
+                <label for="input1" class="form-label">Điều kiện tiên quyếts </label>
+                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Điều kiệ ..." rows="3">{{ $course->prerequisites }}</textarea>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Course Description </label>
+                <label for="input1" class="form-label">Mô tả khóa học </label>
                 <textarea name="description" class="form-control" id="myeditorinstance">{!! $course->description !!}</textarea>
             </div>
-  
+
             <hr>
             <div class="row">
 
                 <div class="col-md-4">
                     <div class="form-check">
         <input class="form-check-input" type="checkbox" name="bestseller" value="1" id="flexCheckDefault" {{ $course->bestseller == '1' ? 'checked' : '' }}>
-          <label class="form-check-label" for="flexCheckDefault">BestSeller</label>
+          <label class="form-check-label" for="flexCheckDefault">Bán chạy</label>
                     </div>
                 </div>
 
@@ -130,7 +130,7 @@
              <div class="col-md-4">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="featured" value="1" id="flexCheckDefault2" {{ $course->featured == '1' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="flexCheckDefault2" >Featured</label>
+                    <label class="form-check-label" for="flexCheckDefault2" >Nổi bật</label>
                 </div>
             </div>
 
@@ -138,24 +138,24 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="highestrated" value="1" id="flexCheckDefault1" {{ $course->highestrated == '1' ? 'checked' : '' }}>
 
-                    <label class="form-check-label" for="flexCheckDefault1" >Highest Rated</label>
+                    <label class="form-check-label" for="flexCheckDefault1" >Đánh giá cao nhất</label>
                 </div>
             </div>
 
             </div>
 
-             
+
                 <div class="col-md-12">
                     <div class="d-md-flex d-grid align-items-center gap-3">
-          <button type="submit" class="btn btn-primary px-4">Save Changes</button>
-                      
+          <button type="submit" class="btn btn-primary px-4">Lưu</button>
+
                     </div>
                 </div>
             </form>
         </div>
     </div>
- 
-   
+
+
 </div>
 
 
@@ -173,26 +173,26 @@
 
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label for="input2" class="form-label">Course Image </label>
-                    <input class="form-control" name="course_image" type="file" id="image">
+                    <label for="input2" class="form-label">Ảnh đại diện </label>
+                    <input class="form-control" name="course_image" type="file" id="image" accept="image/png, img/jpg">
                 </div>
 
-                <div class="col-md-6"> 
-                    <img id="showImage" src="{{ asset($course->course_image) }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="100">  
+                <div class="col-md-6">
+                    <img id="showImage" src="{{ asset($course->course_image) }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="100">
                 </div>
             </div>
 
             <br><br>
             <div class="col-md-12">
                 <div class="d-md-flex d-grid align-items-center gap-3">
-      <button type="submit" class="btn btn-primary px-4">Save Changes</button>
-                  
+      <button type="submit" class="btn btn-primary px-4">Lưu</button>
+
                 </div>
             </div>
 
             </form>
-           
-         
+
+
         </div>
     </div>
 
@@ -216,11 +216,11 @@
 
             <div class="row">
                 <div class="form-group col-md-6">
-               <label for="input2" class="form-label">Course Intro Video </label>
+               <label for="input2" class="form-label">Video giới thiệu </label>
                     <input type="file" name="video" class="form-control"  accept="video/mp4, video/webm" >
                 </div>
 
-                <div class="col-md-6"> 
+                <div class="col-md-6">
                     <video width="300" height="130" controls>
                         <source src="{{ asset( $course->video ) }}" type="video/mp4">
                     </video>
@@ -230,14 +230,14 @@
             <br><br>
             <div class="col-md-12">
                 <div class="d-md-flex d-grid align-items-center gap-3">
-      <button type="submit" class="btn btn-primary px-4">Save Changes</button>
-                  
+      <button type="submit" class="btn btn-primary px-4">Lưu</button>
+
                 </div>
             </div>
 
             </form>
-           
-         
+
+
         </div>
     </div>
 
@@ -257,26 +257,26 @@
 
             <form action="{{ route('update.course.goal') }}" method="post" enctype="multipart/form-data">
                 @csrf
-           
+
                 <input type="hidden" name="id" value="{{ $course->id }}">
-         
+
         <!--   //////////// Goal Option /////////////// -->
-        @foreach ($goals as $item) 
+        @foreach ($goals as $item)
         <div class="row add_item">
             <div class="whole_extra_item_delete" id="whole_extra_item_delete">
                 <div class="container mt-2">
                    <div class="row">
-                
+
             <div class="col-md-6">
                 <div class="mb-3">
-                        <label for="goals" class="form-label"> Goals </label>
+                        <label for="goals" class="form-label"> Mục tiêu </label>
                         <input type="text" name="course_goals[]" id="goals" class="form-control" value="{{ $item->goal_name }}" >
                 </div>
             </div>
             <div class="form-group col-md-6" style="padding-top: 30px;">
-                <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
+                <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Thêm mục tiêu..</a>
 
-                <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Remove</i></span>
+                <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Xóa</i></span>
 
 
             </div>
@@ -288,19 +288,19 @@
         @endforeach
 
         <!--   //////////// End Goal Option /////////////// -->
- 
+
 
             <br><br>
             <div class="col-md-12">
                 <div class="d-md-flex d-grid align-items-center gap-3">
-      <button type="submit" class="btn btn-primary px-4">Save Changes</button>
-                  
+      <button type="submit" class="btn btn-primary px-4">Lưu</button>
+
                 </div>
             </div>
 
             </form>
-           
-         
+
+
         </div>
     </div>
 
@@ -322,8 +322,8 @@
        <div class="whole_extra_item_delete" id="whole_extra_item_delete">
           <div class="container mt-2">
              <div class="row">
-               
-                
+
+
                 <div class="form-group col-md-6">
                    <label for="goals">Goals</label>
                    <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals  ">
@@ -336,9 +336,9 @@
           </div>
        </div>
     </div>
- </div>      
- 
-  
+ </div>
+
+
  <!----For Section-------->
  <script type="text/javascript">
     $(document).ready(function(){
@@ -359,7 +359,7 @@
 
 
 <script type="text/javascript">
-        
+
     $(document).ready(function(){
         $('select[name="category_id"]').on('change', function(){
             var category_id = $(this).val();
@@ -376,7 +376,7 @@
                         });
                     },
 
-                }); 
+                });
             } else {
                 alert('danger');
             }
@@ -391,23 +391,23 @@
             rules: {
                 course_name: {
                     required : true,
-                }, 
+                },
                 course_title: {
                     required : true,
-                }, 
-                
+                },
+
             },
             messages :{
                 course_name: {
                     required : 'Please Enter Course Name',
-                }, 
+                },
                 course_title: {
                     required : 'Please Enter Course Titile',
-                }, 
-                 
+                },
+
 
             },
-            errorElement : 'span', 
+            errorElement : 'span',
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
@@ -420,9 +420,9 @@
             },
         });
     });
-    
+
 </script>
- 
+
 <script type="text/javascript">
 
     $(document).ready(function(){

@@ -40,7 +40,7 @@
                                  <img src="{{ asset('backend/assets/images/login-images/login-cover.svg') }}" class="img-fluid auth-img-cover-login" width="650" alt=""/>
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
@@ -51,53 +51,49 @@
 										<img src="{{ asset('backend/assets/images/logo-icon.png') }}" width="60" alt="">
 									</div>
 									<div class="text-center mb-4">
-										<h5 class="">Instructor Login </h5>
-										<p class="mb-0">Please log in to your account</p>
+										<h5 class="">Giảng viên đăng nhập </h5>
+										<p class="mb-0">Vui lòng đăng nhập bằng tài khoản giảng viên của bạn</p>
 									</div>
 									<div class="form-body">
-       
+
      <form class="row g-3" method="POST" action="{{ route('login') }}">
                 @csrf
 
 
             <div class="col-12">
                 <label for="inputEmailAddress" class="form-label">Email</label>
-                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmailAddress" placeholder="jhon@example.com">
+                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" id="inputEmailAddress" placeholder="nguyenvana@gmail.com">
                 @error('email')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="col-12">
-                <label for="inputChoosePassword" class="form-label">Password</label>
+                <label for="inputChoosePassword" class="form-label">Mật khẩu</label>
                 <div class="input-group" id="show_hide_password">
-                    <input type="password" name="password" id="password" class="form-control border-end-0 @error('password') is-invalid @enderror" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
+                    <input type="password" name="password" id="password" class="form-control border-end-0 @error('password') is-invalid @enderror" placeholder="Nhập mật khẩu"> <a href="javascript:;" class="input-group-text bg-transparent"><i class="bx bx-hide"></i></a>
                     @error('password')
-                    <span class="text-danger">{{ $message }}</span>
+                    <span class="text-danger">Sai tên đăng nhập hoặc mật khẩu!</span>
                 @enderror
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Ghi nhớ</label>
                 </div>
             </div>
-            <div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Forgot Password ?</a>
+            <div class="col-md-6 text-end">	<a href="authentication-forgot-password.html">Quên mật khẩu ?</a>
             </div>
             <div class="col-12">
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </div>
             </div>
             <div class="col-12">
-                <div class="text-center ">
-                    <p class="mb-0">Don't have an account yet? <a href="authentication-signup.html">Sign up here</a>
-                    </p>
-                </div>
             </div>
         </form>
 									</div>
-									<div class="login-separater text-center mb-5"> <span>OR SIGN IN WITH</span>
+									<div class="login-separater text-center mb-5"> <span>hoặc đăng nhập bằng</span>
 										<hr>
 									</div>
 									<div class="list-inline contacts-social text-center">
@@ -154,23 +150,23 @@
 		case 'info':
 		toastr.info(" {{ Session::get('message') }} ");
 		break;
-	
+
 		case 'success':
 		toastr.success(" {{ Session::get('message') }} ");
 		break;
-	
+
 		case 'warning':
 		toastr.warning(" {{ Session::get('message') }} ");
 		break;
-	
+
 		case 'error':
 		toastr.error(" {{ Session::get('message') }} ");
-		break; 
+		break;
 	 }
-	 @endif 
+	 @endif
 	</script>
 
-	
+
 </body>
 
 </html>

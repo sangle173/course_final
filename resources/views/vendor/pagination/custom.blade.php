@@ -4,13 +4,13 @@
     @if ($paginator->onFirstPage())
     <li class="page-link" aria-disabled="true" aria-label="@lang('pagination.previous')">
         <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">Trước</span>
     </li>
 @else
     <li>
         <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
             <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-            <span class="sr-only">Previous</span></a>
+            <span class="sr-only">Trước</span></a>
     </li>
 @endif
 
@@ -41,10 +41,10 @@
 @else
 <li class="page-link" aria-disabled="true" aria-label="@lang('pagination.next')">
     <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">Sau</span>
 </li>
 @endif
- 
- 
+
+
 </ul>
 @endif
