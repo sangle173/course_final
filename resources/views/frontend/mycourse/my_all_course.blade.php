@@ -5,7 +5,7 @@
 
         <div class="section-block mb-5"></div>
         <div class="dashboard-heading mb-5">
-            <h3 class="fs-22 font-weight-semi-bold">My Courses</h3>
+            <h3 class="fs-22 font-weight-semi-bold">Khóa học của bạn</h3>
         </div>
         <div class="dashboard-cards mb-5">
 
@@ -37,15 +37,15 @@
                         </div><!-- end rating-wrap -->
                         <ul class="card-duration d-flex align-items-center fs-15 pb-2">
                             <li class="mr-2">
-                                <span class="text-black">Status:</span>
-                                <span class="badge badge-success text-white">Published</span>
+                                <span class="text-black">Trạng thái:</span>
+                                <span class="badge badge-success text-white">Đã xuất bản</span>
                             </li>
                             <li class="mr-2">
-                                <span class="text-black">Duration:</span>
-                                <span>{{ $item->course->duration }} hours </span>
+                                <span class="text-black">Thời lượng:</span>
+                                <span>{{ $item->course->duration }} giờ </span>
                             </li>
                             <li class="mr-2">
-                                <span class="text-black">Students:</span>
+                                <span class="text-black">Số học sinh:</span>
                                 <span>30,405</span>
                             </li>
                         </ul>
@@ -69,8 +69,6 @@
                     </div><!-- end card-body -->
                 </div><!-- end card -->
             @endforeach
-
-
         </div><!-- end col-lg-12 -->
 
 

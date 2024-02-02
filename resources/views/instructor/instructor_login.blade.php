@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
-	<title>Instructor Login </title>
+	<title>Đăng nhập </title>
 </head>
 
 <body class="">
@@ -51,8 +51,8 @@
 										<img src="{{ asset('backend/assets/images/logo-icon.png') }}" width="60" alt="">
 									</div>
 									<div class="text-center mb-4">
-										<h5 class="">Giảng viên đăng nhập </h5>
-										<p class="mb-0">Vui lòng đăng nhập bằng tài khoản giảng viên của bạn</p>
+										<h5 class="">Đăng nhập </h5>
+										<p class="mb-0">Vui lòng đăng nhập bằng tài khoản của bạn</p>
 									</div>
 									<div class="form-body">
 

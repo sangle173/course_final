@@ -22,7 +22,7 @@ class InstructorController extends Controller
         $request->session()->regenerateToken();
 
         $notification = array(
-            'message' => 'Logout Successfully',
+            'message' => 'Đang xuất thành công',
             'alert-type' => 'info'
         );
 
@@ -63,7 +63,7 @@ class InstructorController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'Instructor Profile Updated Successfully',
+            'message' => 'Cập nhật thông tin giảng viên thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -91,7 +91,7 @@ class InstructorController extends Controller
         if (!Hash::check($request->old_password, auth::user()->password)) {
 
             $notification = array(
-                'message' => 'Old Password Does not Match!',
+                'message' => 'Mật khẩu cũ không khớp!',
                 'alert-type' => 'error'
             );
             return back()->with($notification);
@@ -103,7 +103,7 @@ class InstructorController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Password Change Successfully',
+            'message' => 'Đổi mật khẩu thành công',
             'alert-type' => 'success'
         );
         return back()->with($notification);

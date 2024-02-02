@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,14 +11,14 @@ class UserController extends Controller
 {
     public function Index(){
         return view('frontend.index');
-    } // End Method 
+    } // End Method
 
     public function UserProfile(){
 
         $id = Auth::user()->id;
         $profileData = User::find($id);
-        return view('frontend.dashboard.edit_profile',compact('profileData')); 
-    } // End Method 
+        return view('frontend.dashboard.edit_profile',compact('profileData'));
+    } // End Method
 
     public function UserProfileUpdate(Request $request){
 
@@ -35,18 +35,18 @@ class UserController extends Controller
            @unlink(public_path('upload/user_images/'.$data->photo));
            $filename = date('YmdHi').$file->getClientOriginalName();
            $file->move(public_path('upload/user_images'),$filename);
-           $data['photo'] = $filename; 
+           $data['photo'] = $filename;
         }
 
         $data->save();
 
         $notification = array(
-            'message' => 'User Profile Updated Successfully',
+            'message' => 'Thông tin của bạn đã được cập nhật',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
     public function UserLogout(Request $request) {
         Auth::guard('web')->logout();
@@ -56,49 +56,48 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         $notification = array(
-            'message' => 'Logout Successfully',
+            'message' => 'Đăng xuất thành công',
             'alert-type' => 'info'
         );
 
         return redirect('/login')->with($notification);
-    } // End Method 
+    } // End Method
 
 
     public function UserChangePassword(){
         return view('frontend.dashboard.change_password');
-    }// End Method 
+    }// End Method
 
 
     public function UserPasswordUpdate(Request $request){
 
-        /// Validation 
+        /// Validation
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed'
         ]);
 
         if (!Hash::check($request->old_password, auth::user()->password)) {
-            
+
             $notification = array(
-                'message' => 'Old Password Does not Match!',
+                'message' => 'Mật khẩu cũ không đúng!',
                 'alert-type' => 'error'
             );
             return back()->with($notification);
         }
 
-        /// Update The new Password 
+        /// Update The new Password
         User::whereId(auth::user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
 
         $notification = array(
-            'message' => 'Password Change Successfully',
+            'message' => 'Đổi mật khẩu thành công',
             'alert-type' => 'success'
         );
-        return back()->with($notification); 
+        return back()->with($notification);
 
     }// End Method
 
 
 }
- 

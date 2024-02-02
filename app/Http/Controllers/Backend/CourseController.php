@@ -46,7 +46,7 @@ class CourseController extends Controller
     {
 
         $request->validate([
-            'video' => 'required|mimes:mp4|max:10000',
+            'video' => 'required|mimes:mp4|max:300000',
         ]);
 
         $image = $request->file('course_image');
@@ -150,7 +150,7 @@ class CourseController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Course Updated Successfully',
+            'message' => 'Cập nhật khóa học thành công',
             'alert-type' => 'success'
         );
         return redirect()->route('all.course')->with($notification);
@@ -179,7 +179,7 @@ class CourseController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Course Image Updated Successfully',
+            'message' => 'Cập nhật ảnh khóa học thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -189,6 +189,10 @@ class CourseController extends Controller
 
     public function UpdateCourseVideo(Request $request)
     {
+
+        $request->validate([
+            'video' => 'required|mimes:mp4|max:300000',
+        ]);
 
         $course_id = $request->vid;
         $oldVideo = $request->old_vid;
@@ -208,7 +212,7 @@ class CourseController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Course Video Updated Successfully',
+            'message' => 'Cập nhật video khóa học thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -220,6 +224,10 @@ class CourseController extends Controller
 
         $course_id = $request->vid;
         $oldVideo = $request->old_vid;
+
+        $request->validate([
+            'video' => 'required|mimes:mp4|max:300000',
+        ]);
 
         $video = $request->file('video');
         $videoName = time() . '.' . $video->getClientOriginalExtension();
@@ -326,6 +334,10 @@ class CourseController extends Controller
     public function AddCourseSection(Request $request)
     {
         $cid = $request->id;
+
+        $request->validate([
+            'section_video' => 'required|mimes:mp4|max:300000',
+        ]);
 
         $video = $request->file('section_video');
         $videoName = time() . '.' . $video->getClientOriginalExtension();

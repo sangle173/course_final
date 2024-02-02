@@ -2,7 +2,7 @@
 @section('userdashboard')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="dashboard-heading mb-5">
-        <h3 class="fs-22 font-weight-semi-bold">My Courses</h3>
+        <h3 class="fs-22 font-weight-semi-bold">Khóa học của tôi</h3>
     </div>
     <div class="dashboard-cards">
 
@@ -16,7 +16,7 @@
             <li class="nav-item mobile-menu-nav-item">
                 <a class="nav-link" id="course-content-tab" data-toggle="tab" href="#course-content" role="tab"
                    aria-controls="course-content" aria-selected="false">
-                    Nội Dung
+                    Bài Học
                 </a>
             </li>
         </ul>
@@ -71,7 +71,7 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <video id="my-video" class="video-js"
-                                                                                   controls
+                                                                                   controls controlsList="nodownload"
                                                                                    preload="video-js vjs-default-skin vjs-big-play-centered"
                                                                                    width="470" height="264"
                                                                                    poster="https://d9wrv003o8xvb.cloudfront.net/thumb_0801180537104122.jpg"
@@ -123,41 +123,37 @@
             <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                 <div class="lecture-overview-wrap">
                     <div class="lecture-overview-item">
-                        <h3 class="fs-24 font-weight-semi-bold pb-2">About this course</h3>
-                        <p>{{ $course->course->course_title }}</p>
+                        <h3 class="fs-24 font-weight-semi-bold pb-2">Giới thiệu khóa học</h3>
+                        <p>Khóa học: {{ $course->course->course_title }}</p>
                     </div><!-- end lecture-overview-item -->
                     <div class="section-block"></div>
                     <div class="lecture-overview-item">
                         <div class="lecture-overview-stats-wrap d-flex">
                             <div class="lecture-overview-stats-item">
-                                <h3 class="fs-16 font-weight-semi-bold pb-2">By the numbers</h3>
+                                <h3 class="fs-16 font-weight-semi-bold pb-2">Video giới thiệu</h3>
                             </div><!-- end lecture-overview-stats-item -->
                             <div class="lecture-overview-stats-item">
-                                <ul class="generic-list-item">
-                                    <li><span>Skill level:</span>{{ $course->course->label }}</li>
-                                    <li><span>Students:</span>83950</li>
-                                    <li><span>Languages:</span>English</li>
-                                    <li><span>Captions:</span>Yes</li>
-                                </ul>
+                                <video width="300" height="200" controls>
+                                    <source src="{{ asset($course->course->video) }}" type="video/mp4">
+                                </video>
                             </div><!-- end lecture-overview-stats-item -->
-                            <div class="lecture-overview-stats-item">
-                                <ul class="generic-list-item">
-                                    <li><span>Resourse:</span>{{ $course->course->resources }}</li>
-                                    <li><span>Video length:</span>{{ $course->course->duration }} total hours</li>
-                                    <li><span>Certificate:</span>{{ $course->course->certificate }}</li>
-                                </ul>
-                            </div><!-- end lecture-overview-stats-item -->
+{{--                            <div class="lecture-overview-stats-item">--}}
+{{--                                <ul class="generic-list-item">--}}
+{{--                                    <li><span>Resourse:</span>{{ $course->course->resources }}</li>--}}
+{{--                                    <li><span>Video length:</span>{{ $course->course->duration }} total hours</li>--}}
+{{--                                    <li><span>Certificate:</span>{{ $course->course->certificate }}</li>--}}
+{{--                                </ul>--}}
+{{--                            </div><!-- end lecture-overview-stats-item -->--}}
                         </div><!-- end lecture-overview-stats-wrap -->
                     </div><!-- end lecture-overview-item -->
                     <div class="section-block"></div>
                     <div class="lecture-overview-item">
                         <div class="lecture-overview-stats-wrap d-flex">
                             <div class="lecture-overview-stats-item">
-                                <h3 class="fs-16 font-weight-semi-bold pb-2">Certificates</h3>
+                                <h3 class="fs-16 font-weight-semi-bold pb-2">Điều kiện tiên quyết</h3>
                             </div><!-- end lecture-overview-stats-item -->
                             <div class="lecture-overview-stats-item lecture-overview-stats-wide-item">
-                                <p class="pb-3">Get Aduca certificate by completing entire course</p>
-                                <a href="#" class="btn theme-btn theme-btn-transparent">Aduca Certificate</a>
+                                <p class="pb-3">{{$course ->course-> prerequisites}}</p>
                             </div><!-- end lecture-overview-stats-item -->
                         </div><!-- end lecture-overview-stats-wrap -->
                     </div><!-- end lecture-overview-item -->
@@ -165,11 +161,10 @@
                     <div class="lecture-overview-item">
                         <div class="lecture-overview-stats-wrap d-flex">
                             <div class="lecture-overview-stats-item">
-                                <h3 class="fs-16 font-weight-semi-bold pb-2">Features</h3>
+                                <h3 class="fs-16 font-weight-semi-bold pb-2">Giảng viên</h3>
                             </div><!-- end lecture-overview-stats-item -->
                             <div class="lecture-overview-stats-item">
-                                <p>Available on <a href="#" class="text-color hover-underline">IOS</a> and <a href="#"
-                                                                                                              class="text-color hover-underline">Android</a>
+                                <p>Nguyễn Văn A
                                 </p>
                             </div><!-- end lecture-overview-stats-item -->
                         </div><!-- end lecture-overview-stats-wrap -->
@@ -178,13 +173,11 @@
                     <div class="lecture-overview-item">
                         <div class="lecture-overview-stats-wrap d-flex">
                             <div class="lecture-overview-stats-item">
-                                <h3 class="fs-16 font-weight-semi-bold pb-2">Description</h3>
+                                <h3 class="fs-16 font-weight-semi-bold pb-2">Giới thiệu khóa học</h3>
                             </div><!-- end lecture-overview-stats-item -->
-                            <div
-                                class="lecture-overview-stats-item lecture-overview-stats-wide-item lecture-description">
-                                <h3 class="fs-16 font-weight-semi-bold pb-2">From the Author of the Best Selling After
-                                    Effects CC 2020 Complete Course</h3>
-                                <p> {!! $course->course->description !!} </p>
+                            <div class="lecture-overview-stats-item lecture-overview-stats-wide-item lecture-description">
+                                <h3 class="fs-16 font-weight-semi-bold pb-2">{!! $course ->course-> description !!}</h3>
+                                <p>  </p>
 
 
                             </div><!-- end lecture-overview-stats-item -->
