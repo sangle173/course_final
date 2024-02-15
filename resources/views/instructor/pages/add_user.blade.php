@@ -50,12 +50,27 @@
                     <label for="input1" class="form-label">Mật khẩu</label>
                     <input type="password" name="password" class="form-control" id="input1"  >
                 </div>
+                <div class="form-group col-md-12">
+                    <label for="input1" class="form-label">Chọn khóa học</label>
+                    @foreach ($courses as $course)
+                    <div class="form-check">
+                        <input class="form-check-input" name="course[]" type="checkbox" value="{{$course -> id}}" id="defaultCheck{{$course->id}}">
+                        <label class="form-check-label" for="defaultCheck{{$course->id}}">
+                            {{ $course->course_title }}
+                        </label>
+                    </div>
+                    @endforeach
+{{--                @foreach ($courses as $course)--}}
+{{--                        <input type="checkbox" name="course[]" value="{{$course -> id}}">  {{ $course->course_title }}--}}
+{{--                        @endforeach--}}
+                </div>
 
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label"> Quyền truy cập</label>
-                    <input type="text" name="address" class="form-control" id="input1" disabled value="Học Viên" >
+                    <input type="text" name="roles" class="form-control" id="input1" disabled value="Học Viên" >
                     </select>
                 </div>
+
                 <div class="col-md-12">
                     <div class="d-md-flex d-grid align-items-center gap-3">
           <button type="submit" class="btn btn-primary px-4">Tạo mới</button>
