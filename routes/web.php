@@ -474,4 +474,5 @@ Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/edit/user/{id}','InstructorEditUser')->name('instructor.edit.user');
     Route::post('instructor/update/user/{id}','InstructorUpdateUser')->name('instructor.update.user');
     Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
+    Route::get('/instructor/course/details/{id}','InstructorCourseDetails')->name('instructor.course.details');
 });

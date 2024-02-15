@@ -57,10 +57,10 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                 </div>
-                <div class="menu-title">Thêm học viên</div>
+                <div class="menu-title">Xếp học viên</div>
             </a>
             <ul>
-                <li> <a href="{{ route('instructor.order.add') }}"><i class='bx bx-radio-circle'></i>Thêm học viên</a>
+                <li> <a href="{{ route('instructor.order.add') }}"><i class='bx bx-radio-circle'></i>Xếp lớp học viên</a>
                 </li>
 
 

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -112,7 +115,8 @@ class InstructorController extends Controller
 
     public function InstructorAddUser(){
         $roles = Role::all();
-        return view('instructor.pages.add_user',compact('roles'));
+        $courses = Course::all();
+        return view('instructor.pages.add_user',compact('roles', 'courses'));
     }// End Method
 
     public function InstructorStoreUser(Request $request){
@@ -127,6 +131,17 @@ class InstructorController extends Controller
         $user->role = 'user';
         $user->status = '1';
         $user->save();
+
+        $arr =$request -> course;
+
+        for ($x = 0; $x < count($arr); $x++) {
+            $order = new Order();
+            $order->payment_id = 1;
+            $order->user_id = $user-> id;
+            $order->course_id = $arr[$x];
+            $order->instructor_id = Auth::user()->id;
+            $order->save();
+        }
 
         $notification = array(
             'message' => 'Tạo mới Người dùng thành công',
@@ -182,6 +197,14 @@ class InstructorController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+
+    }// End Method
+
+    public function InstructorCourseDetails($id){
+
+        $course = Course::find($id);
+        $orders = DB::table("orders") -> where("course_id", $id) ->get();
+        return view('instructor.courses.course_details',compact('course', 'orders'));
 
     }// End Method
 }
