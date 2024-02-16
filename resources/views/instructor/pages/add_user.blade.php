@@ -24,6 +24,15 @@
             <h5 class="mb-4">Thêm mới học viên</h5>
             <form id="myForm" action="{{ route('instructor.store.user') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">Tên đăng nhập</label>
                     <input type="text" name="username" class="form-control" id="input1"  >
@@ -56,13 +65,10 @@
                     <div class="form-check">
                         <input class="form-check-input" name="course[]" type="checkbox" value="{{$course -> id}}" id="defaultCheck{{$course->id}}">
                         <label class="form-check-label" for="defaultCheck{{$course->id}}">
-                            {{ $course->course_title }}
+                            {{ $course->course_name }}
                         </label>
                     </div>
                     @endforeach
-{{--                @foreach ($courses as $course)--}}
-{{--                        <input type="checkbox" name="course[]" value="{{$course -> id}}">  {{ $course->course_title }}--}}
-{{--                        @endforeach--}}
                 </div>
 
                 <div class="form-group col-md-6">

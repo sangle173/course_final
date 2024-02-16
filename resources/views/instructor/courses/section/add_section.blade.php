@@ -41,6 +41,15 @@
                 <form id="myForm" action="{{ route('add.course.section') }}" method="post" class="row g-3"
                       enctype="multipart/form-data">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <input type="hidden" name="id" value="{{ $course->id }}">
 
                     <div class="form-group col-md-6">

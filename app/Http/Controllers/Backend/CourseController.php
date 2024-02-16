@@ -47,6 +47,8 @@ class CourseController extends Controller
 
         $request->validate([
             'video' => 'required|mimes:mp4|max:300000',
+            'course_title' => 'required',
+            'course_name' => 'required',
         ]);
 
         $image = $request->file('course_image');
@@ -334,9 +336,9 @@ class CourseController extends Controller
     public function AddCourseSection(Request $request)
     {
         $cid = $request->id;
-
         $request->validate([
-            'section_video' => 'required|mimes:mp4|max:500000',
+            'section_video' => 'mimes:mp4|max:500000',
+            'section_title' => 'required',
         ]);
 
         $video = $request->file('section_video');
@@ -397,7 +399,10 @@ class CourseController extends Controller
     public function UpdateCourseSection(Request $request)
     {
         $lid = $request->id;
-//        dd($request);
+        $request->validate([
+            'section_video' => 'mimes:mp4|max:500000',
+            'section_title' => 'required',
+        ]);
 
         $video = $request->file('section_video');
         $save_video = "";
@@ -406,7 +411,7 @@ class CourseController extends Controller
             $video->move(public_path('upload/lecture/video/'), $videoName);
             $save_video = 'upload/lecture/video/' . $videoName;
         } else {
-            $save_video = $request-> section_video;
+            $save_video = $request->section_video;
         }
         $document = $request->file('section_document');
         $save_document = "";
@@ -415,7 +420,7 @@ class CourseController extends Controller
             $document->move(public_path('upload/lecture/document/'), $documentName);
             $save_document = 'upload/lecture/document/' . $documentName;
         } else {
-            $save_document = $request-> section_document;
+            $save_document = $request->section_document;
         }
 
 

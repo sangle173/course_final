@@ -53,11 +53,14 @@
                                     <a href="{{ route('add.course.lecture',$item->id) }}" class="btn btn-warning"
                                        title="Thêm bài học"><i class="lni lni-list"></i> </a>
 
-                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info" title="Chỉnh sửa"><i
+                                    <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info"
+                                       title="Chỉnh sửa"><i
                                             class="lni lni-eraser"></i> </a>
-                                    <a href="{{ route('instructor.course.details',$item->id) }}" class="btn btn-info"><i class="lni lni-eye"></i>
+                                    <a href="{{ route('instructor.course.details',$item->id) }}" class="btn btn-success"><i
+                                            class="lni lni-eye"></i></a>
 
-                                        <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger" id="delete"
+                                    <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger"
+                                       id="delete"
                                        title="Xóa"><i class="lni lni-trash"></i> </a>
 
                                 </td>

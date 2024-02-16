@@ -65,18 +65,23 @@ class OrderController extends Controller
     }// End Method
 
     public function UpdateOrder(Request $request){
-        $order = new Order();
-        $order->payment_id = 1;
-        $order->user_id = $request->user_id;
-        $order->course_id = $request->course_id;
-        $order->instructor_id = Auth::user()->id;
+        $arr =$request -> user;
+
+        for ($x = 0; $x < count($arr); $x++) {
+            $order = new Order();
+            $order->payment_id = 1;
+            $order->user_id = $arr[$x];
+            $order->course_id = $request-> course_id;
+            $order->instructor_id = Auth::user()->id;
+            $order->save();
+        }
         $order->save();
 
         $notification = array(
             'message' => 'Thêm học sinh vào khóa học thành công',
             'alert-type' => 'success'
         );
-        return redirect()->route('instructor.order.add')->with($notification);
+        return redirect()->route('all.course')->with($notification);
 
     }// End Method
 
