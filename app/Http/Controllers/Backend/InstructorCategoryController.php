@@ -22,9 +22,8 @@ class InstructorCategoryController extends Controller
     }// End Method
 
     public function StoreCategory(Request $request){
-        $validated = $request->validate([
-            'category_name' => 'required|unique:posts|max:255',
-            'image' => 'required',
+        $request->validate([
+            'category_name' => 'required'
         ]);
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
