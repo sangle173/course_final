@@ -23,7 +23,15 @@
             <h5 class="mb-4">Sửa danh mục con</h5>
             <form id="myForm" action="{{ route('instructor.update.subcategory') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input type="hidden" name="id" value="{{ $subcategory->id }}">
 
                 <div class="form-group col-md-6">

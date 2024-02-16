@@ -70,7 +70,7 @@
                                             <h6 class="mb-0">Email</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="email" name="email" class="form-control"
+                                            <input type="email" disabled name="email" class="form-control"
                                                    value="{{ $profileData->email }}"/>
                                         </div>
                                     </div>

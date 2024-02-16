@@ -23,7 +23,15 @@
             <h5 class="mb-4">Thêm danh mục</h5>
             <form id="myForm" action="{{ route('instructor.store.category') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">Tên danh mục</label>
                     <input type="text" name="category_name" class="form-control" id="input1"  >

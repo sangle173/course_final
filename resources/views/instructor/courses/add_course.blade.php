@@ -24,7 +24,15 @@
 
             <form id="myForm" action="{{ route('store.course') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">Tên khóa học</label>
                     <input type="text" name="course_name" class="form-control" id="input1"  >
@@ -124,7 +132,8 @@
 
             <div class="form-group col-md-12">
                 <label for="input1" class="form-label">Mô tả khóa học </label>
-                <textarea name="description" class="form-control" id="myeditorinstance"></textarea>
+{{--                <textarea name="description" class="form-control" id="myeditorinstance"></textarea>--}}
+                <textarea name="description" class="form-control" id="input11" placeholder="Mô tả ..." rows="3"></textarea>
             </div>
 
 
@@ -199,7 +208,7 @@
 
 
                 <div class="form-group col-md-6">
-                   <label for="goals">Goals</label>
+                   <label for="goals">Mục tiêu</label>
                    <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Mục tiêu  ">
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
@@ -276,7 +285,7 @@
                     required : 'Vui lòng nhập tên khóa học',
                 },
                 course_title: {
-                    required : 'Vui lòng nhập tiêu đề
+                    required : 'Vui lòng nhập tiêu đề'
 
 
             },

@@ -93,7 +93,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong> Giá giảm :</strong></td>
-                                        <td>${{ $course->discount_price }}</td>
+                                        <td>{{ $course->discount_price }} vnđ</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Trạng thái :</strong></td>

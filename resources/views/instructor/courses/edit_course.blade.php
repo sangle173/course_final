@@ -29,7 +29,7 @@
 
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Tên khóa họ</label>
+                    <label for="input1" class="form-label">Tên khóa học</label>
                     <input type="text" name="course_name" class="form-control" id="input1" value="{{ $course->course_name }}" >
                 </div>
 

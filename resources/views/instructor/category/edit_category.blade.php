@@ -24,7 +24,15 @@
 
             <form id="myForm" action="{{ route('instructor.update.category') }}" method="post" class="row g-3" enctype="multipart/form-data">
                 @csrf
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <input type="hidden" name="id" value="{{ $category->id }}">
 
                 <div class="form-group col-md-6">

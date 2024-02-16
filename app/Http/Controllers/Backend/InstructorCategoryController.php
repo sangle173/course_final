@@ -22,7 +22,10 @@ class InstructorCategoryController extends Controller
     }// End Method
 
     public function StoreCategory(Request $request){
-
+        $validated = $request->validate([
+            'category_name' => 'required|unique:posts|max:255',
+            'image' => 'required',
+        ]);
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(370,246)->save('upload/category/'.$name_gen);
@@ -51,7 +54,6 @@ class InstructorCategoryController extends Controller
     }// End Method
 
     public function UpdateCategory(Request $request){
-
         $cat_id = $request->id;
 
         if ($request->file('image')) {
@@ -75,7 +77,6 @@ class InstructorCategoryController extends Controller
             return redirect()->route('instructor.all.category')->with($notification);
 
         } else {
-
             Category::find($cat_id)->update([
                 'category_name' => $request->category_name,
                 'category_slug' => strtolower(str_replace(' ','-',$request->category_name)),
@@ -128,7 +129,9 @@ class InstructorCategoryController extends Controller
 
 
     public function StoreSubCategory(Request $request){
-
+        $validated = $request->validate([
+            'subcategory_name' => 'required|unique:posts|max:255',
+        ]);
         SubCategory::insert([
             'category_id' => $request->category_id,
             'subcategory_name' => $request->subcategory_name,

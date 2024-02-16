@@ -51,7 +51,6 @@ class InstructorController extends Controller
         $data = User::find($id);
         $data->name = $request->name;
         $data->username = $request->username;
-        $data->email = $request->email;
         $data->phone = $request->phone;
         $data->address = $request->address;
 
@@ -120,6 +119,12 @@ class InstructorController extends Controller
     }// End Method
 
     public function InstructorStoreUser(Request $request){
+
+        $request->validate([
+            'email' => 'required|unique:users,email|max:255',
+            'username' => 'required',
+            'name' => 'required'
+        ]);
         $user = new User();
         $user->username = $request->username;
         $user->name = $request->name;
@@ -161,16 +166,19 @@ class InstructorController extends Controller
 
         $user = User::find($id);
         $roles = Role::all();
-        return view('instructor.pages.edit_user',compact('user','roles'));
+        $courses = Course::all();
+        return view('instructor.pages.edit_user',compact('user','roles', 'courses'));
 
     }// End Method
 
     public function InstructorUpdateUser(Request $request,$id){
-
+        $request->validate([
+            'username' => 'required',
+            'name' => 'required'
+        ]);
         $user = User::find($id);
         $user->username = $request->username;
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->role = 'user';
