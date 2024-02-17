@@ -52,17 +52,21 @@ class CourseController extends Controller
             'category_id' => 'required',
             'subcategory_id' => 'required',
         ]);
+        $save_url = null;
+        if ($request->file('course_image')) {
+            $image = $request->file('course_image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(370, 246)->save('upload/course/thambnail/' . $name_gen);
+            $save_url = 'upload/course/thambnail/' . $name_gen;
+        }
 
-        $image = $request->file('course_image');
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(370, 246)->save('upload/course/thambnail/' . $name_gen);
-        $save_url = 'upload/course/thambnail/' . $name_gen;
-
-        $video = $request->file('video');
-        $videoName = time() . '.' . $video->getClientOriginalExtension();
-        $video->move(public_path('upload/course/video/'), $videoName);
-        $save_video = 'upload/course/video/' . $videoName;
-
+        $save_video = null;
+        if ($request->file('video')) {
+            $video = $request->file('video');
+            $videoName = time() . '.' . $video->getClientOriginalExtension();
+            $video->move(public_path('upload/course/video/'), $videoName);
+            $save_video = 'upload/course/video/' . $videoName;
+        }
         $course_id = Course::insertGetId([
 
             'category_id' => $request->category_id,
@@ -342,16 +346,21 @@ class CourseController extends Controller
             'section_video' => 'mimes:mp4|max:500000',
             'section_title' => 'required',
         ]);
+        $save_video = null;
+        $save_document = null;
+        if ($request->file('section_video')) {
+            $video = $request->file('section_video');
+            $videoName = time() . '.' . $video->getClientOriginalExtension();
+            $video->move(public_path('upload/lecture/video/'), $videoName);
+            $save_video = 'upload/lecture/video/' . $videoName;
+        }
 
-        $video = $request->file('section_video');
-        $videoName = time() . '.' . $video->getClientOriginalExtension();
-        $video->move(public_path('upload/lecture/video/'), $videoName);
-        $save_video = 'upload/lecture/video/' . $videoName;
-
-        $document = $request->file('section_document');
-        $documentName = time() . '.' . $document->getClientOriginalExtension();
-        $document->move(public_path('upload/lecture/document/'), $documentName);
-        $save_document = 'upload/lecture/document/' . $documentName;
+        if ($request->file('section_document')) {
+            $document = $request->file('section_document');
+            $documentName = time() . '.' . $document->getClientOriginalExtension();
+            $document->move(public_path('upload/lecture/document/'), $documentName);
+            $save_document = 'upload/lecture/document/' . $documentName;
+        }
 
         CourseSection::insert([
             'course_id' => $cid,
