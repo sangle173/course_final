@@ -128,8 +128,8 @@ class InstructorCategoryController extends Controller
 
 
     public function StoreSubCategory(Request $request){
-        $validated = $request->validate([
-            'subcategory_name' => 'required|unique:posts|max:255',
+        $request->validate([
+            'subcategory_name' => 'required',
         ]);
         SubCategory::insert([
             'category_id' => $request->category_id,
@@ -187,8 +187,5 @@ class InstructorCategoryController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method
-
-
-
 
 }

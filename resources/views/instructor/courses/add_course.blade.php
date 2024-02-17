@@ -104,13 +104,13 @@
 
             <div class="form-group col-md-3">
                 <label for="input1" class="form-label">Giá khóa học </label>
-                <input type="text" name="selling_price" class="form-control" id="input1"  >
+                <input type="number" name="selling_price" class="form-control" id="input1"  >
             </div>
 
 
             <div class="form-group col-md-3">
                 <label for="input1" class="form-label">Giảm giá </label>
-                <input type="text" name="discount_price" class="form-control" id="input1"  >
+                <input type="number" name="discount_price" class="form-control" id="input1"  >
             </div>
 
 
