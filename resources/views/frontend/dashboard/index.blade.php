@@ -26,7 +26,7 @@
             </div><!-- end rating-wrap -->
         </div><!-- end media-body -->
     </div><!-- end media -->
-   
+
 </div><!-- end breadcrumb-content -->
 <div class="section-block mb-5"></div>
 <div class="dashboard-heading mb-5">
@@ -259,7 +259,7 @@
     </div><!-- end col-lg-4 -->
 
 
-    
+
 </div><!-- end row -->
 
 @endsection

@@ -24,8 +24,8 @@
         @csrf
 
         <div class="media media-card align-items-center">
-            <div class="media-img media-img-lg mr-4 bg-gray">
-                <img class="mr-3" src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg')}}" alt="avatar image">
+            <div class="media-img media-img-lg mr-4 bg-gray rounded-full">
+                <img class="mr-3 rounded-full" src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg')}}" alt="avatar image">
             </div>
             <div class="media-body">
                 <div class="file-upload-wrap file-upload-wrap-2">
@@ -40,21 +40,21 @@
             <div class="input-box col-lg-6">
                 <label class="label-text"> Tên</label>
                 <div class="form-group">
-                    <input class="form-control form--control" type="text" name="name" value="{{ $profileData->name }}">
+                    <input class="form-control form--control" type="text" name="name" value="{{ $profileData->name }}" disabled>
                     <span class="la la-user input-icon"></span>
                 </div>
             </div><!-- end input-box -->
             <div class="input-box col-lg-6">
                 <label class="label-text">Tên đăng nhập</label>
                 <div class="form-group">
-                    <input class="form-control form--control" type="text" name="username" value="{{ $profileData->username }}">
+                    <input class="form-control form--control" type="text" name="username" value="{{ $profileData->username }}" disabled>
                     <span class="la la-user input-icon"></span>
                 </div>
             </div><!-- end input-box -->
             <div class="input-box col-lg-6">
                 <label class="label-text">Email</label>
                 <div class="form-group">
-                    <input class="form-control form--control" type="email" name="email" value="{{ $profileData->email }}">
+                    <input class="form-control form--control" type="email" name="email" value="{{ $profileData->email }}" disabled>
                     <span class="la la-user input-icon"></span>
                 </div>
             </div><!-- end input-box -->
@@ -63,7 +63,7 @@
             <div class="input-box col-lg-6">
                 <label class="label-text">Số điện thoại</label>
                 <div class="form-group">
-                    <input class="form-control form--control" type="text" name="phone" value="{{ $profileData->phone }}">
+                    <input class="form-control form--control" type="text" name="phone" value="{{ $profileData->phone }}" disabled>
                     <span class="la la-user input-icon"></span>
                 </div>
             </div><!-- end input-box -->
@@ -71,7 +71,7 @@
             <div class="input-box col-lg-6">
                 <label class="label-text">Địa chỉ</label>
                 <div class="form-group">
-                    <input class="form-control form--control" type="text" name="address" value="{{ $profileData->address }}">
+                    <input class="form-control form--control" type="text" name="address" value="{{ $profileData->address }}" disabled>
                     <span class="la la-user input-icon"></span>
                 </div>
             </div><!-- end input-box -->

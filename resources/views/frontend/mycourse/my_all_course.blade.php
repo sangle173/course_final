@@ -13,8 +13,8 @@
                 <div class="card card-item card-item-list-layout">
                     <div class="card-image">
                         <a href="{{ route('course.view',$item->course_id) }}" class="d-block">
-                            <img class="card-img-top" src="{{ asset($item->course->course_image) }}"
-                                 alt="Card image cap">
+                            <img class="card-img-top" src="{{ (!empty(asset($item->course->course_image))) ? asset($item->course->course_image) : url('upload/no_image.jpg')}}"
+                                 alt="Ảnh khóa học">
                         </a>
 
                     </div><!-- end card-image -->
@@ -42,7 +42,7 @@
                             </li>
                             <li class="mr-2">
                                 <span class="text-black">Thời lượng:</span>
-                                <span>{{ $item->course->duration }} giờ </span>
+                                <span>{{ $item->course->duration }} </span>
                             </li>
                             <li class="mr-2">
                                 <span class="text-black">Số học sinh:</span>
@@ -50,21 +50,7 @@
                             </li>
                         </ul>
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="card-price text-black font-weight-bold">${{ $item->course->selling_price }}</p>
-                            <div class="card-action-wrap pl-3">
-                                <a href="course-details.html"
-                                   class="icon-element icon-element-sm shadow-sm cursor-pointer ml-1 text-success"
-                                   data-toggle="tooltip" data-placement="top" data-title="View"><i
-                                        class="la la-eye"></i></a>
-                                <div class="icon-element icon-element-sm shadow-sm cursor-pointer ml-1 text-secondary"
-                                     data-toggle="tooltip" data-placement="top" data-title="Edit"><i
-                                        class="la la-edit"></i></div>
-                                <div class="icon-element icon-element-sm shadow-sm cursor-pointer ml-1 text-danger"
-                                     data-toggle="tooltip" data-placement="top" title="Delete">
-                                    <span data-toggle="modal" data-target="#itemDeleteModal"
-                                          class="w-100 h-100 d-inline-block"><i class="la la-trash"></i></span>
-                                </div>
-                            </div>
+                            <p class="card-price text-black font-weight-bold">{{ $item->course->selling_price }} vnđ</p>
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->
