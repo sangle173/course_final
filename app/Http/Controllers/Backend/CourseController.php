@@ -46,9 +46,11 @@ class CourseController extends Controller
     {
 
         $request->validate([
-            'video' => 'required|mimes:mp4|max:300000',
+            'video' => 'mimes:mp4|max:500000',
             'course_title' => 'required',
             'course_name' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
         ]);
 
         $image = $request->file('course_image');
