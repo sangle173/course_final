@@ -70,7 +70,7 @@
                                                                             </button>
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <video id="my-video" class="video-js"
+                                                                            <video id="my-video" oncontextmenu="return false;" class="video-js"
                                                                                    controls controlsList="nodownload"
                                                                                    preload="video-js vjs-default-skin vjs-big-play-centered"
                                                                                    width="470" height="264"
