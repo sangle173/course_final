@@ -10,6 +10,7 @@ use App\Models\Course;
 use App\Models\Course_goal;
 use App\Models\CourseSection;
 use App\Models\CourseLecture;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -227,6 +228,65 @@ class CourseController extends Controller
 
     }
 
+    public function UpdateSectionVideo(Request $request)
+    {
+
+        $request->validate([
+            'video' => 'required|mimes:mp4|max:500000',
+        ]);
+
+        $section_id = $request->vid;
+        $oldVideo = $request->old_vid;
+
+        $video = $request->file('video');
+        $videoName = $video->getClientOriginalName();
+        $video->move(public_path('upload/course/video/'), $videoName);
+        $save_video = 'upload/course/video/' . $videoName;
+
+        if (file_exists($oldVideo)) {
+            unlink($oldVideo);
+        }
+
+        CourseSection::find($section_id)->update([
+            'section_video' => $save_video,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Cập nhật video bài học thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }
+
+    public function UpdateSectionDocument(Request $request)
+    {
+        $section_id = $request->vid;
+        $oldDoc = $request->old_doc;
+
+        $document = $request->file('section_document');
+        $documentName = $document->getClientOriginalName();
+        $document->move(public_path('upload/lecture/document/'), $documentName);
+        $save_document = 'upload/lecture/document/' . $documentName;
+
+        if (file_exists($oldDoc)) {
+            unlink($oldDoc);
+        }
+
+        CourseSection::find($section_id)->update([
+            'section_document' => $save_document,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Cập nhật tài liệu bài học thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }
+
     public function UpdateLectureVideo(Request $request)
     {
 
@@ -333,7 +393,6 @@ class CourseController extends Controller
 
     public function EditCourseSectionGet($id)
     {
-
         $section = CourseSection::find($id);
         return view('instructor.courses.section.edit_section', compact('section'));
 
@@ -411,39 +470,16 @@ class CourseController extends Controller
     {
         $lid = $request->id;
         $request->validate([
-            'section_video' => 'mimes:mp4|max:500000',
             'section_title' => 'required',
         ]);
 
-        $video = $request->file('section_video');
-        $save_video = "";
-        if ($video != NULL) {
-            $videoName = time() . '.' . $video->getClientOriginalExtension();
-            $video->move(public_path('upload/lecture/video/'), $videoName);
-            $save_video = 'upload/lecture/video/' . $videoName;
-        } else {
-            $save_video = $request->section_video;
-        }
-        $document = $request->file('section_document');
-        $save_document = "";
-        if ($document != NULL) {
-            $documentName = time() . '.' . $document->getClientOriginalExtension();
-            $document->move(public_path('upload/lecture/document/'), $documentName);
-            $save_document = 'upload/lecture/document/' . $documentName;
-        } else {
-            $save_document = $request->section_document;
-        }
-
-
         CourseSection::find($lid)->update([
             'section_title' => $request->section_title,
-            'section_content' => $request->section_content,
-            'section_video' => $save_video,
-            'section_document' => $save_document,
+            'section_content' => $request->section_content
         ]);
 
         $notification = array(
-            'message' => 'Course Lecture Updated Successfully',
+            'message' => 'Cập nhật bài học thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

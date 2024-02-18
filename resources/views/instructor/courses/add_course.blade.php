@@ -132,7 +132,6 @@
 
             <div class="form-group col-md-12">
                 <label for="input1" class="form-label">Mô tả khóa học </label>
-{{--                <textarea name="description" class="form-control" id="myeditorinstance"></textarea>--}}
                 <textarea name="description" class="form-control" id="input11" placeholder="Mô tả ..." rows="3"></textarea>
             </div>
 
