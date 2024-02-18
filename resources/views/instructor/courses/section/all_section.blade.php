@@ -58,7 +58,7 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <video id="my-video" class="video-js" controls
+                                                            <video id="my-video" oncontextmenu="return false;" class="video-js" controls
                                                                    preload="video-js vjs-default-skin vjs-big-play-centered"
                                                                    width="470" height="264"
                                                                    poster="https://d9wrv003o8xvb.cloudfront.net/thumb_0801180537104122.jpg"
