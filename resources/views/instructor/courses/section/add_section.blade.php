@@ -52,29 +52,36 @@
                     @endif
                     <input type="hidden" name="id" value="{{ $course->id }}">
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <label for="input1" class="form-label">Tên bài học</label>
                         <input type="text" name="section_title" class="form-control" id="input1">
                     </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Nội dung </label>
-                        <input type="text" name="section_content" class="form-control" id="input1">
+                    <div class="form-group col-md-12">
+                        <label for="section_content" class="form-label">Nội dung </label>
+                        <textarea name="section_content" class="form-control" id="section_content" placeholder="Nội dung ..." rows="3"></textarea>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Video </label>
-                        <input type="file" name="section_video" id="videoUpload" class="form-control"
-                               accept="video/mp4, video/webm">
+                    <div class="form-group col-md-12">
+{{--                        <label for="input1" class="form-label">Video </label>--}}
+{{--                        <input type="file" name="section_video" id="videoUpload" class="form-control"--}}
+{{--                               accept="video/mp4, video/webm">--}}
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="input2" class="form-label">Video bài học </label>
+                                <input type="file" id="videoUpload" name="section_video" class="form-control"  accept="video/mp4, video/webm" >
+                            </div>
+
+                            <div class="col-md-6">
+                                <video width="240" height="150" controls>
+                                    Trình duyệt không hỗ trợ video này!
+                                </video>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input1" class="form-label">Tài liệu </label>
                         <input type="file" name="section_document" class="form-control"
                                accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <video width="320" height="240" controls>
-                            Trình duyệt không hỗ trợ video này!
-                        </video>
                     </div>
                     <div class="form-group col-md-6">
                     </div>

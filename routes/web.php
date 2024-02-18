@@ -358,6 +358,8 @@ Route::controller(CourseController::class)->group(function(){
     Route::get('/add/course/lecture/{id}','AddCourseLecture')->name('add.course.lecture');
     Route::post('/add/course/section/','AddCourseSection')->name('add.course.section');
     Route::post('/update/course/section/','UpdateCourseSection')->name('update.course.section');
+    Route::post('/update/course/section/document','UpdateSectionDocument')->name('update.course.section.document');
+    Route::post('/update/course/section/video','UpdateSectionVideo')->name('update.course.section.video');
     Route::get('/add/section/{id}','AddCourseSectionGet')->name('add.section');
     Route::get('/edit/section/{id}','EditCourseSectionGet')->name('edit.section');
 
