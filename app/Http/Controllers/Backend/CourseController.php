@@ -350,14 +350,14 @@ class CourseController extends Controller
         $save_document = null;
         if ($request->file('section_video')) {
             $video = $request->file('section_video');
-            $videoName = $video -> getClientOriginalName();
+            $videoName =  time() .'.' . $video->getClientOriginalExtension();
             $video->move(public_path('upload/lecture/video/'), $videoName);
             $save_video = 'upload/lecture/video/' . $videoName;
         }
 
         if ($request->file('section_document')) {
             $document = $request->file('section_document');
-            $documentName = $document->getClientOriginalName();
+            $documentName = time() . '.' . $document->getClientOriginalExtension();
             $document->move(public_path('upload/lecture/document/'), $documentName);
             $save_document = 'upload/lecture/document/' . $documentName;
         }
