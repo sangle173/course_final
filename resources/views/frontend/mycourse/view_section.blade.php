@@ -75,16 +75,16 @@
             transition: all 0.13s ease;
         }
 
-        /*.wrapper::before {*/
-        /*  content: "";*/
-        /*  bottom: 0;*/
-        /*  width: 100%;*/
-        /*  z-index: -1;*/
-        /*  position: absolute;*/
-        /*  height: calc(100% + 2.1875em);*/
-        /*  pointer-events: none;*/
-        /*  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);*/
-        /*}*/
+        .wrapper::before {
+          content: "";
+          bottom: 0;
+          width: 100%;
+          z-index: -1;
+          position: absolute;
+          height: calc(100% + 2.1875em);
+          pointer-events: none;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
         .video-timeline {
             height: 0.4375em;
             width: 100%;
