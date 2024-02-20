@@ -511,8 +511,5 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
-
     }// End Method
-
-
 }
