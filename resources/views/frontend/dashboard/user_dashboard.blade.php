@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>User Dashboard </title>
+    <title>Khóa học </title>
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,6 +14,7 @@
 
     <!-- Favicon -->
     <link rel="icon" sizes="16x16" href="{{ asset('frontend/images/favicon.png') }}">
+    <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -27,7 +28,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
-    
+
 </head>
 <body>
 
@@ -54,14 +55,14 @@
 ================================= -->
 <section class="dashboard-area">
     <div class="off-canvas-menu dashboard-off-canvas-menu off--canvas-menu custom-scrollbar-styled pt-20px">
-        
+
     @include('frontend.dashboard.body.sidebar')
-      
+
     </div><!-- end off-canvas-menu -->
-   
-   
-   
-   
+
+
+
+
     <div class="dashboard-content-wrap">
         <div class="dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent mb-4 ml-3">
             <i class="la la-bars mr-1"></i> Dashboard Nav
@@ -69,10 +70,10 @@
 
 
         <div class="container-fluid">
-           
+
             @yield('userdashboard')
 
-            @include('frontend.dashboard.body.footer') 
+            @include('frontend.dashboard.body.footer')
 
 
         </div><!-- end container-fluid -->
@@ -143,13 +144,13 @@
 
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
-    break; 
+    break;
  }
- @endif 
+ @endif
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
- 
+
 @include('frontend.body.script')
 
 

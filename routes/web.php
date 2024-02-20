@@ -68,7 +68,7 @@ Route::controller(WishListController::class)->group(function(){
     Route::controller(OrderController::class)->group(function(){
         Route::get('/my/course','MyCourse')->name('my.course');
         Route::get('/course/view/{course_id}','CourseView')->name('course.view');
-
+        Route::get('/course/section/details/{id}','ViewCourseSectionGet')->name('course.section.details');
     });
 
 

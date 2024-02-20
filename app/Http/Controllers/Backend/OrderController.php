@@ -153,4 +153,11 @@ class OrderController extends Controller
         $section = CourseSection::where('course_id',$course_id)->orderBy('id','asc')->get();
         return view('frontend.mycourse.course_view',compact('course','section'));
     }// End Method
+
+    public function ViewCourseSectionGet($id)
+    {
+        $section = CourseSection::find($id);
+        return view('frontend.mycourse.view_section', compact('section'));
+
+    }// End Method
 }
