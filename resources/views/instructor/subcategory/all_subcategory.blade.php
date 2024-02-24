@@ -42,7 +42,7 @@
                             <td> {{ $item->subcategory_name }} </td>
                             <td>
        <a href="{{ route('instructor.edit.subcategory',$item->id) }}" class="btn btn-info px-5" title="Chỉnh sửa"><i class="lni lni-eraser"></i> </a>
-       <a href="{{ route('instructor.delete.subcategory',$item->id) }}" class="btn btn-danger px-5" title="Xóa" id="delete"><i class="lni lni-trash"></i> </a>
+{{--       <a href="{{ route('instructor.delete.subcategory',$item->id) }}" class="btn btn-danger px-5" title="Xóa" id="delete"><i class="lni lni-trash"></i> </a>--}}
                             </td>
                         </tr>
                         @endforeach

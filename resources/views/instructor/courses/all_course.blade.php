@@ -34,6 +34,7 @@
                             <th>Giá</th>
                             <th>Thời hạn</th>
                             <th>Số học viên</th>
+                            <th>Cập nhật</th>
                             <th>Hành động</th>
                         </tr>
                         </thead>
@@ -50,6 +51,13 @@
                                 <td>{{ $item->duration }}</td>
                                 <td>{{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>
+                                    @if($item -> updated_at)
+                                        {{ $item->updated_at -> format('d/m/Y H:i') }}
+                                    @else
+                                        {{ $item-> created_at -> format('d/m/Y H:i')}}
+                                    @endif
+                                </td>
+                                <td>
                                     <a href="{{ route('add.course.lecture',$item->id) }}" class="btn btn-warning"
                                        title="Thêm bài học"><i class="lni lni-list"></i> </a>
 
@@ -59,9 +67,9 @@
                                     <a href="{{ route('instructor.course.details',$item->id) }}" class="btn btn-success"><i
                                             class="lni lni-eye"></i></a>
 
-                                    <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger"
-                                       id="delete"
-                                       title="Xóa"><i class="lni lni-trash"></i> </a>
+{{--                                    <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger"--}}
+{{--                                       id="delete"--}}
+{{--                                       title="Xóa"><i class="lni lni-trash"></i> </a>--}}
 
                                 </td>
                             </tr>
