@@ -252,30 +252,30 @@
                                 <div class="media-body">
                                     <h5><a href=""{{url('/')}}">{{ $course['user']['name'] }}</a></h5>
                                     <p class="text-black lh-18 pb-3">{{ $course['user']['email'] }}</p>
-                                    <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry’s standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book. It has survived not only five centuries, but also the leap
-                                        into electronic typesetting, remaining essentially unchanged.</p>
-                                    <div class="collapse" id="collapseMoreTwo">
-                                        <p class="pb-3">After learning the hard way, Tim was determined to become the
-                                            best teacher he could, and to make his training as painless as possible, so
-                                            that you, or anyone else with the desire to become a software developer,
-                                            could become one.</p>
-                                        <p class="pb-3">If you want to become a financial analyst, a finance manager, an
-                                            FP&A analyst, an investment banker, a business executive, an entrepreneur, a
-                                            business intelligence analyst, a data analyst, or a data scientist, <strong
-                                                class="text-black font-weight-semi-bold">Tim Buchalka's courses are the
-                                                perfect course to start</strong>.</p>
-                                    </div>
-                                    <a class="collapse-btn collapse--btn fs-15" data-toggle="collapse"
-                                       href="#collapseMoreTwo" role="button" aria-expanded="false"
-                                       aria-controls="collapseMoreTwo">
-                                        <span class="collapse-btn-hide">Hiển thị thêm<i
-                                                class="la la-angle-down ml-1 fs-14"></i></span>
-                                        <span class="collapse-btn-show">Ẩn bớt<i
-                                                class="la la-angle-up ml-1 fs-14"></i></span>
-                                    </a>
+                                    {{--                                    <p class="pb-3">Lorem Ipsum is simply dummy text of the printing and typesetting--}}
+                                    {{--                                        industry. Lorem Ipsum has been the industry’s standard dummy text ever since the--}}
+                                    {{--                                        1500s, when an unknown printer took a galley of type and scrambled it to make a--}}
+                                    {{--                                        type specimen book. It has survived not only five centuries, but also the leap--}}
+                                    {{--                                        into electronic typesetting, remaining essentially unchanged.</p>--}}
+                                    {{--                                    <div class="collapse" id="collapseMoreTwo">--}}
+                                    {{--                                        <p class="pb-3">After learning the hard way, Tim was determined to become the--}}
+                                    {{--                                            best teacher he could, and to make his training as painless as possible, so--}}
+                                    {{--                                            that you, or anyone else with the desire to become a software developer,--}}
+                                    {{--                                            could become one.</p>--}}
+                                    {{--                                        <p class="pb-3">If you want to become a financial analyst, a finance manager, an--}}
+                                    {{--                                            FP&A analyst, an investment banker, a business executive, an entrepreneur, a--}}
+                                    {{--                                            business intelligence analyst, a data analyst, or a data scientist, <strong--}}
+                                    {{--                                                class="text-black font-weight-semi-bold">Tim Buchalka's courses are the--}}
+                                    {{--                                                perfect course to start</strong>.</p>--}}
+                                    {{--                                    </div>--}}
+                                    {{--                                    <a class="collapse-btn collapse--btn fs-15" data-toggle="collapse"--}}
+                                    {{--                                       href="#collapseMoreTwo" role="button" aria-expanded="false"--}}
+                                    {{--                                       aria-controls="collapseMoreTwo">--}}
+                                    {{--                                        <span class="collapse-btn-hide">Hiển thị thêm<i--}}
+                                    {{--                                                class="la la-angle-down ml-1 fs-14"></i></span>--}}
+                                    {{--                                        <span class="collapse-btn-show">Ẩn bớt<i--}}
+                                    {{--                                                class="la la-angle-up ml-1 fs-14"></i></span>--}}
+                                    {{--                                    </a>--}}
                                 </div>
                             </div>
                         </div><!-- end instructor-wrap -->
@@ -443,7 +443,7 @@
                     </div><!-- end card -->
                     <div class="card card-item">
                         <div class="card-body">
-                            <h3 class="card-title fs-18 pb-2">Khóa học liên quan</h3>
+                            <h3 class="card-title fs-18 pb-2">Khóa học tương tự: </h3>
                             <div class="divider"><span></span></div>
 
                             @foreach ($relatedCourses as $related)
@@ -453,17 +453,17 @@
                                              data-src="{{ asset($related->course_image) }}" alt="Related course image">
                                     </a>
                                     <div class="media-body">
-                                        <h5 class="fs-15"><a href="course-details.html"> {{ $related->course_name}}</a>
+                                        <h5 class="fs-15"><a href="{{url('/')}}"> {{ $related->course_name}}</a>
                                         </h5>
                                         <span class="d-block lh-18 py-1 fs-14">{{ $related['user']['name'] }}</span>
 
-                                        @if ($related->discount_price == NULL)
-                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">
-                                                ${{ $related->selling_price }}  </p>
+                                        @if ($course->discount_price == NULL)
+                                            <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}
+                                                vnd </p>
                                         @else
-                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">
-                                                ${{ $related->discount_price }} <span
-                                                    class="before-price fs-14">${{ $related->selling_price }}</span></p>
+                                            <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }}
+                                                vnd <span class="before-price font-weight-medium">
+{{ number_format($course->selling_price, 0, '.', ',') }} vnd</span></p>
                                         @endif
 
                                     </div>
@@ -495,8 +495,8 @@
 <section class="related-course-area bg-gray pt-60px pb-60px">
     <div class="container">
         <div class="related-course-wrap">
-            <h3 class="fs-28 font-weight-semi-bold pb-35px">Khóa học liên quan: <a href="{{url('/')}}"
-                                                                                   class="text-color hover-underline">{{ $course['user']['name'] }}</a>
+            <h3 class="fs-28 font-weight-semi-bold pb-35px">Tất cả khóa học của:: <a href="{{url('/')}}"
+                                                                                     class="text-color hover-underline">{{ $course['user']['name'] }}</a>
             </h3>
             <div class="view-more-carousel-2 owl-action-styled">
 
@@ -549,14 +549,13 @@
                             </div><!-- end rating-wrap -->
                             <div class="d-flex justify-content-between align-items-center">
 
-                                @if ($inscourse->discount_price == NULL)
-                                    <p class="card-price text-black font-weight-bold">
-                                        ${{ $inscourse->selling_price }}  </p>
+                                @if ($course->discount_price == NULL)
+                                    <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}
+                                        vnd </p>
                                 @else
-                                    <p class="card-price text-black font-weight-bold">${{ $inscourse->discount_price }}
-                                        <span
-                                            class="before-price font-weight-medium">${{ $inscourse->selling_price }}</span>
-                                    </p>
+                                    <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }}
+                                        vnd <span class="before-price font-weight-medium">
+{{ number_format($course->selling_price, 0, '.', ',') }} vnd</span></p>
                                 @endif
 
 

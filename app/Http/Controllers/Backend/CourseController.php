@@ -10,7 +10,6 @@ use App\Models\Course;
 use App\Models\Course_goal;
 use App\Models\CourseSection;
 use App\Models\CourseLecture;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -19,9 +18,7 @@ class CourseController extends Controller
 {
     public function AllCourse()
     {
-
-        $id = Auth::user()->id;
-        $courses = Course::where('instructor_id', $id)->orderBy('id', 'desc')->get();
+        $courses = Course::all();
         return view('instructor.courses.all_course', compact('courses'));
 
     }// End Method
@@ -52,6 +49,7 @@ class CourseController extends Controller
             'course_name' => 'required',
             'category_id' => 'required',
             'subcategory_id' => 'required',
+            'selling_price' => 'required',
         ]);
         $save_url = null;
         if ($request->file('course_image')) {
@@ -64,7 +62,7 @@ class CourseController extends Controller
         $save_video = null;
         if ($request->file('video')) {
             $video = $request->file('video');
-            $videoName = time() . '.' . $video->getClientOriginalExtension();
+            $videoName = time().'.'.$video->getClientOriginalExtension();
             $video->move(public_path('upload/course/video/'), $videoName);
             $save_video = 'upload/course/video/' . $videoName;
         }
@@ -239,7 +237,7 @@ class CourseController extends Controller
         $oldVideo = $request->old_vid;
 
         $video = $request->file('video');
-        $videoName = $video->getClientOriginalName();
+        $videoName = time().'.'.$video->getClientOriginalExtension();
         $video->move(public_path('upload/course/video/'), $videoName);
         $save_video = 'upload/course/video/' . $videoName;
 
@@ -266,7 +264,7 @@ class CourseController extends Controller
         $oldDoc = $request->old_doc;
 
         $document = $request->file('section_document');
-        $documentName = $document->getClientOriginalName();
+        $documentName = time().'.'.$document->getClientOriginalExtension();
         $document->move(public_path('upload/lecture/document/'), $documentName);
         $save_document = 'upload/lecture/document/' . $documentName;
 
@@ -409,14 +407,14 @@ class CourseController extends Controller
         $save_document = null;
         if ($request->file('section_video')) {
             $video = $request->file('section_video');
-            $videoName =  $video->getClientOriginalName();
+            $videoName = time().'.'.$video->getClientOriginalExtension();
             $video->move(public_path('upload/lecture/video/'), $videoName);
             $save_video = 'upload/lecture/video/' . $videoName;
         }
 
         if ($request->file('section_document')) {
             $document = $request->file('section_document');
-            $documentName = $document->getClientOriginalName();
+            $documentName = time().'.'.$document->getClientOriginalExtension();
             $document->move(public_path('upload/lecture/document/'), $documentName);
             $save_document = 'upload/lecture/document/' . $documentName;
         }

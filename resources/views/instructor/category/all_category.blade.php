@@ -46,8 +46,8 @@
                                         <i class="lni lni-eraser"></i> </a>
                                     {{--     @endif --}}
                                     {{--     @if (Auth::user()->can('category.delete'))  --}}
-                                    <a href="{{ route('instructor.delete.category',$item->id) }}" title="Xóa" class="btn btn-danger px-5"
-                                       id="delete"><i class="lni lni-trash"></i> </a>
+{{--                                    <a href="{{ route('instructor.delete.category',$item->id) }}" title="Xóa" class="btn btn-danger px-5"--}}
+{{--                                       id="delete"><i class="lni lni-trash"></i> </a>--}}
                                     {{--       @endif                   --}}
                                 </td>
                             </tr>

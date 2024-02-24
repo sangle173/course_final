@@ -34,12 +34,12 @@
                     </div>
                 @endif
                 <div class="form-group col-md-6">
-                    <label for="course_name" class="form-label">Tên khóa học</label>
+                    <label for="course_name" class="form-label">Tên khóa học <span class="text-danger">* Không chứa /</span></label>
                     <input type="text" name="course_name" class="form-control" id="course_name"  >
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="course_title" class="form-label">Tiêu đề </label>
+                    <label for="course_title" class="form-label">Tiêu đề <span class="text-danger">*</span></label>
                     <input type="text" name="course_title" class="form-control" id="course_title"  >
                 </div>
 
@@ -103,7 +103,7 @@
 
 
             <div class="form-group col-md-3">
-                <label for="selling_price" class="form-label">Giá khóa học </label>
+                <label for="selling_price" class="form-label">Giá khóa học <span class="text-danger">*</span></label>
                 <input type="number" name="selling_price" class="form-control" id="selling_price"  >
             </div>
 
