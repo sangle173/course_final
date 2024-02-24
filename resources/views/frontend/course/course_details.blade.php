@@ -35,59 +35,59 @@
 
                     @endphp
 
-{{--                    <div class="rating-wrap d-flex flex-wrap align-items-center">--}}
-{{--                        <div class="review-stars">--}}
-{{--                            <span class="rating-number">{{ round($avarage,1) }}</span>--}}
+                    {{--                    <div class="rating-wrap d-flex flex-wrap align-items-center">--}}
+                    {{--                        <div class="review-stars">--}}
+                    {{--                            <span class="rating-number">{{ round($avarage,1) }}</span>--}}
 
-{{--                            @if ($avarage == 0)--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                            @elseif ($avarage == 1 || $avarage < 2)--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                            @elseif ($avarage == 2 || $avarage < 3)--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                            @elseif ($avarage == 3 || $avarage < 4)--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                            @elseif ($avarage == 4 || $avarage < 5)--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star-o"></span>--}}
-{{--                            @elseif ($avarage == 5 || $avarage < 5)--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                                <span class="la la-star"></span>--}}
-{{--                            @endif--}}
+                    {{--                            @if ($avarage == 0)--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                            @elseif ($avarage == 1 || $avarage < 2)--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                            @elseif ($avarage == 2 || $avarage < 3)--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                            @elseif ($avarage == 3 || $avarage < 4)--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                            @elseif ($avarage == 4 || $avarage < 5)--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star-o"></span>--}}
+                    {{--                            @elseif ($avarage == 5 || $avarage < 5)--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                                <span class="la la-star"></span>--}}
+                    {{--                            @endif--}}
 
-{{--                        </div>--}}
-{{--                        <span class="rating-total pl-1">({{ count($reviewcount) }} ratings)</span>--}}
-{{--                        @php--}}
-{{--                            $enrollmentCount = App\Models\Order::where('course_id',$course->id)->count();--}}
-{{--                        @endphp--}}
+                    {{--                        </div>--}}
+                    {{--                        <span class="rating-total pl-1">({{ count($reviewcount) }} ratings)</span>--}}
+                    {{--                        @php--}}
+                    {{--                            $enrollmentCount = App\Models\Order::where('course_id',$course->id)->count();--}}
+                    {{--                        @endphp--}}
 
-{{--                        <span class="student-total pl-2">{{ number_format($enrollmentCount) }} học viên</span>--}}
-{{--                    </div>--}}
+                    {{--                        <span class="student-total pl-2">{{ number_format($enrollmentCount) }} học viên</span>--}}
+                    {{--                    </div>--}}
                 </div><!-- end d-flex -->
                 <p class="pt-2 pb-1">Giảng viên: <a href="{{url('/')}}"
-                                                class="text-color hover-underline">{{ $course['user']['name'] }}</a>
+                                                    class="text-color hover-underline">{{ $course['user']['name'] }}</a>
                 </p>
                 <div class="d-flex flex-wrap align-items-center">
                     <p class="pr-3 d-flex align-items-center">
@@ -197,22 +197,23 @@
                                                 aria-expanded="true" aria-controls="collapse{{ $sec->id }}">
                                                 <i class="la la-plus"></i>
                                                 <i class="la la-minus"></i>
-                                                 {{ $sec->section_title }}
-                                                <span class="fs-15 text-gray font-weight-medium"> <i class="lni lni-play"></i></span>
+                                                {{ $sec->section_title }}
+                                                <span class="fs-15 text-gray font-weight-medium"> <i
+                                                        class="lni lni-play"></i></span>
                                             </button>
                                         </div><!-- end card-header -->
                                         <div id="collapse{{ $sec->id }}" class="collapse "
                                              aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
                                             <div class="card-body">
                                                 <ul class="generic-list-item">
-                                                        <li>
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-between">
+                                                    <li>
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-between">
                                 <span>
                                    Nội dung: {{ $sec->section_content }}
                                 </span>
-                                                            </div>
-                                                        </li>
+                                                        </div>
+                                                    </li>
 
                                                 </ul>
                                             </div><!-- end card-body -->
@@ -238,14 +239,14 @@
                                              data-src="images/small-avatar-1.jpg" alt="Avatar image">
                                     </a>
                                     <ul class="generic-list-item pt-3">
-{{--                                        <li><i class="la la-star mr-2 text-color-3"></i> 4.6 Instructor Rating</li>--}}
-{{--                                        <li><i class="la la-user mr-2 text-color-3"></i> 45,786 Students</li>--}}
-{{--                                        <li><i class="la la-comment-o mr-2 text-color-3"></i> 2,533 Reviews</li>--}}
-{{--                                        <li>--}}
-{{--                                            <i class="la la-play-circle-o mr-2 text-color-3"></i> {{ count($instructorCourses) }}--}}
-{{--                                            Courses--}}
-{{--                                        </li>--}}
-{{--                                        <li><a href=""{{url('/')}}">Tất cả khóa học</a></li>--}}
+                                        {{--                                        <li><i class="la la-star mr-2 text-color-3"></i> 4.6 Instructor Rating</li>--}}
+                                        {{--                                        <li><i class="la la-user mr-2 text-color-3"></i> 45,786 Students</li>--}}
+                                        {{--                                        <li><i class="la la-comment-o mr-2 text-color-3"></i> 2,533 Reviews</li>--}}
+                                        {{--                                        <li>--}}
+                                        {{--                                            <i class="la la-play-circle-o mr-2 text-color-3"></i> {{ count($instructorCourses) }}--}}
+                                        {{--                                            Courses--}}
+                                        {{--                                        </li>--}}
+                                        {{--                                        <li><a href=""{{url('/')}}">Tất cả khóa học</a></li>--}}
                                     </ul>
                                 </div><!-- end instructor-img -->
                                 <div class="media-body">
@@ -337,7 +338,7 @@
                                     @endif
 
 
-{{--                                    <span class="price-discount">{{ round($discount) }}% off</span>--}}
+                                    {{--                                    <span class="price-discount">{{ round($discount) }}% off</span>--}}
                                 </p>
                                 <div class="buy-course-btn-box">
                                     <button type="submit" class="btn theme-btn w-100 mb-2"
@@ -350,46 +351,46 @@
                                         <i class="la la-shopping-bag mr-1"></i> Mua khóa học
                                     </button>
 
-{{--                                    <div class="input-group mb-2" id="couponField">--}}
-{{--                                        <input class="form-control form--control pl-3" type="text" id="coupon_name"--}}
-{{--                                               placeholder="Mã giảm giá">--}}
-{{--                                        <div class="input-group-append">--}}
-{{--                                            <input type="hidden" id="course_id" name="course_id"--}}
-{{--                                                   value="{{ $course->id }}">--}}
-{{--                                            <input type="hidden" id="instrutor_id" name="instrutor_id"--}}
-{{--                                                   value="{{ $course->instructor_id }}">--}}
-{{--                                            <a type="submit" onclick="applyInsCoupon()" class="btn theme-btn"></a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="input-group mb-2" id="couponField">--}}
+                                    {{--                                        <input class="form-control form--control pl-3" type="text" id="coupon_name"--}}
+                                    {{--                                               placeholder="Mã giảm giá">--}}
+                                    {{--                                        <div class="input-group-append">--}}
+                                    {{--                                            <input type="hidden" id="course_id" name="course_id"--}}
+                                    {{--                                                   value="{{ $course->id }}">--}}
+                                    {{--                                            <input type="hidden" id="instrutor_id" name="instrutor_id"--}}
+                                    {{--                                                   value="{{ $course->instructor_id }}">--}}
+                                    {{--                                            <a type="submit" onclick="applyInsCoupon()" class="btn theme-btn"></a>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
 
 
                                 </div>
-{{--                                <div class="preview-course-incentives">--}}
-{{--                                    <h3 class="card-title fs-18 pb-2">This course includes</h3>--}}
-{{--                                    <ul class="generic-list-item pb-3">--}}
-{{--                                        <li><i class="la la-play-circle-o mr-2 text-color"></i>{{ $course->duration }}--}}
-{{--                                            hours on-demand video--}}
-{{--                                        </li>--}}
-{{--                                        <li><i class="la la-file mr-2 text-color"></i>{{ $course->resources }} articles--}}
-{{--                                        </li>--}}
-{{--                                        <li><i class="la la-file-text mr-2 text-color"></i>12 downloadable resources--}}
-{{--                                        </li>--}}
-{{--                                        <li><i class="la la-code mr-2 text-color"></i>51 coding exercises</li>--}}
-{{--                                        <li><i class="la la-key mr-2 text-color"></i>Full lifetime access</li>--}}
-{{--                                        <li><i class="la la-television mr-2 text-color"></i>Access on mobile and TV</li>--}}
-{{--                                        <li><i class="la la-certificate mr-2 text-color"></i>Certificate of Completion--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                    <div class="section-block"></div>--}}
-{{--                                    <div class="buy-for-team-container pt-4">--}}
-{{--                                        <h3 class="fs-18 font-weight-semi-bold pb-2">Training 5 or more people?</h3>--}}
-{{--                                        <p class="lh-24 pb-3">Get your team access to 3,000+ top Aduca courses anytime,--}}
-{{--                                            anywhere.</p>--}}
-{{--                                        <a href="for-business.html"--}}
-{{--                                           class="btn theme-btn theme-btn-sm theme-btn-transparent lh-30 w-100">Try--}}
-{{--                                            Aduca for Business</a>--}}
-{{--                                    </div>--}}
-{{--                                </div><!-- end preview-course-incentives -->--}}
+                                {{--                                <div class="preview-course-incentives">--}}
+                                {{--                                    <h3 class="card-title fs-18 pb-2">This course includes</h3>--}}
+                                {{--                                    <ul class="generic-list-item pb-3">--}}
+                                {{--                                        <li><i class="la la-play-circle-o mr-2 text-color"></i>{{ $course->duration }}--}}
+                                {{--                                            hours on-demand video--}}
+                                {{--                                        </li>--}}
+                                {{--                                        <li><i class="la la-file mr-2 text-color"></i>{{ $course->resources }} articles--}}
+                                {{--                                        </li>--}}
+                                {{--                                        <li><i class="la la-file-text mr-2 text-color"></i>12 downloadable resources--}}
+                                {{--                                        </li>--}}
+                                {{--                                        <li><i class="la la-code mr-2 text-color"></i>51 coding exercises</li>--}}
+                                {{--                                        <li><i class="la la-key mr-2 text-color"></i>Full lifetime access</li>--}}
+                                {{--                                        <li><i class="la la-television mr-2 text-color"></i>Access on mobile and TV</li>--}}
+                                {{--                                        <li><i class="la la-certificate mr-2 text-color"></i>Certificate of Completion--}}
+                                {{--                                        </li>--}}
+                                {{--                                    </ul>--}}
+                                {{--                                    <div class="section-block"></div>--}}
+                                {{--                                    <div class="buy-for-team-container pt-4">--}}
+                                {{--                                        <h3 class="fs-18 font-weight-semi-bold pb-2">Training 5 or more people?</h3>--}}
+                                {{--                                        <p class="lh-24 pb-3">Get your team access to 3,000+ top Aduca courses anytime,--}}
+                                {{--                                            anywhere.</p>--}}
+                                {{--                                        <a href="for-business.html"--}}
+                                {{--                                           class="btn theme-btn theme-btn-sm theme-btn-transparent lh-30 w-100">Try--}}
+                                {{--                                            Aduca for Business</a>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div><!-- end preview-course-incentives -->--}}
                             </div><!-- end preview-course-content -->
                         </div>
                     </div><!-- end card -->
@@ -409,19 +410,19 @@
                                             class="la la-bolt mr-2 text-color"></i>Bài kiểm tra</span> 1
                                 </li>
                                 <li class="d-flex align-items-center justify-content-between"><span><i
-                                            class="la la-eye mr-2 text-color"></i>Bài học</span>  {{count( DB::table("course_sections") -> where("course_id", $course->id) ->get())}}
+                                            class="la la-eye mr-2 text-color"></i>Bài học</span> {{count( DB::table("course_sections") -> where("course_id", $course->id) ->get())}}
                                 </li>
-{{--                                <li class="d-flex align-items-center justify-content-between"><span><i--}}
-{{--                                            class="la la-language mr-2 text-color"></i>Ngôn ngữ</span> --}}
-{{--                                </li>--}}
+                                {{--                                <li class="d-flex align-items-center justify-content-between"><span><i--}}
+                                {{--                                            class="la la-language mr-2 text-color"></i>Ngôn ngữ</span> --}}
+                                {{--                                </li>--}}
                                 <li class="d-flex align-items-center justify-content-between"><span><i
                                             class="la la-lightbulb mr-2 text-color"></i>Mức độ</span> {{ $course->label }}
                                 </li>
-{{--                                <li class="d-flex align-items-center justify-content-between"><span><i--}}
-{{--                                            class="la la-users mr-2 text-color"></i>Số học viên:</span> {{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}--}}
-{{--                                </li>--}}
+                                {{--                                <li class="d-flex align-items-center justify-content-between"><span><i--}}
+                                {{--                                            class="la la-users mr-2 text-color"></i>Số học viên:</span> {{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}--}}
+                                {{--                                </li>--}}
                                 <li class="d-flex align-items-center justify-content-between"><span><i
-                                            class="la la-certificate mr-2 text-color"></i>Chứng chỉ</span> {{ $course->certificate }}
+                                            class="la la-certificate mr-2 text-color"></i>Chứng chỉ</span> {{ $course->certificate == 'Yes'? 'Có': 'Không' }}
                                 </li>
                             </ul>
                         </div>
@@ -495,7 +496,7 @@
     <div class="container">
         <div class="related-course-wrap">
             <h3 class="fs-28 font-weight-semi-bold pb-35px">Khóa học liên quan: <a href="{{url('/')}}"
-                                                                               class="text-color hover-underline">{{ $course['user']['name'] }}</a>
+                                                                                   class="text-color hover-underline">{{ $course['user']['name'] }}</a>
             </h3>
             <div class="view-more-carousel-2 owl-action-styled">
 
