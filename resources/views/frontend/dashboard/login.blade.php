@@ -1,7 +1,7 @@
 @extends('frontend.master')
 @section('home')
 @section('title')
-Login Page | Easy Learning
+Đăng nhập | Luyện Thi Công Chức
 @endsection
 
 <!-- ================================
@@ -12,12 +12,11 @@ Login Page | Easy Learning
     <div class="container">
         <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">
             <div class="section-heading">
-                <h2 class="section__title text-white">Login</h2>
+                <h2 class="section__title text-white">Đăng nhập</h2>
             </div>
             <ul class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
-                <li><a href="index.html">Home</a></li>
-                <li>Pages</li>
-                <li>Login</li>
+                <li><a href="{{url('/')}}">Trang chủ</a></li>
+                <li>Đăng nhập</li>
             </ul>
         </div><!-- end breadcrumb-content -->
     </div><!-- end container -->
@@ -48,8 +47,6 @@ Login Page | Easy Learning
 
         <form method="POST" class="pt-4" action="{{ route('login') }}">
             @csrf
-
-
         <div class="d-flex flex-wrap align-items-center pb-4">
             <button class="btn theme-btn flex-grow-1 mx-2 mb-2"><i class="la la-google mr-2"></i>Google</button>
             <button class="btn theme-btn flex-grow-1 mx-2 mb-2"><i class="la la-facebook mr-2"></i>Facebook</button>
@@ -78,6 +75,9 @@ Login Page | Easy Learning
                 </div>
             </div>
         </div><!-- end input-box -->
+            @if ($errors->any())
+                <span class="text-danger">Sai tên đăng nhập hoặc mật khẩu, vui lòng nhập lại!</span>
+            @endif
         <div class="btn-box">
             <div class="d-flex align-items-center justify-content-between pb-4">
                 <div class="custom-control custom-checkbox fs-15">
@@ -97,14 +97,4 @@ Login Page | Easy Learning
 <!-- ================================
        END CONTACT AREA
 ================================= -->
-
-
-
-
-
-
-
-
-
-
 @endsection

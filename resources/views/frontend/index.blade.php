@@ -2,7 +2,7 @@
 @section('home')
 
 @section('title')
-Easy Learning
+Luyện Thi Công Chức
 @endsection
 
 <!--================================
@@ -40,7 +40,7 @@ Easy Learning
 <!--======================================
         START COURSE AREA
 ======================================-->
-@include('frontend.home.courses-area-two')
+{{--@include('frontend.home.courses-area-two')--}}
 <!--======================================
         END COURSE AREA
 ======================================-->
@@ -48,7 +48,7 @@ Easy Learning
 <!-- ================================
        START FUNFACT AREA
 ================================= -->
-@include('frontend.home.funfact-area')
+{{--@include('frontend.home.funfact-area')--}}
 <!-- ================================
        START FUNFACT AREA
 ================================= -->
@@ -56,7 +56,7 @@ Easy Learning
 <!--======================================
         START CTA AREA
 ======================================-->
-@include('frontend.home.cta-area')
+{{--@include('frontend.home.cta-area')--}}
 <!--======================================
         END CTA AREA
 ======================================-->
@@ -64,12 +64,12 @@ Easy Learning
 <!--================================
          START TESTIMONIAL AREA
 =================================-->
-@include('frontend.home.testimonial-area')
+{{--@include('frontend.home.testimonial-area')--}}
 <!--================================
         END TESTIMONIAL AREA
 =================================-->
 
-<div class="section-block"></div>
+{{--<div class="section-block"></div>--}}
 
 <!--======================================
         START ABOUT AREA
@@ -84,17 +84,17 @@ Easy Learning
 <!--======================================
         START REGISTER AREA
 ======================================-->
-@include('frontend.home.register-area')
+{{--@include('frontend.home.register-area')--}}
 <!--======================================
         END REGISTER AREA
 ======================================-->
 
-<div class="section-block"></div>
+{{--<div class="section-block"></div>--}}
 
 <!-- ================================
        START CLIENT-LOGO AREA
 ================================= -->
-@include('frontend.home.client-logo-area')
+{{--@include('frontend.home.client-logo-area')--}}
 <!-- ================================
        START CLIENT-LOGO AREA
 ================================= -->
@@ -102,7 +102,7 @@ Easy Learning
 <!-- ================================
        START BLOG AREA
 ================================= -->
-@include('frontend.home.blog-area')
+{{--@include('frontend.home.blog-area')--}}
 <!-- ================================
        START BLOG AREA
 ================================= -->
@@ -110,7 +110,7 @@ Easy Learning
 <!--======================================
         START GET STARTED AREA
 ======================================-->
-@include('frontend.home.started-area')
+{{--@include('frontend.home.started-area')--}}
 <!-- ================================
        START GET STARTED AREA
 ================================= -->

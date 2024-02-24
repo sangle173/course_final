@@ -76,9 +76,9 @@
                 <label for="input1" class="form-label">Nhãn </label>
                 <select name="label" class="form-select mb-3" aria-label="Default select example">
                <option selected="" disabled>Vui lòng chọn</option>
-                    <option value="Begginer" {{ $course->label == 'Begginer' ? 'selected' : '' }}>Mới bắt đầu</option>
-                    <option value="Middle" {{ $course->label == 'Middle' ? 'selected' : '' }}>Vừa</option>
-                    <option value="Advance" {{ $course->label == 'Advance' ? 'selected' : '' }}>Nâng cao</option>
+                    <option value="Mới bắt đầu" {{ $course->label == 'Mới bắt đầu' ? 'selected' : '' }}>Mới bắt đầu</option>
+                    <option value="Trung cấp" {{ $course->label == 'Trung cấp' ? 'selected' : '' }}>Trung cấp</option>
+                    <option value="Nâng cao" {{ $course->label == 'Nâng cao' ? 'selected' : '' }}>Nâng cao</option>
                 </select>
             </div>
 
@@ -113,7 +113,7 @@
 
             <div class="form-group col-md-12">
                 <label for="input1" class="form-label">Mô tả khóa học </label>
-                <textarea name="description" class="form-control" id="myeditorinstance">{!! $course->description !!}</textarea>
+                <textarea name="description" class="form-control" id="myeditorinstance">{{$course->description }}</textarea>
             </div>
 
             <hr>

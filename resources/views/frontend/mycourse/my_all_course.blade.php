@@ -23,7 +23,7 @@
                         <h5 class="card-title"><a
                                 href="{{ route('course.view',$item->course_id) }}">{{ $item->course->course_name }}</a>
                         </h5>
-                        <p class="card-text"><a href="teacher-detail.html">{{ $item->course->user->name }}</a></p>
+                        <p class="card-text"><a href="#">{{ $item->course->user->name }}</a></p>
                         <div class="rating-wrap d-flex align-items-center py-2">
                             <div class="review-stars">
                                 <span class="rating-number">4.4</span>
@@ -45,12 +45,17 @@
                                 <span>{{ $item->course->duration }} </span>
                             </li>
                             <li class="mr-2">
-                                <span class="text-black">Số học sinh:</span>
-                                <span>30,405</span>
+                                <span class="text-black">Bài học:</span>
+                                <span>{{count( DB::table("course_sections") -> where("course_id", $item->course->id) ->get())}} bài</span>
                             </li>
                         </ul>
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="card-price text-black font-weight-bold">{{ $item->course->selling_price }} vnđ</p>
+                            @if ($item->course->discount_price == NULL)
+                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->selling_price, 0, '.', ',') }} vnd </p>
+                            @else
+                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->discount_price, 0, '.', ',') }} vnd <span class="before-price font-weight-medium">
+{{ number_format($item->course->selling_price, 0, '.', ',') }} vnd</span></p>
+                            @endif
                         </div>
                     </div><!-- end card-body -->
                 </div><!-- end card -->

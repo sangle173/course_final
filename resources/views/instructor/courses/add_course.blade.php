@@ -95,9 +95,9 @@
                 <label for="input1" class="form-label">Nhãn </label>
                 <select name="label" class="form-select mb-3" aria-label="Default select example">
                <option selected="" disabled>Vui lòng chọn</option>
-                    <option value="Begginer">Mới bắt đầu</option>
-                    <option value="Middle">Vừa</option>
-                    <option value="Advance">Nâng cao</option>
+                    <option value="Mới bắt đầu">Mới bắt đầu</option>
+                    <option value="Trung cấp">Trung cấp</option>
+                    <option value="Nâng cao">Nâng cao</option>
                 </select>
             </div>
 
