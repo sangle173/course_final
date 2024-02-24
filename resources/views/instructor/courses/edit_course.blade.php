@@ -29,13 +29,13 @@
 
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Tên khóa học</label>
-                    <input type="text" name="course_name" class="form-control" id="input1" value="{{ $course->course_name }}" >
+                    <label for="course_name" class="form-label">Tên khóa học</label>
+                    <input type="text" name="course_name" class="form-control" id="course_name" value="{{ $course->course_name }}" >
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Tiêu đề </label>
-                    <input type="text" name="course_title" class="form-control" id="input1"  value="{{ $course->course_title }}"  >
+                    <label for="course_title" class="form-label">Tiêu đề </label>
+                    <input type="text" name="course_title" class="form-control" id="course_title"  value="{{ $course->course_title }}"  >
                 </div>
 
 
@@ -84,36 +84,36 @@
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Giá khóa học </label>
-                <input type="text" name="selling_price" class="form-control" id="input1"  value="{{ $course->selling_price }}" >
+                <label for="selling_price" class="form-label">Giá khóa học </label>
+                <input type="text" name="selling_price" class="form-control" id="selling_price"  value="{{ $course->selling_price }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Giảm giá </label>
-                <input type="text" name="discount_price" class="form-control" id="input1"  value="{{ $course->discount_price }}" >
+                <label for="discount_price" class="form-label">Giá sau khi giảm: </label>
+                <input type="text" name="discount_price" class="form-control" id="discount_price"  value="{{ $course->discount_price }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Thời lượng </label>
-                <input type="text" name="duration" class="form-control" id="input1"  value="{{ $course->duration }}" >
+                <label for="duration" class="form-label">Thời lượng </label>
+                <input type="text" name="duration" class="form-control" id="duration"  value="{{ $course->duration }}" >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Tài nguyên </label>
-                <input type="text" name="resources" class="form-control" id="input1"  value="{{ $course->resources }}" >
+                <label for="resources" class="form-label">Tài nguyên </label>
+                <input type="text" name="resources" class="form-control" id="resources"  value="{{ $course->resources }}" >
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Điều kiện tiên quyếts </label>
-                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Điều kiệ ..." rows="3">{{ $course->prerequisites }}</textarea>
+                <label for="prerequisites" class="form-label">Điều kiện tiên quyếts </label>
+                <textarea name="prerequisites" class="form-control" id="prerequisites" placeholder="Điều kiệ ..." rows="3">{{ $course->prerequisites }}</textarea>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Mô tả khóa học </label>
-                <textarea name="description" class="form-control" id="myeditorinstance">{{$course->description }}</textarea>
+                <label for="description" class="form-label">Mô tả khóa học </label>
+                <textarea name="description" class="form-control" id="description">{{$course->description }}</textarea>
             </div>
 
             <hr>

@@ -34,20 +34,20 @@
                     </div>
                 @endif
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Tên khóa học</label>
-                    <input type="text" name="course_name" class="form-control" id="input1"  >
+                    <label for="course_name" class="form-label">Tên khóa học</label>
+                    <input type="text" name="course_name" class="form-control" id="course_name"  >
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="input1" class="form-label">Tiêu đề </label>
-                    <input type="text" name="course_title" class="form-control" id="input1"  >
+                    <label for="course_title" class="form-label">Tiêu đề </label>
+                    <input type="text" name="course_title" class="form-control" id="course_title"  >
                 </div>
 
 
 
                 <div class="form-group col-md-6">
-                    <label for="input2" class="form-label">Ảnh đại diện </label>
-                    <input class="form-control" name="course_image" type="file" id="image" accept="image/png, img/jpg">
+                    <label for="course_image" class="form-label">Ảnh đại diện </label>
+                    <input class="form-control" name="course_image" type="file" id="course_image" accept="image/png, img/jpg">
                 </div>
 
                 <div class="col-md-6">
@@ -63,8 +63,8 @@
                 </div>
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Danh mục </label>
-                <select name="category_id" class="form-select mb-3" aria-label="Default select example">
+                <label for="category_id" class="form-label">Danh mục </label>
+                <select name="category_id" id="category_id" class="form-select mb-3" aria-label="Default select example">
                     <option selected="" disabled>Chọn danh mục</option>
                     @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
@@ -75,16 +75,16 @@
 
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Danh mục con </label>
-                <select name="subcategory_id" class="form-select mb-3" aria-label="Default select example">
+                <label for="subcategory_id" class="form-label">Danh mục con </label>
+                <select name="subcategory_id" class="form-select mb-3" id= "subcategory_id" aria-label="Default select example">
                     <option> </option>
                 </select>
             </div>
 
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Chứng chỉ? </label>
-                <select name="certificate" class="form-select mb-3" aria-label="Default select example">
+                <label for="certificate" class="form-label">Chứng chỉ? </label>
+                <select name="certificate" class="form-select mb-3"  id="certificate" aria-label="Default select example">
                <option selected="" disabled>Vui lòng chọn</option>
                     <option value="Yes">Có</option>
                     <option value="No">Không</option>
@@ -92,8 +92,8 @@
             </div>
 
             <div class="form-group col-md-6">
-                <label for="input1" class="form-label">Nhãn </label>
-                <select name="label" class="form-select mb-3" aria-label="Default select example">
+                <label for="label" class="form-label">Nhãn </label>
+                <select name="label" class="form-select mb-3" id="label" aria-label="Default select example">
                <option selected="" disabled>Vui lòng chọn</option>
                     <option value="Mới bắt đầu">Mới bắt đầu</option>
                     <option value="Trung cấp">Trung cấp</option>
@@ -103,36 +103,36 @@
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Giá khóa học </label>
-                <input type="number" name="selling_price" class="form-control" id="input1"  >
+                <label for="selling_price" class="form-label">Giá khóa học </label>
+                <input type="number" name="selling_price" class="form-control" id="selling_price"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Giảm giá </label>
-                <input type="number" name="discount_price" class="form-control" id="input1"  >
+                <label for="discount_price" class="form-label">Giá sau khi giảm: </label>
+                <input type="number" name="discount_price" class="form-control" id="discount_price"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Thời lượng </label>
-                <input type="text" name="duration" class="form-control" id="input1"  >
+                <label for="duration" class="form-label">Thời lượng </label>
+                <input type="text" name="duration" class="form-control" id="duration"  >
             </div>
 
 
             <div class="form-group col-md-3">
-                <label for="input1" class="form-label">Tài nguyên </label>
-                <input type="text" name="resources" class="form-control" id="input1"  >
+                <label for="resources" class="form-label">Tài nguyên </label>
+                <input type="text" name="resources" class="form-control" id="resources"  >
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Điều kiện tiên quyết </label>
-                <textarea name="prerequisites" class="form-control" id="input11" placeholder="Điều kiện ..." rows="3"></textarea>
+                <label for="prerequisites" class="form-label">Điều kiện tiên quyết </label>
+                <textarea name="prerequisites" class="form-control" id="prerequisites" placeholder="Điều kiện ..." rows="3"></textarea>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="input1" class="form-label">Mô tả khóa học </label>
-                <textarea name="description" class="form-control" id="input11" placeholder="Mô tả ..." rows="3"></textarea>
+                <label for="description" class="form-label">Mô tả khóa học </label>
+                <textarea name="description" class="form-control" id="description" placeholder="Mô tả ..." rows="3"></textarea>
             </div>
 
 

@@ -28,7 +28,7 @@
                             <form method="post" class="mr-auto ml-0">
                                 <div class="form-group mb-0">
                                     <input class="form-control form--control form--control-gray pl-3" type="text"
-                                           name="search" placeholder="Search for anything">
+                                           name="search" placeholder="Tìm kiếm ...">
                                     <span class="la la-search search-icon"></span>
                                 </div>
                             </form>
@@ -188,4 +188,75 @@
             </div>
         </div><!-- end container-fluid -->
     </div><!-- end header-menu-content -->
+    <div class="off-canvas-menu custom-scrollbar-styled main-off-canvas-menu">
+        <div class="off-canvas-menu-close main-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip"
+             data-placement="left" title="Close menu">
+            <i class="la la-times"></i>
+        </div><!-- end off-canvas-menu-close -->
+        <ul class="generic-list-item off-canvas-menu-list pt-90px">
+            <li>
+                <a href="{{url('/')}}">Trang chủ</a>
+            </li>
+            <li>
+                <a href="{{ url('course/all') }}">Khóa học</a>
+            </li>
+            <li>
+                <a href="{{ route('blog') }}">Bài viết</a>
+            </li>
+        </ul>
+        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
+
+            @auth
+                <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i
+                        class="la la-sign-in mr-1"></i><a href="{{ route('dashboard') }}"> Tài khoản</a>
+                </li>
+                <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a
+                        href="{{ route('user.logout') }}"> Đăng xuất</a></li>
+
+            @else
+
+                <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i
+                        class="la la-sign-in mr-1"></i><a href="{{ route('login') }}"> Đăng nhập</a>
+                </li>
+                {{--    <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="{{ route('register') }}"> Đăng ký</a></li>--}}
+
+            @endauth
+
+
+        </ul>
+    </div><!-- end off-canvas-menu -->
+    <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
+        <div class="off-canvas-menu-close cat-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip"
+             data-placement="left" title="Close menu">
+            <i class="la la-times"></i>
+        </div><!-- end off-canvas-menu-close -->
+        @php
+            $categories = App\Models\Category::all();
+        @endphp
+        <ul class="generic-list-item off-canvas-menu-list pt-90px">
+            <li>
+                <a href="#" class="text-secondary">Danh mục</a>
+            </li>
+            @foreach ($categories as $cat)
+                <li>
+                    <a href="{{ url('category/'.$cat->id.'/'.$cat->category_slug) }}">{{ $cat->category_name }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div><!-- end off-canvas-menu -->
+    <div class="mobile-search-form">
+        <div class="d-flex align-items-center">
+            <form method="post" class="flex-grow-1 mr-3">
+                <div class="form-group mb-0">
+                    <input class="form-control form--control pl-3" type="text" name="search"
+                           placeholder="Tìm kiếm ...">
+                    <span class="la la-search search-icon"></span>
+                </div>
+            </form>
+            <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+                <i class="la la-times"></i>
+            </div><!-- end off-canvas-menu-close -->
+        </div>
+    </div><!-- end mobile-search-form -->
+    <div class="body-overlay"></div>
 </header><!-- end header-menu-area -->
