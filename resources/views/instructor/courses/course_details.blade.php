@@ -8,7 +8,9 @@
             <div class="breadcrumb-title pe-3">Chi tiết khóa học</div>
 
             <div class="ms-auto">
-
+                <div class="btn-group">
+                    <a href="{{ route('instructor.course.addstudent', $course -> id) }}" class="btn btn-primary px-5">Chọn học viên </a>
+                </div>
             </div>
         </div>
         <!--end breadcrumb-->
@@ -52,17 +54,13 @@
                                         <td><strong>Nhãn :</strong></td>
                                         <td> {{ $course->label }}</td>
                                     </tr>
-                                    <tr>
-                                        <td><strong>Thời hạn :</strong></td>
-                                        <td> {{ $course->duration }}</td>
-                                    </tr>
 
                                     <tr>
-                                        <td><strong>Video :</strong></td>
+                                        <td><strong>Danh sách học viên</strong></td>
                                         <td>
-                                            <video width="300" height="200" controls>
-                                                <source src="{{ asset($course->video) }}" type="video/mp4">
-                                            </video>
+                                            @foreach ($orders as $key=> $order)
+                                                <li><strong>{{\App\Models\User::find($order-> user_id) -> name}}</strong> ({{\App\Models\User::find($order-> user_id) -> email}})</li>
+                                            @endforeach
                                         </td>
                                     </tr>
 
@@ -77,8 +75,19 @@
                         <div class="card">
                             <div class="card-body">
                                 <table class="table mb-0">
-
                                     <tbody>
+                                    <tr>
+                                        <td><strong>Video :</strong></td>
+                                        <td>
+                                            <video width="300" height="200" controls>
+                                                <source src="{{ asset($course->video) }}" type="video/mp4">
+                                            </video>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Thời hạn :</strong></td>
+                                        <td> {{ $course->duration }}</td>
+                                    </tr>
                                     <tr>
                                         <td><strong>Resources : </strong></td>
                                         <td> {{ $course->resources }} </td>
@@ -105,16 +114,6 @@
                                             @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><strong>Danh sách học viên</strong></td>
-                                        <td>
-                                            @foreach ($orders as $key=> $order)
-                                                <li><strong>{{\App\Models\User::find($order-> user_id) -> name}}</strong> ({{\App\Models\User::find($order-> user_id) -> email}})</li>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-
-
                                     </tbody>
                                 </table>
                             </div>

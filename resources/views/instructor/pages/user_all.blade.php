@@ -35,7 +35,8 @@
                             <th>Tên</th>
                             <th>Email</th>
                             <th>Số điện thoại</th>
-                            <th>Trạng thái</th>
+                            <th>Địa chỉ</th>
+                            <th>Cập nhật lúc</th>
                             <th>Hành động</th>
                         </tr>
                         </thead>
@@ -51,12 +52,20 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td>
-                                    @if ($item->UserOnline())
-                                        <span class="badge badge-pill bg-success">Bình thường</span>
-                                    @else
-                                        <span
-                                            class="badge badge-pill bg-danger">{{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }} </span>
+{{--                                    @if ($item->UserOnline())--}}
+{{--                                        <span class="badge badge-pill bg-success">Bình thường</span>--}}
+{{--                                    @else--}}
+{{--                                        <span--}}
+{{--                                            class="badge badge-pill bg-danger">{{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }} </span>--}}
 
+{{--                                    @endif--}}
+                                    {{ $item->address }}
+                                </td>
+                                <td>
+                                    @if($item -> updated_at)
+                                        {{ $item->updated_at -> format('d/m/Y H:i') }}
+                                    @else
+                                        {{ $item-> created_at -> format('d/m/Y H:i')}}
                                     @endif
                                 </td>
                                 <td>

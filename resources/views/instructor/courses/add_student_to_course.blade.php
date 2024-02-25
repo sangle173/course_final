@@ -26,105 +26,71 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="main-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table mb-0">
-
+                <form id="myForm" action="{{ route('instructor.order.update') }}" method="post" class="row g-3"
+                      enctype="multipart/form-data">
+                    @csrf
+                    <div class="card">
+                        <input type="hidden" name="course_id" value="{{$course -> id}}">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ảnh</th>
+                                        <th>Tên</th>
+                                        <th>Email</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Cập nhật lúc</th>
+                                        <th>Lựa chọn</th>
+                                    </tr>
+                                    </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><strong>Danh mục : </strong></td>
-                                        <td> {{ $course['category']['category_name'] }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Danh mục con :</strong></td>
-                                        <td> {{ $course['subcategory']['subcategory_name'] }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Giảng viên :</strong></td>
-                                        <td> {{ $course['user']['name'] }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Nhãn :</strong></td>
-                                        <td> {{ $course->label }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Thời hạn :</strong></td>
-                                        <td> {{ $course->duration }}</td>
-                                    </tr>
 
-                                    <tr>
-                                        <td><strong>Video :</strong></td>
-                                        <td>
-                                            <video width="300" height="200" controls>
-                                                <source src="{{ asset($course->video) }}" type="video/mp4">
-                                            </video>
-                                        </td>
-                                    </tr>
+                                    @foreach ($users as $key=> $item)
+                                        <tr>
+                                            <td>{{ $key+1 }}</td>
+                                            <td><img
+                                                    src="{{ (!empty($item->photo)) ? url('upload/user_images/'.$item->photo) : url('upload/no_image.jpg')}}"
+                                                    alt="" style="width: 70px; height:40px;"></td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->phone }}</td>
+                                            <td>
+                                                {{ $item->address }}
+                                            </td>
+                                            <td>
+                                                @if($item -> updated_at)
+                                                    {{ $item->updated_at -> format('d/m/Y H:i') }}
+                                                @else
+                                                    {{ $item-> created_at -> format('d/m/Y H:i')}}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" style="border: 1px solid black" name="user[]" type="checkbox"
+                                                           value="{{$item -> id}}" id="defaultCheck{{$item->id}}">
+                                                </div>
+                                            </td>
 
-
+                                        </tr>
+                                    @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table mb-0">
-
-                                    <tbody>
-                                    <tr>
-                                        <td><strong>Resources : </strong></td>
-                                        <td> {{ $course->resources }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Chứng chỉ :</strong></td>
-                                        <td> {{ $course->certificate }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Giá bán :</strong></td>
-                                        <td>{{ $course->selling_price }} vnđ</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong> Giá giảm :</strong></td>
-                                        <td>{{ $course->discount_price }} vnđ</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Trạng thái :</strong></td>
-                                        <td>
-                                            @if ($course->status == 1)
-                                                <span class="badge bg-success">Kích hoạt</span>
-                                            @else
-                                                <span class="badge bg-danger">Ngưng kích hoạt</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Danh sách học viên</strong></td>
-                                        <td>
-                                            @foreach ($orders as $key=> $order)
-                                                <li><strong>{{\App\Models\User::find($order-> user_id) -> name}}</strong> ({{\App\Models\User::find($order-> user_id) -> email}})</li>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="col-md-12">
+                        <div class="d-md-flex d-grid align-items-center gap-3">
+                            <button type="submit" class="btn btn-primary px-4">Lưu học viên</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
     </div>
-
-
-
 @endsection

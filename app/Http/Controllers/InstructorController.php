@@ -215,4 +215,35 @@ class InstructorController extends Controller
         return view('instructor.courses.course_details',compact('course', 'orders'));
 
     }// End Method
+
+    public function InstructorCourseAddStudent($id){
+        $items=collect();
+        $course = Course::find($id);
+        $orders = Order::where('course_id', $course -> id) -> select('user_id') -> get();
+//        $users = User::where('role','user')->latest()-> select('id as user_id') ->get();
+        $users = User::where('role','user')->latest() ->get();
+        for ($x = 0; $x < count($orders); $x++) {
+           $items->push($orders[$x]);
+        }
+//        die($items);
+        $data=collect();
+//        dd($users->contains($items[0]));
+        for ($x = 0; $x < count($items); $x++) {
+            if (!$users->contains($items[$x])){
+               $data ->push($items[$x]);
+            }
+        }
+//        die($data);
+//        $userNoContain = null;
+//                dd(count($users));
+//        $items =;
+//        for ($x = 0; $x < count($users); $x++) {
+//            for ($y = 0; $y < count($orders); $y++) {
+//                if ($arr[$x] -> id != $orders[$y] -> id) {
+//                    $items->push($arr[$x]);
+//                }
+//            }
+//        }
+        return view('instructor.courses.add_student_to_course',compact('course', 'users'));
+    }// End Method
 }
