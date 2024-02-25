@@ -15,92 +15,215 @@
                                 <h5 class="mt-0">{{ $course->course_name }}</h5>
                                 <p class="mb-0">{{$course->course_title}}</p>
                             </div>
-                            <div class="modal-body">
-                            </div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Add Section
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Thêm bài học</li>
-                    </ol>
-                </nav>
-            </div>
 
-        </div>
-        <!--end breadcrumb-->
-        <div class="card">
-            <div class="card-body">
-                <form id="myForm" action="{{ route('add.course.section') }}" method="post" class="row g-3"
-                      enctype="multipart/form-data">
-                    @csrf
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <input type="hidden" name="id" value="{{ $course->id }}">
+                {{-- /// Add Section and Lecture  --}}
+                @foreach ($section as $key => $item )
+                    <div class="container">
+                        <div class="main-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body p-4 d-flex justify-content-between">
+                                            <h6>{{ $item->section_title }} </h6>
 
-                    <div class="form-group col-md-12">
-                        <label for="input1" class="form-label">Tên bài học</label>
-                        <input type="text" name="section_title" class="form-control" id="input1">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="section_content" class="form-label">Nội dung </label>
-                        <textarea name="section_content" class="form-control" id="section_content" placeholder="Nội dung ..." rows="3"></textarea>
-                    </div>
-                    <div class="form-group col-md-12">
-{{--                        <label for="input1" class="form-label">Video </label>--}}
-{{--                        <input type="file" name="section_video" id="videoUpload" class="form-control"--}}
-{{--                               accept="video/mp4, video/webm">--}}
+                                            <div class="d-flex justify-content-between align-items-center">
 
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="input2" class="form-label">Video bài học </label>
-                                <input type="file" id="videoUpload" name="section_video" class="form-control"  accept="video/mp4, video/webm" >
+                                                <form action="{{ route('delete.section', ['id' => $item->id]) }}"
+                                                      method="POST">
+                                                    @csrf
+
+                                                    <button type="submit" class="btn btn-danger px-2 ms-auto"> Delete
+                                                        Section
+                                                    </button> &nbsp;
+
+                                                </form>
+
+
+                                                <a class="btn btn-primary"
+                                                   onclick="addLectureDiv({{ $course->id }}, {{ $item->id }}, 'lectureContainer{{ $key }}' )"
+                                                   id="addLectureBtn($key)"> Add Lecture </a>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="courseHide" id="lectureContainer{{ $key }}">
+                                            <div class="container">
+                                                @foreach ($item->lectures as $lecture)
+                                                    <div
+                                                        class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <strong> {{ $loop->iteration }}
+                                                                . {{ $lecture->lecture_title }}</strong>
+                                                        </div>
+
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('edit.lecture',['id' => $lecture->id]) }}"
+                                                               class="btn btn-sm btn-primary">Edit</a> &nbsp;
+                                                            <a href="{{ route('delete.lecture',['id' => $lecture->id]) }}"
+                                                               class="btn btn-sm btn-danger" id="delete">Delete</a>
+
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
                             </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <video width="240" height="150" controls>
-                                    Trình duyệt không hỗ trợ video này!
-                                </video>
-                            </div>
-                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Tài liệu </label>
-                        <input type="file" name="section_document" class="form-control"
-                               accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
-                    </div>
-                    <div class="form-group col-md-6">
-                    </div>
-                    <div class="col-md-12">
-                        <div class="d-md-flex d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Thêm mới</button>
-                        </div>
-                    </div>
-                </form>
+                @endforeach
+
+                {{-- /// End Add Section and Lecture  --}}
+
+
             </div>
         </div>
 
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Section </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ route('add.course.section') }}" method="POST">
+                        @csrf
+
+                        <input type="hidden" name="id" value="{{ $course->id }}">
+
+                        <div class="form-group mb-3">
+                            <label for="input1" class="form-label">Course Section</label>
+                            <input type="text" name="section_title" class="form-control" id="input1">
+                        </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
-        document.getElementById("videoUpload")
-            .onchange = function (event) {
-            let file = event.target.files[0];
-            let blobURL = URL.createObjectURL(file);
-            document.querySelector("video").src = blobURL;
+        function addLectureDiv(courseId, sectionId, containerId) {
+            const lectureContainer = document.getElementById(containerId);
+
+            const newLectureDiv = document.createElement('div');
+            newLectureDiv.classList.add('lectureDiv', 'mb-3');
+
+            newLectureDiv.innerHTML = `
+        <div class="container">
+    <h6>Lecture Title </h6>
+    <input type="text" class="form-control" placeholder="Enter Lecture Title">
+    <textarea class="form-control mt-2" placeholder="Enter Lecture Content"  ></textarea>
+
+    <h6 class="mt-3">Add Video Url</h6>
+    <input type="text" name="url" class="form-control" placeholder="Add URL">
+
+    <button class="btn btn-primary mt-3" onclick="saveLecture('${courseId}',${sectionId},'${containerId}')" >Save Lecture</button>
+    <button class="btn btn-secondary mt-3" onclick="hideLectureContainer('${containerId}')">Cancel</button>
+</div>
+     `;
+
+            lectureContainer.appendChild(newLectureDiv);
+
+        }
+
+        function hideLectureContainer(containerId) {
+            const lectureContainer = document.getElementById(containerId);
+            lectureContainer.style.display = 'none';
+            location.reload();
+        }
+
+    </script>
+
+
+    <script>
+        function saveLecture(courseId, sectionId, containerId) {
+            const lectureContainer = document.getElementById(containerId);
+            const lectureTitle = lectureContainer.querySelector('input[type="text"]').value;
+            const lectureContent = lectureContainer.querySelector('textarea').value;
+            const lectureUrl = lectureContainer.querySelector('input[name="url"]').value;
+
+            fetch('/save-lecture', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({
+                    course_id: courseId,
+                    section_id: sectionId,
+                    lecture_title: lectureTitle,
+                    lecture_url: lectureUrl,
+                    content: lectureContent,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+
+                    lectureContainer.style.display = 'none';
+                    location.reload();
+
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 6000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+
+                    // End Message
+
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     </script>
+
 @endsection

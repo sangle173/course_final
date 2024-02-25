@@ -69,7 +69,6 @@
                     @foreach ($categories as $cat)
                     <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
                     @endforeach
-
                 </select>
             </div>
 

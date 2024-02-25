@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('home')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 @section('title')
     {{ $course->course_name }} | Luyện Thi Công chức
@@ -195,25 +196,58 @@
                                                 class="btn btn-link d-flex align-items-center justify-content-between"
                                                 data-toggle="collapse" data-target="#collapse{{ $sec->id }}"
                                                 aria-expanded="true" aria-controls="collapse{{ $sec->id }}">
-                                                <i class="la la-plus"></i>
-                                                <i class="la la-minus"></i>
+                                                <i class="la la-play-circle"></i>
+                                                <i class="la la-play-circle"></i>
                                                 {{ $sec->section_title }}
-                                                <span class="fs-15 text-gray font-weight-medium"> <i
-                                                        class="lni lni-play"></i></span>
+                                                <span class="fs-15 text-gray font-weight-medium">
+                        {{ count($lecture) }} bài học</span>
                                             </button>
                                         </div><!-- end card-header -->
                                         <div id="collapse{{ $sec->id }}" class="collapse "
                                              aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
                                             <div class="card-body">
                                                 <ul class="generic-list-item">
-                                                    <li>
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-between">
-                                <span>
-                                   Nội dung: {{ $sec->section_content }}
-                                </span>
-                                                        </div>
-                                                    </li>
+                                                    @foreach ($lecture as $lect)
+                                                        <li>
+                                                            <div
+                                                                class="d-flex align-items-center justify-content-between">
+                                                                @if($lect->status == "1")
+                                                                    <span>
+                                                                    <strong> <i class="la la-play-circle mr-1"></i>
+                                                                    {{ $lect->lecture_title }} <br></strong>
+                                                                        <div>
+                                                                        <ul>
+                                                                <li>Nội dung: {{$lect -> content}}</li>
+                                                                <li>
+                                                                    Tài liệu: <br>
+                                                                    <a href="{{  asset($lect->url) }}"
+                                                                       class="text-decoration-none"
+                                                                       target="_blank" title="Tài liệu"><i><i
+                                                                                class="la la-file"></i> Xem tài liệu</i>
+                                                                    </a>
+                                                                </li>
+                                                                            <li>
+                                                                                Bài giảng: <br>
+                                                                                <video width="320" height="240"
+                                                                                       controls>
+                                    <source src="{{ asset( $lect->video ) }}" type="video/mp4">
+                                </video>
+                                                                            </li>
+                                                            </ul>
+                                                                        </div>
+                                                                    @else
+                                                                            <span>
+                                                                            <strong> <i class="la la-lock mr-1"></i>
+                                                                    {{ $lect->lecture_title }}</strong> <br>
+                                                                                <span> Nội dung: {{ $lect->content }}</span>
+                                                                        </span>
+                                                                        @endif
+                                                                </span>
+                                                                    <span>50:09 </span>
+                                                            </div>
+                                                        </li>
+                                                        <hr>
+                                                    @endforeach
 
                                                 </ul>
                                             </div><!-- end card-body -->

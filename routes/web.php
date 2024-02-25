@@ -356,17 +356,18 @@ Route::controller(CourseController::class)->group(function(){
 // Course Section and Lecture All Route
 Route::controller(CourseController::class)->group(function(){
     Route::get('/add/course/lecture/{id}','AddCourseLecture')->name('add.course.lecture');
+    Route::get('/course/all/lecture/{id}','AllCourseLecture')->name('course.all.lecture');
     Route::post('/add/course/section/','AddCourseSection')->name('add.course.section');
     Route::post('/update/course/section/','UpdateCourseSection')->name('update.course.section');
-    Route::post('/update/course/section/document','UpdateSectionDocument')->name('update.course.section.document');
-    Route::post('/update/course/section/video','UpdateSectionVideo')->name('update.course.section.video');
+    Route::post('/update/course/lecture/document','UpdateLectureDocument')->name('update.course.lecture.document');
+    Route::post('/update/course/lecture/video','UpdateLectureVideo')->name('update.course.lecture.video');
     Route::get('/add/section/{id}','AddCourseSectionGet')->name('add.section');
     Route::get('/edit/section/{id}','EditCourseSectionGet')->name('edit.section');
 
     Route::post('/save-lecture/','SaveLecture')->name('save-lecture');
 
     Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
-    Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
+    Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture.content');
     Route::get('/delete/lecture/{id}','DeleteLecture')->name('delete.lecture');
     Route::get('/delete/section/{id}','DeleteSection')->name('delete.section');
 });
