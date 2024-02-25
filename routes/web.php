@@ -478,4 +478,5 @@ Route::controller(InstructorController::class)->group(function(){
     Route::post('instructor/update/user/{id}','InstructorUpdateUser')->name('instructor.update.user');
     Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
     Route::get('/instructor/course/details/{id}','InstructorCourseDetails')->name('instructor.course.details');
+    Route::get('/instructor/course/addstudent/{id}','InstructorCourseAddStudent')->name('instructor.course.addstudent');
 });
