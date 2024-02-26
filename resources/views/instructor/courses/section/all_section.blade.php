@@ -80,12 +80,15 @@
                                                                 </li>
                                                                 <li>
                                                                     Video:
-                                                                    <a href="#" data-bs-toggle="modal"
-                                                                       class="text-decoration-none"
-                                                                       data-bs-target="#exampleModal{{$item->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}
-                                                                    </a>
+                                                                    <button type="button" class="btn btn-link" data-bs-toggle="modal"
+                                                                            data-bs-target="#exampleModal{{$lecture->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}
+                                                                    </button>
+{{--                                                                    <a href="#" data-bs-toggle="modal"--}}
+{{--                                                                       class="text-decoration-none"--}}
+{{--                                                                       data-bs-target="#exampleModal{{$item->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}--}}
+{{--                                                                    </a>--}}
                                                                     <div class="modal fade"
-                                                                         id="exampleModal{{$item->id}}" tabindex="-1"
+                                                                         id="exampleModal{{$lecture->id}}" tabindex="-1"
                                                                          aria-labelledby="exampleModalLabel"
                                                                          aria-hidden="true">
                                                                         <div class="modal-dialog">
