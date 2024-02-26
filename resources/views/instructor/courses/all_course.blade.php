@@ -49,7 +49,7 @@
                                          style="width: 70px; height:40px;"></td>
                                 <td>{{ $item->course_name }}</td>
                                 <td>{{ $item['category']['category_name'] }}</td>
-                                <td>{{ number_format($item->selling_price, 0, '.', ',') }} vnd</td>
+                                <td>{{ number_format($item->selling_price, 0, '.', ',') }}<sup>₫</sup></td>
                                 <td>{{ $item->duration }}</td>
                                 <td>{{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>{{count( DB::table("course_sections") -> where("course_id", $item->id) ->get())}}</td>

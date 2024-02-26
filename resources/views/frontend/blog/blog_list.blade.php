@@ -12,7 +12,7 @@
                 <h2 class="section__title text-white">Tất cả bài viết </h2>
             </div>
             <ul class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
-                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="{{url('/')}}">Trang chủ</a></li>
                 <li>Bài viết</li>
 
             </ul>

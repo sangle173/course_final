@@ -142,6 +142,7 @@
                     </div><!-- end col-lg-4 -->
                 </div><!-- end row -->
             </div><!-- end container -->
+        </div>
     </section><!-- end blog-area -->
     <!-- ================================
            START BLOG AREA
