@@ -80,13 +80,10 @@
                                                                 </li>
                                                                 <li>
                                                                     Video:
-                                                                    <button type="button" class="btn btn-link" data-bs-toggle="modal"
-                                                                            data-bs-target="#exampleModal{{$lecture->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}
-                                                                    </button>
-{{--                                                                    <a href="#" data-bs-toggle="modal"--}}
-{{--                                                                       class="text-decoration-none"--}}
-{{--                                                                       data-bs-target="#exampleModal{{$item->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}--}}
-{{--                                                                    </a>--}}
+                                                                    <a href="#" data-bs-toggle="modal"
+                                                                       class="text-decoration-none"
+                                                                       data-bs-target="#exampleModal{{$lecture->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}
+                                                                    </a>
                                                                     <div class="modal fade"
                                                                          id="exampleModal{{$lecture->id}}" tabindex="-1"
                                                                          aria-labelledby="exampleModalLabel"
