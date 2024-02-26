@@ -3,7 +3,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div class="page-content">
-
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách khóa học</li>
+                </ol>
+            </nav>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card radius-10">
@@ -37,12 +45,15 @@
                                             </h5>
 
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <a class="btn btn-sm btn-primary mr-1"
-                                                   href="{{ route('add.course.lecture', ['id' => $item->id]) }}">Thêm
-                                                    bài học </a>
-                                                <a href="{{ route('delete.section',['id' => $item->id]) }}"
-                                                   class="btn btn-sm btn-danger" style="margin-left: 5px" id="delete">Xóa
-                                                    chương</a>
+                                                <a class="btn btn-sm text-info mr-1" title="Thêm bài học"
+                                                   href="{{ route('add.course.lecture', ['id' => $item->id]) }}"><i
+                                                        class="lni lni-add-files text-primary"></i> </a>
+                                                <a class="btn btn-sm text-info mr-1" title="Chỉnh sửa chương"
+                                                   href="{{ route('edit.section', ['id' => $item->id]) }}"><i
+                                                        class="lni lni-pencil text-info"></i> </a>
+                                                <a class="btn btn-sm text-danger mr-1" title="Xóa chương"
+                                                   href="{{ route('delete.section',['id' => $item->id]) }}"><i
+                                                        class="lni lni-trash text-danger"></i> </a>
                                             </div>
 
                                         </div>
@@ -136,7 +147,7 @@
                                                             <a href="{{ route('edit.lecture',['id' => $lecture->id]) }}"
                                                                class="btn btn-link text-info" title="Chỉnh sửa bài học">
                                                                 <i
-                                                                    class="lni lni-eraser"></i></a> &nbsp;
+                                                                    class="lni lni-pencil text-info"></i></a> &nbsp;
                                                             <a href="{{ route('delete.lecture',['id' => $lecture->id]) }}"
                                                                class="btn btn-link text-danger" title="Xóa bài học"
                                                                id="delete"><i
@@ -145,7 +156,6 @@
                                                     </div>
                                                     <hr>
                                                 @endforeach
-
                                             </div>
                                         </div>
                                     </div>

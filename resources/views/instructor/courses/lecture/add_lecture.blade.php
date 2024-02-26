@@ -61,11 +61,14 @@
                         <textarea name="lecture_content" class="form-control" id="section_content"
                                   placeholder="Nội dung ..." rows="3"></textarea>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="label" class="form-label">Trạng thái</label>
+                        <select name="lecture_status" class="form-select mb-3" id="label" aria-label="Default select example">
+                            <option value="0">Riêng tư</option>
+                            <option value="1">Công khai</option>
+                        </select>
+                    </div>
                     <div class="form-group col-md-12">
-                        {{--                        <label for="input1" class="form-label">Video </label>--}}
-                        {{--                        <input type="file" name="section_video" id="videoUpload" class="form-control"--}}
-                        {{--                               accept="video/mp4, video/webm">--}}
-
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="input2" class="form-label">Video bài học </label>
@@ -86,13 +89,6 @@
                                accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
                     </div>
                     <div class="form-group col-md-6">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="label" class="form-label">Trạng thái</label>
-                        <select name="lecture_status" class="form-select mb-3" id="label" aria-label="Default select example">
-                            <option value="0">Riêng tư</option>
-                            <option value="1">Công khai</option>
-                        </select>
                     </div>
                     <div class="col-md-12">
                         <div class="d-md-flex d-grid align-items-center gap-3">

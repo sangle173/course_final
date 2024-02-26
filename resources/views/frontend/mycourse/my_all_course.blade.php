@@ -23,7 +23,7 @@
                         <h5 class="card-title"><a
                                 href="{{ route('course.view',$item->course_id) }}">{{ $item->course->course_name }}</a>
                         </h5>
-                        <p class="card-text"><a href="#">{{ $item->course->user->name }}</a></p>
+                        <p class="card-text"><a href="#">Giảng viên: {{ $item->course->user->name }}</a></p>
                         <div class="rating-wrap d-flex align-items-center py-2">
                             <div class="review-stars">
                                 <span class="rating-number">4.4</span>

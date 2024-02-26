@@ -493,21 +493,21 @@ class CourseController extends Controller
 
     public function UpdateCourseSection(Request $request)
     {
-        $lid = $request->id;
+        $lid = $request-> id;
+        $course = Course::find(CourseSection::find($lid) -> course_id);
         $request->validate([
             'section_title' => 'required',
         ]);
 
         CourseSection::find($lid)->update([
-            'section_title' => $request->section_title,
-            'section_content' => $request->section_content
+            'section_title' => $request->section_title
         ]);
 
         $notification = array(
-            'message' => 'Cập nhật bài học thành công',
+            'message' => 'Cập nhật chương thành công',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('course.all.lecture', $course -> id)->with($notification);
 
     }// End Method
 

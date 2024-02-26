@@ -35,57 +35,6 @@
                         $avarage = App\Models\Review::where('course_id',$course->id)->where('status',1)->avg('rating');
 
                     @endphp
-
-                    {{--                    <div class="rating-wrap d-flex flex-wrap align-items-center">--}}
-                    {{--                        <div class="review-stars">--}}
-                    {{--                            <span class="rating-number">{{ round($avarage,1) }}</span>--}}
-
-                    {{--                            @if ($avarage == 0)--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 1 || $avarage < 2)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 2 || $avarage < 3)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 3 || $avarage < 4)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 4 || $avarage < 5)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 5 || $avarage < 5)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                            @endif--}}
-
-                    {{--                        </div>--}}
-                    {{--                        <span class="rating-total pl-1">({{ count($reviewcount) }} ratings)</span>--}}
-                    {{--                        @php--}}
-                    {{--                            $enrollmentCount = App\Models\Order::where('course_id',$course->id)->count();--}}
-                    {{--                        @endphp--}}
-
-                    {{--                        <span class="student-total pl-2">{{ number_format($enrollmentCount) }} học viên</span>--}}
-                    {{--                    </div>--}}
                 </div><!-- end d-flex -->
                 <p class="pt-2 pb-1">Giảng viên: <a href="{{url('/')}}"
                                                     class="text-color hover-underline">{{ $course['user']['name'] }}</a>
@@ -96,7 +45,7 @@
                             <path
                                 d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
                         </svg>
-                        Cập nhật lúc: {{ $course->created_at->format('d/m/Y') }}
+                        Cập nhật: {{ $course->created_at->format('d/m/Y') }}
                     </p>
                 </div><!-- end d-flex -->
                 {{--                <div class="bread-btn-box pt-3">--}}
@@ -196,8 +145,8 @@
                                                 class="btn btn-link d-flex align-items-center justify-content-between"
                                                 data-toggle="collapse" data-target="#collapse{{ $sec->id }}"
                                                 aria-expanded="true" aria-controls="collapse{{ $sec->id }}">
-                                                <i class="la la-play-circle"></i>
-                                                <i class="la la-play-circle"></i>
+                                                <i class="la la-plus"></i>
+                                                <i class="la la-minus"></i>
                                                 {{ $sec->section_title }}
                                                 <span class="fs-15 text-gray font-weight-medium">
                         {{ count($lecture) }} bài học</span>
