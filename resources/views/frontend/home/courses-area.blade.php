@@ -87,9 +87,9 @@
                 <div class="d-flex justify-content-between align-items-center">
 
                     @if ($course->discount_price == NULL)
-                    <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }} vnd</p>
+                    <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup></p>
                     @else
-                    <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }} vnd <span class="before-price font-weight-medium">{{ number_format($course->selling_price, 0, '.', ',') }} vnd</span></p>
+                    <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }}<sup>₫</sup> <span class="before-price font-weight-medium">{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup></span></p>
                     @endif
 
 
@@ -139,9 +139,9 @@
                     <div class="d-flex justify-content-between align-items-center">
 
                     @if ($course->discount_price == NULL)
-                    <p class="card-price text-black font-weight-bold">{{ $course->selling_price }} vnd </p>
+                    <p class="card-price text-black font-weight-bold">{{ $course->selling_price }}<sup>₫</sup> </p>
                     @else
-                    <p class="card-price text-black font-weight-bold">{{ $course->discount_price }} vnd <span class="before-price font-weight-medium">${{ $course->selling_price }} vnd</span></p>
+                    <p class="card-price text-black font-weight-bold">{{ $course->discount_price }}<sup>₫</sup> <span class="before-price font-weight-medium">${{ $course->selling_price }}<sup>₫</sup></span></p>
                     @endif
 
                         <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Thêm vào yêu thích"><i class="la la-heart-o"></i></div>

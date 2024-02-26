@@ -41,10 +41,10 @@
                         </ul>
                         <div class="d-flex justify-content-between align-items-center">
                             @if ($item->course->discount_price == NULL)
-                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->selling_price, 0, '.', ',') }} vnd </p>
+                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->selling_price, 0, '.', ',') }}<sup>₫</sup> </p>
                             @else
-                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->discount_price, 0, '.', ',') }} vnd <span class="before-price font-weight-medium">
-{{ number_format($item->course->selling_price, 0, '.', ',') }} vnd</span></p>
+                                <p class="card-price text-black font-weight-bold">{{ number_format($item->course->discount_price, 0, '.', ',') }}<sup>₫</sup> <span class="before-price font-weight-medium">
+{{ number_format($item->course->selling_price, 0, '.', ',') }}<sup>₫</sup></span></p>
                             @endif
                         </div>
                     </div><!-- end card-body -->
