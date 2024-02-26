@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('lecture_title')->nullable();
             $table->string('video')->nullable();
             $table->string('url')->nullable();
-            $table->text('content')->nullable(); 
+            $table->text('content')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

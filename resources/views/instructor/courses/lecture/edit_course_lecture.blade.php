@@ -3,58 +3,144 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div class="page-content">
-        <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Lecture Course</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ route('add.course.lecture',['id' => $clecture->course_id]) }}"
-                       class="btn btn-primary px-5">Back </a>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1 ms-3">
+                                <h5 class="mt-0">Chỉnh sửa bài học</h5>
+                                <p class="mb-0">{{ $lecture->lecture_title }}</p>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--end breadcrumb-->
+        <div class="page-content">
+            <div class="card">
+                <div class="card-body">
+                    <form id="myForm" action="{{ route('update.course.lecture.content') }}" method="post"
+                          class="row g-3" enctype="multipart/form-data">
+                        @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <input type="hidden" name="id" value="{{ $lecture->id }}">
 
-        <div class="card">
-            <div class="card-body p-4">
-                <h5 class="mb-4">Edit Lecture</h5>
-                <form id="myForm" action="{{ route('update.course.lecture') }}" method="post" class="row g-3"
-                      enctype="multipart/form-data">
-                    @csrf
-
-                    <input type="hidden" name="id" value="{{ $clecture->id }}">
-
-                    <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Lecture Title</label>
-                        <input type="text" name="lecture_title" class="form-control" id="input1"
-                               value="{{ $clecture->lecture_title }}">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Video Url </label>
-                        <input type="text" name="url" class="form-control" id="input1" value="{{ $clecture->url }}">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="input1" class="form-label">Lecture Content </label>
-                        <textarea name="content" class="form-control">{{ $clecture->content }}</textarea>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="d-md-flex d-grid align-items-center gap-3">
-                            <button type="submit" class="btn btn-primary px-4">Save Changes</button>
-
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Tên bài học <span class="text-danger">*</span></label>
+                            <input type="text" name="lecture_title" class="form-control" id="input1"
+                                   value="{{$lecture->lecture_title}}">
                         </div>
-                    </div>
-                </form>
+                        <div class="form-group col-md-12">
+                            <label for="section_content" class="form-label">Nội dung </label>
+                            <textarea name="lecture_content" class="form-control" id="section_content"
+                                      placeholder="Nội dung ..." rows="3">{{$lecture->content}}</textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="label" class="form-label">Trạng thái</label>
+                            <select name="lecture_status" class="form-select mb-3" id="label" aria-label="Default select example">
+                                <option value="0" {{ $lecture->status == '0' ? 'selected' : '' }}>Riêng tư</option>
+                                <option value="1" {{ $lecture->status == '1' ? 'selected' : '' }}>Công khai</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4">Lưu</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="page-content">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('update.course.lecture.video') }}" method="post"
+                          enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="lecture_id" value="{{ $lecture->id }}">
+                        <input type="hidden" name="old_vid" value="{{ $lecture->video }}">
+
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="input2" class="form-label">Video bài học </label>
+                                <input type="file" id="videoUpload" name="video" class="form-control"
+                                       accept="video/mp4, video/webm">
+                            </div>
+
+                            <div class="col-md-6">
+                                <video width="300" height="130" controls>
+                                    <source src="{{ asset( $lecture->video ) }}" type="video/mp4">
+                                </video>
+                                <p>{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}</p>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4">Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="page-content">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('update.course.lecture.document') }}" method="post"
+                          enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="lecture_id" value="{{ $lecture->id }}">
+                        <input type="hidden" name="old_doc" value="{{ $lecture->url }}">
+
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="section_document" class="form-label">Tài liệu </label>
+                                <input type="file" name="lecture_document" id="section_document" class="form-control"
+                                       accept="application/pdf, application/msword, application/vnd.ms-powerpoint"
+                                       value="{{ $lecture->url }}">
+                                <br>
+                                <span>{!! str_replace('upload/lecture/document/', '', $lecture -> url) !!}</span>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4">Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
+    <script>
+        document.getElementById("videoUpload")
+            .onchange = function (event) {
+            let file = event.target.files[0];
+            let blobURL = URL.createObjectURL(file);
+            document.querySelector("video").src = blobURL;
+        }
+    </script>
 @endsection

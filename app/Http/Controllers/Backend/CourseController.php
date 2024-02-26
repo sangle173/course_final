@@ -226,18 +226,18 @@ class CourseController extends Controller
 
     }
 
-    public function UpdateSectionVideo(Request $request)
+    public function UpdateLectureVideo(Request $request)
     {
 
         $request->validate([
             'video' => 'required|mimes:mp4|max:500000',
         ]);
 
-        $section_id = $request->vid;
+        $lecture_id = $request->lecture_id;
         $oldVideo = $request->old_vid;
 
         $video = $request->file('video');
-        $videoName = time().'.'.$video->getClientOriginalExtension();
+        $videoName = time().'_'.$video->getClientOriginalName();
         $video->move(public_path('upload/course/video/'), $videoName);
         $save_video = 'upload/course/video/' . $videoName;
 
@@ -245,8 +245,8 @@ class CourseController extends Controller
             unlink($oldVideo);
         }
 
-        CourseSection::find($section_id)->update([
-            'section_video' => $save_video,
+        CourseLecture::find($lecture_id)->update([
+            'video' => $save_video,
             'updated_at' => Carbon::now(),
         ]);
 
@@ -258,13 +258,13 @@ class CourseController extends Controller
 
     }
 
-    public function UpdateSectionDocument(Request $request)
+    public function UpdateLectureDocument(Request $request)
     {
-        $section_id = $request->vid;
-        $oldDoc = $request->old_doc;
+        $lecture_id = $request-> lecture_id;
+        $oldDoc = $request-> old_doc;
 
-        $document = $request->file('section_document');
-        $documentName = time().'.'.$document->getClientOriginalExtension();
+        $document = $request->file('lecture_document');
+        $documentName = time().'_'.$document->getClientOriginalName();
         $document->move(public_path('upload/lecture/document/'), $documentName);
         $save_document = 'upload/lecture/document/' . $documentName;
 
@@ -272,8 +272,8 @@ class CourseController extends Controller
             unlink($oldDoc);
         }
 
-        CourseSection::find($section_id)->update([
-            'section_document' => $save_document,
+        CourseLecture::find($lecture_id)->update([
+            'url' => $save_document,
             'updated_at' => Carbon::now(),
         ]);
 
@@ -285,36 +285,36 @@ class CourseController extends Controller
 
     }
 
-    public function UpdateLectureVideo(Request $request)
-    {
-
-        $course_id = $request->vid;
-        $oldVideo = $request->old_vid;
-
-        $request->validate([
-            'video' => 'required|mimes:mp4|max:300000',
-        ]);
-
-        $video = $request->file('video');
-        $videoName = time() . '.' . $video->getClientOriginalExtension();
-        $video->move(public_path('upload/lecture/video/'), $videoName);
-        $save_video = 'upload/lecture/video/' . $videoName;
-
-        if (file_exists($oldVideo)) {
-            unlink($oldVideo);
-        }
-
-        Course::find($course_id)->update([
-            'video' => $save_video,
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $notification = array(
-            'message' => 'Course Video Updated Successfully',
-            'alert-type' => 'success'
-        );
-        return redirect()->back()->with($notification);
-    }
+//    public function UpdateLectureVideo(Request $request)
+//    {
+//
+//        $course_id = $request->vid;
+//        $oldVideo = $request->old_vid;
+//
+//        $request->validate([
+//            'video' => 'required|mimes:mp4|max:300000',
+//        ]);
+//
+//        $video = $request->file('video');
+//        $videoName = time() . '.' . $video->getClientOriginalExtension();
+//        $video->move(public_path('upload/lecture/video/'), $videoName);
+//        $save_video = 'upload/lecture/video/' . $videoName;
+//
+//        if (file_exists($oldVideo)) {
+//            unlink($oldVideo);
+//        }
+//
+//        Course::find($course_id)->update([
+//            'video' => $save_video,
+//            'updated_at' => Carbon::now(),
+//        ]);
+//
+//        $notification = array(
+//            'message' => 'Course Video Updated Successfully',
+//            'alert-type' => 'success'
+//        );
+//        return redirect()->back()->with($notification);
+//    }
 
 
     public function UpdateCourseGoal(Request $request)
@@ -373,12 +373,21 @@ class CourseController extends Controller
     public function AddCourseLecture($id)
     {
 
+        $section = CourseSection::find($id);
+        $course = Course::find($section -> course_id);
+
+        return view('instructor.courses.lecture.add_lecture', compact('section', 'course'));
+
+    }// End Method
+
+    public function AllCourseLecture($id)
+    {
+
         $course = Course::find($id);
 
         $section = CourseSection::where('course_id', $id)->latest()->get();
 
         return view('instructor.courses.section.all_section', compact('course', 'section'));
-
     }// End Method
 
     public function AddCourseSectionGet($id)
@@ -422,65 +431,105 @@ class CourseController extends Controller
         CourseSection::insert([
             'course_id' => $cid,
             'section_title' => $request->section_title,
-            'section_content' => $request->section_content,
-            'section_video' => $save_video,
-            'section_document' => $save_document,
+        ]);
+
+        $notification = array(
+            'message' => 'Thêm mới chương thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('course.all.lecture', $cid)->with($notification);
+    }// End Method
+
+    public function SaveLecture(Request $request)
+    {
+        $course_id = $request->course_id;
+        $section_id = $request->section_id;
+        $request->validate([
+            'lecture_video' => 'mimes:mp4|max:500000',
+            'lecture_title' => 'required',
+        ]);
+        $save_video = null;
+        $save_document = null;
+        if ($request->file('lecture_video')) {
+            $video = $request->file('lecture_video');
+            $videoName = time().'_'.$video->getClientOriginalName();
+            $video->move(public_path('upload/lecture/video/'), $videoName);
+            $save_video = 'upload/lecture/video/' . $videoName;
+        }
+
+        if ($request->file('lecture_document')) {
+            $document = $request->file('lecture_document');
+            $documentName = time().'_'.$document->getClientOriginalName();
+            $document->move(public_path('upload/lecture/document/'), $documentName);
+            $save_document = 'upload/lecture/document/' . $documentName;
+        }
+
+        CourseLecture::insert([
+            'course_id' => $course_id,
+            'section_id' => $section_id,
+            'lecture_title' => $request->lecture_title,
+            'content' => $request->lecture_content,
+            'video' => $save_video,
+            'url' => $save_document,
+            'status' => $request->lecture_status,
         ]);
 
         $notification = array(
             'message' => 'Thêm mới bài học thành công',
             'alert-type' => 'success'
         );
-        return redirect()->route('add.course.lecture', $cid)->with($notification);
-    }// End Method
-
-    public function SaveLecture(Request $request)
-    {
-//        dd($request);
-        $lecture = new CourseLecture();
-        $lecture->course_id = $request->course_id;
-        $lecture->section_id = $request->section_id;
-        $lecture->lecture_title = $request->lecture_title;
-
-        $video = $request->file('video');
-        $videoName = time() . '.' . $video->getClientOriginalExtension();
-        $video->move(public_path('upload/lecture/video/'), $videoName);
-        $save_video = 'upload/lecture/video/' . $videoName;
-
-        $lecture->url = $save_video;
-        $lecture->content = $request->content;
-        $lecture->save();
-
-        return view('instructor.courses.section.add_course_lecture', compact('course', 'section'));
+        return redirect()->route('course.all.lecture', $course_id)->with($notification);
     }// End Method
 
 
     public function EditLecture($id)
     {
 
-        $clecture = CourseLecture::find($id);
-        return view('instructor.courses.lecture.edit_course_lecture', compact('clecture'));
+        $lecture = CourseLecture::find($id);
+        return view('instructor.courses.lecture.edit_course_lecture', compact('lecture'));
 
     }// End Method
 
 
     public function UpdateCourseSection(Request $request)
     {
-        $lid = $request->id;
+        $lid = $request-> id;
+        $course = Course::find(CourseSection::find($lid) -> course_id);
         $request->validate([
             'section_title' => 'required',
         ]);
 
         CourseSection::find($lid)->update([
-            'section_title' => $request->section_title,
-            'section_content' => $request->section_content
+            'section_title' => $request->section_title
+        ]);
+
+        $notification = array(
+            'message' => 'Cập nhật chương thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('course.all.lecture', $course -> id)->with($notification);
+
+    }// End Method
+
+    public function UpdateCourseLecture(Request $request)
+    {
+        $lid = $request->id;
+        $course = Course::find(CourseLecture::find($lid) -> course_id);
+        $request->validate([
+            'lecture_title' => 'required',
+        ]);
+
+        CourseLecture::find($lid)->update([
+            'lecture_title' => $request->lecture_title,
+            'content' => $request->lecture_content,
+            'status' => $request->lecture_status
         ]);
 
         $notification = array(
             'message' => 'Cập nhật bài học thành công',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('course.all.lecture', $course -> id)->with($notification);
 
     }// End Method
 

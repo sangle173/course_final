@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('home')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 @section('title')
     {{ $course->course_name }} | Luyện Thi Công chức
@@ -34,57 +35,6 @@
                         $avarage = App\Models\Review::where('course_id',$course->id)->where('status',1)->avg('rating');
 
                     @endphp
-
-                    {{--                    <div class="rating-wrap d-flex flex-wrap align-items-center">--}}
-                    {{--                        <div class="review-stars">--}}
-                    {{--                            <span class="rating-number">{{ round($avarage,1) }}</span>--}}
-
-                    {{--                            @if ($avarage == 0)--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 1 || $avarage < 2)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 2 || $avarage < 3)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 3 || $avarage < 4)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 4 || $avarage < 5)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star-o"></span>--}}
-                    {{--                            @elseif ($avarage == 5 || $avarage < 5)--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                                <span class="la la-star"></span>--}}
-                    {{--                            @endif--}}
-
-                    {{--                        </div>--}}
-                    {{--                        <span class="rating-total pl-1">({{ count($reviewcount) }} ratings)</span>--}}
-                    {{--                        @php--}}
-                    {{--                            $enrollmentCount = App\Models\Order::where('course_id',$course->id)->count();--}}
-                    {{--                        @endphp--}}
-
-                    {{--                        <span class="student-total pl-2">{{ number_format($enrollmentCount) }} học viên</span>--}}
-                    {{--                    </div>--}}
                 </div><!-- end d-flex -->
                 <p class="pt-2 pb-1">Giảng viên: <a href="{{url('/')}}"
                                                     class="text-color hover-underline">{{ $course['user']['name'] }}</a>
@@ -95,7 +45,7 @@
                             <path
                                 d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
                         </svg>
-                        Cập nhật lúc: {{ $course->created_at->format('d/m/Y') }}
+                        Cập nhật: {{ $course->created_at->format('d/m/Y') }}
                     </p>
                 </div><!-- end d-flex -->
                 {{--                <div class="bread-btn-box pt-3">--}}
@@ -198,22 +148,55 @@
                                                 <i class="la la-plus"></i>
                                                 <i class="la la-minus"></i>
                                                 {{ $sec->section_title }}
-                                                <span class="fs-15 text-gray font-weight-medium"> <i
-                                                        class="lni lni-play"></i></span>
+                                                <span class="fs-15 text-gray font-weight-medium">
+                        {{ count($lecture) }} bài học</span>
                                             </button>
                                         </div><!-- end card-header -->
                                         <div id="collapse{{ $sec->id }}" class="collapse "
                                              aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
                                             <div class="card-body">
                                                 <ul class="generic-list-item">
-                                                    <li>
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-between">
-                                <span>
-                                   Nội dung: {{ $sec->section_content }}
-                                </span>
-                                                        </div>
-                                                    </li>
+                                                    @foreach ($lecture as $lect)
+                                                        <li>
+                                                            <div
+                                                                class="d-flex align-items-center justify-content-between">
+                                                                @if($lect->status == "1")
+                                                                    <span>
+                                                                    <strong> <i class="la la-play-circle mr-1"></i>
+                                                                    {{ $lect->lecture_title }} <br></strong>
+                                                                        <div>
+                                                                        <ul>
+                                                                <li>Nội dung: {{$lect -> content}}</li>
+                                                                <li>
+                                                                    Tài liệu: <br>
+                                                                    <a href="{{  asset($lect->url) }}"
+                                                                       class="text-decoration-none"
+                                                                       target="_blank" title="Tài liệu"><i><i
+                                                                                class="la la-file"></i> Xem tài liệu</i>
+                                                                    </a>
+                                                                </li>
+                                                                            <li>
+                                                                                Bài giảng: <br>
+                                                                                <video width="320" height="240"
+                                                                                       controls>
+                                    <source src="{{ asset( $lect->video ) }}" type="video/mp4">
+                                </video>
+                                                                            </li>
+                                                            </ul>
+                                                                        </div>
+                                                                    @else
+                                                                            <span>
+                                                                            <strong> <i class="la la-lock mr-1"></i>
+                                                                    {{ $lect->lecture_title }}</strong> <br>
+                                                                                <span> Nội dung: {{ $lect->content }}</span>
+                                                                        </span>
+                                                                        @endif
+                                                                </span>
+                                                                    <span>50:09 </span>
+                                                            </div>
+                                                        </li>
+                                                        <hr>
+                                                    @endforeach
 
                                                 </ul>
                                             </div><!-- end card-body -->

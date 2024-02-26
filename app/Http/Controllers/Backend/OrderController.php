@@ -154,10 +154,10 @@ class OrderController extends Controller
         return view('frontend.mycourse.course_view',compact('course','section'));
     }// End Method
 
-    public function ViewCourseSectionGet($id)
+    public function ViewCourseLectureGet($id)
     {
-        $section = CourseSection::find($id);
-        return view('frontend.mycourse.view_section', compact('section'));
+        $lecture = CourseLecture::find($id);
+        return view('frontend.mycourse.view_lecture', compact('lecture'));
 
     }// End Method
 }

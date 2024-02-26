@@ -62,8 +62,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('add.course.lecture',$item->id) }}" class="btn btn-warning"
-                                       title="Thêm bài học"><i class="lni lni-list"></i> </a>
+                                    <a href="{{ route('course.all.lecture',$item->id) }}" class="btn btn-warning"
+                                       title="Tất cả bài học"><i class="lni lni-list"></i> </a>
 
                                     <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info"
                                        title="Chỉnh sửa"><i

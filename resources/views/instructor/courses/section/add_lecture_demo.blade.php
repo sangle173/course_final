@@ -12,8 +12,10 @@
                             <img src="{{ asset($course->course_image) }}" class="rounded-circle p-1 border" width="90"
                                  height="90" alt="...">
                             <div class="flex-grow-1 ms-3">
-                                <h5 class="mt-0">Khóa học: {{ $course->course_name }}</h5>
-                                <p class="mb-0">Chương: {{$section->section_title}}</p>
+                                <h5 class="mt-0">{{ $course->course_name }}</h5>
+                                <p class="mb-0">{{$course->course_title}}</p>
+                            </div>
+                            <div class="modal-body">
                             </div>
                         </div>
                     </div>
@@ -27,17 +29,15 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $section->section_title }}</li>
                         <li class="breadcrumb-item active" aria-current="page">Thêm bài học</li>
                     </ol>
                 </nav>
             </div>
-
         </div>
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-body">
-                <form id="myForm" action="{{ route('save-lecture') }}" method="post" class="row g-3"
+                <form id="myForm" action="{{ route('add.course.section') }}" method="post" class="row g-3"
                       enctype="multipart/form-data">
                     @csrf
                     @if ($errors->any())
@@ -49,31 +49,25 @@
                             </ul>
                         </div>
                     @endif
-                    <input type="hidden" name="section_id" value="{{ $section->id }}">
-                    <input type="hidden" name="course_id" value="{{ $course->id }}">
+                    <input type="hidden" name="id" value="{{ $course->id }}">
 
                     <div class="form-group col-md-12">
-                        <label for="input1" class="form-label">Tên bài học <span class="text-danger">*</span></label>
-                        <input type="text" name="lecture_title" class="form-control" id="input1">
+                        <label for="input1" class="form-label">Tên bài học</label>
+                        <input type="text" name="section_title" class="form-control" id="input1">
                     </div>
                     <div class="form-group col-md-12">
                         <label for="section_content" class="form-label">Nội dung </label>
-                        <textarea name="lecture_content" class="form-control" id="section_content"
-                                  placeholder="Nội dung ..." rows="3"></textarea>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="label" class="form-label">Trạng thái</label>
-                        <select name="lecture_status" class="form-select mb-3" id="label" aria-label="Default select example">
-                            <option value="0">Riêng tư</option>
-                            <option value="1">Công khai</option>
-                        </select>
+                        <textarea name="section_content" class="form-control" id="section_content" placeholder="Nội dung ..." rows="3"></textarea>
                     </div>
                     <div class="form-group col-md-12">
+{{--                        <label for="input1" class="form-label">Video </label>--}}
+{{--                        <input type="file" name="section_video" id="videoUpload" class="form-control"--}}
+{{--                               accept="video/mp4, video/webm">--}}
+
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="input2" class="form-label">Video bài học </label>
-                                <input type="file" id="videoUpload" name="lecture_video" class="form-control"
-                                       accept="video/mp4, video/webm">
+                                <input type="file" id="videoUpload" name="section_video" class="form-control"  accept="video/mp4, video/webm" >
                             </div>
 
                             <div class="col-md-6">
@@ -85,7 +79,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="input1" class="form-label">Tài liệu </label>
-                        <input type="file" name="lecture_document" class="form-control"
+                        <input type="file" name="section_document" class="form-control"
                                accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
                     </div>
                     <div class="form-group col-md-6">

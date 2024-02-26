@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$section -> section_name}}</title>
+    <title>{{$lecture -> lecture_title}}</title>
     <!-- Stylesheet -->
     <!-- Google Icons -->
     <link rel="stylesheet"
@@ -340,7 +340,7 @@
     </style>
 </head>
 <body>
-@if(!empty($section->section_video))
+@if(!empty($lecture->video))
 <div class="container show-controls">
     <div class="wrapper">
         <div class="video-timeline">
@@ -386,7 +386,7 @@
             </li>
         </ul>
     </div>
-    <video id="myVideo" oncontextmenu="return false;" src="{{ asset($section->section_video) }}"></video>
+    <video id="myVideo" oncontextmenu="return false;" src="{{ asset($lecture->video) }}"></video>
 
 </div>
 @else
