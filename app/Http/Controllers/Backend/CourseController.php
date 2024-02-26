@@ -540,7 +540,7 @@ class CourseController extends Controller
         CourseLecture::find($id)->delete();
 
         $notification = array(
-            'message' => 'Course Lecture Delete Successfully',
+            'message' => 'Xóa bài học thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
@@ -554,7 +554,7 @@ class CourseController extends Controller
         $section->delete();
 
         $notification = array(
-            'message' => 'Course Section Delete Successfully',
+            'message' => 'Xóa chương thành công',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

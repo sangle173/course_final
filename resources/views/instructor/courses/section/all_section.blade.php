@@ -51,7 +51,7 @@
                                                 <a class="btn btn-sm text-info mr-1" title="Chỉnh sửa chương"
                                                    href="{{ route('edit.section', ['id' => $item->id]) }}"><i
                                                         class="lni lni-pencil text-info"></i> </a>
-                                                <a class="btn btn-sm text-danger mr-1" title="Xóa chương"
+                                                <a class="btn btn-sm text-danger mr-1" title="Xóa chương" id="delete"
                                                    href="{{ route('delete.section',['id' => $item->id]) }}"><i
                                                         class="lni lni-trash text-danger"></i> </a>
                                             </div>
