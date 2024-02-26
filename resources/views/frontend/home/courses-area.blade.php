@@ -6,8 +6,8 @@
 <section class="course-area pb-120px">
     <div class="container">
         <div class="section-heading text-center">
-            <h5 class="ribbon ribbon-lg mb-2">Chọn khóa học phù hợp với bạn</h5>
-            <h2 class="section__title">Tìm kiếm, lựa chọn khóa học phù hợp với bạn</h2>
+            <h5 class="ribbon ribbon-lg mb-2">Lựa chọn khóa học</h5>
+            <h2 class="section__title">Khóa học</h2>
             <span class="section-divider"></span>
         </div><!-- end section-heading -->
 

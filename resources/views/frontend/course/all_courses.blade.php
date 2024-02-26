@@ -105,15 +105,35 @@
             </div><!-- end card-image -->
             <div class="card-body">
                 <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{ $course->label }}</h6>
-                <h5 class="card-title"><a href="{{ url('course/details/'.$course->id.'/'.$course->course_name_slug) }}">{{ $course->course_name }}</a></h5>
-                <p class="card-text"><a href=" ">{{ $course['user']['name'] }}</a></p>
+                <h5 class="card-title"><a
+                        href="{{ url('course/details/'.$course->id.'/'.$course->course_name_slug) }}">{{ $course->course_name }}</a>
+                </h5>
+                <p class="card-text"><span class="text-black">Giảng viên:</span><span
+                        class="text-danger"> {{ $course->user->name }}</span></p>
+                <p class="card-text"><span
+                        class="text-black">Giới thiệu:</span> {{ \Illuminate\Support\Str::limit($course-> description, 150, $end='...') }}
+                </p>
                 <div class="d-flex justify-content-between align-items-center">
+                    <p class="card-text"><span class="text-black">Thời lượng: </span><span> {{$course->duration}}</span>
+                    </p>
+                    <p class="card-text"><span class="text-black">Số bài học: </span><span> {{count( DB::table("course_lectures") -> where("course_id", $course->id) ->get())}} bài</span>
+                    </p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+
                     @if ($course->discount_price == NULL)
-                        <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup> </p>
+                        <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}
+                            <sup>₫</sup></p>
                     @else
-                        <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }}<sup>₫</sup> <span class="before-price font-weight-medium">
-{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup> </span></p>
+                        <p class="card-price text-black font-weight-bold">{{ number_format($course->discount_price, 0, '.', ',') }}
+                            <sup>₫</sup> <span class="before-price font-weight-medium">{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup></span>
+                        </p>
                     @endif
+
+
+                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer"
+                         title="Thêm vào yêu thích" id="{{ $course->id }}"
+                         onclick="addToWishList(this.id)"><i class="la la-heart-o"></i></div>
                 </div>
             </div><!-- end card-body -->
         </div><!-- end card -->

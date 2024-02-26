@@ -8,8 +8,8 @@
             <div class="col-lg-9">
                 <div class="category-content-wrap">
                     <div class="section-heading">
-                        <h5 class="ribbon ribbon-lg mb-2">Danh mục</h5>
-                        <h2 class="section__title">Danh mục phổ biển</h2>
+                        <h5 class="ribbon ribbon-lg mb-2">Tìm khóa học theo danh mục</h5>
+                        <h2 class="section__title">Danh mục khóa học</h2>
                         <span class="section-divider"></span>
                     </div><!-- end section-heading -->
                 </div>
