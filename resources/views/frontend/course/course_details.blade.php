@@ -121,7 +121,7 @@
                             <h3 class="fs-24 font-weight-semi-bold">Nội dung khóa học</h3>
                             <div class="curriculum-duration fs-15">
                                 <span class="curriculum-total__text mr-2"><strong
-                                        class="text-black font-weight-semi-bold">Tổng cộng:</strong> {{count( DB::table("course_sections") -> where("course_id", $course->id) ->get())}} bài học</span>
+                                        class="text-black font-weight-semi-bold">Tổng cộng:</strong> {{count( DB::table("course_lectures") -> where("course_id", $course->id) ->get())}} bài học</span>
                                 <span class="curriculum-total__hours"><strong class="text-black font-weight-semi-bold">Thời lượng:</strong> {{ $course->duration }}</span>
                             </div>
                         </div>
