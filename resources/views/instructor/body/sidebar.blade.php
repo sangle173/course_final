@@ -69,104 +69,33 @@
                 </ul>
             </li>
 
+{{--            <li>--}}
+{{--                <a class="has-arrow" href="javascript:;">--}}
+{{--                    <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="menu-title">Sếp học viên</div>--}}
+{{--                </a>--}}
+{{--                <ul>--}}
+{{--                    <li><a href="{{ route('instructor.order.add') }}"><i class='bx bx-radio-circle'></i>Sếp lớp học viên</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
             <li>
                 <a class="has-arrow" href="javascript:;">
-                    <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                    <div class="parent-icon"><i class='bx bx-captions'></i>
                     </div>
-                    <div class="menu-title">Xếp học viên</div>
+                    <div class="menu-title">Bài viết </div>
                 </a>
                 <ul>
-                    <li><a href="{{ route('instructor.order.add') }}"><i class='bx bx-radio-circle'></i>Xếp lớp học viên</a>
+                    <li> <a href="{{ route('instructor.blog.post') }}"><i class='bx bx-radio-circle'></i>Danh sách bài viết</a>
                     </li>
-
-
+                    <li> <a href="{{ route('instructor.blog.category') }}"><i class='bx bx-radio-circle'></i>Danh mục </a>
+                    </li>
                 </ul>
             </li>
-            {{--        <li>--}}
-            {{--            <a class="has-arrow" href="javascript:;">--}}
-            {{--                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>--}}
-            {{--                </div>--}}
-            {{--                <div class="menu-title">All Question</div>--}}
-            {{--            </a>--}}
-            {{--            <ul>--}}
-            {{--                <li> <a href="{{ route('instructor.all.question') }}"><i class='bx bx-radio-circle'></i>All Question</a>--}}
-            {{--                </li>--}}
-
-
-            {{--            </ul>--}}
-            {{--        </li>--}}
-
-
-            {{--        <li>--}}
-            {{--            <a class="has-arrow" href="javascript:;">--}}
-            {{--                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>--}}
-            {{--                </div>--}}
-            {{--                <div class="menu-title">Manage Coupon</div>--}}
-            {{--            </a>--}}
-            {{--            <ul>--}}
-            {{--                <li> <a href="{{ route('instructor.all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupon</a>--}}
-            {{--                </li>--}}
-
-
-            {{--            </ul>--}}
-            {{--        </li>--}}
-
-            {{--        <li>--}}
-            {{--            <a class="has-arrow" href="javascript:;">--}}
-            {{--                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>--}}
-            {{--                </div>--}}
-            {{--                <div class="menu-title">Manage Reivew</div>--}}
-            {{--            </a>--}}
-            {{--            <ul>--}}
-            {{--                <li> <a href="{{ route('instructor.all.review') }}"><i class='bx bx-radio-circle'></i>All Review</a>--}}
-            {{--                </li>--}}
-
-
-            {{--            </ul>--}}
-            {{--        </li>--}}
-
-
-            {{--        <li class="menu-label">Charts & Maps</li>--}}
-            {{--        <li>--}}
-            {{--            <a class="has-arrow" href="javascript:;">--}}
-            {{--                <div class="parent-icon"><i class="bx bx-line-chart"></i>--}}
-            {{--                </div>--}}
-            {{--                <div class="menu-title">Charts</div>--}}
-            {{--            </a>--}}
-            {{--            <ul>--}}
-            {{--                <li> <a href="charts-apex-chart.html"><i class='bx bx-radio-circle'></i>Apex</a>--}}
-            {{--                </li>--}}
-            {{--                <li> <a href="charts-chartjs.html"><i class='bx bx-radio-circle'></i>Chartjs</a>--}}
-            {{--                </li>--}}
-            {{--                <li> <a href="charts-highcharts.html"><i class='bx bx-radio-circle'></i>Highcharts</a>--}}
-            {{--                </li>--}}
-            {{--            </ul>--}}
-            {{--        </li>--}}
-            {{--        <li>--}}
-            {{--            <a class="has-arrow" href="javascript:;">--}}
-            {{--                <div class="parent-icon"><i class="bx bx-map-alt"></i>--}}
-            {{--                </div>--}}
-            {{--                <div class="menu-title">Maps</div>--}}
-            {{--            </a>--}}
-            {{--            <ul>--}}
-            {{--                <li> <a href="map-google-maps.html"><i class='bx bx-radio-circle'></i>Google Maps</a>--}}
-            {{--                </li>--}}
-            {{--                <li> <a href="map-vector-maps.html"><i class='bx bx-radio-circle'></i>Vector Maps</a>--}}
-            {{--                </li>--}}
-            {{--            </ul>--}}
-            {{--        </li>--}}
-
         @else
 
         @endif
-
-{{--        <li>--}}
-{{--            <a href="https://themeforest.net/user/codervent" target="_blank">--}}
-{{--                <div class="parent-icon"><i class="bx bx-support"></i>--}}
-{{--                </div>--}}
-{{--                <div class="menu-title">Hỗ trợ</div>--}}
-{{--            </a>--}}
-{{--        </li>--}}
     </ul>
     <!--end navigation-->
 </div>

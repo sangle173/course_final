@@ -207,9 +207,6 @@
                 </li>
                 <li> <a href="{{ route('blog.post') }}"><i class='bx bx-radio-circle'></i>Blog Post</a>
                 </li>
-
-
-
             </ul>
         </li>
 

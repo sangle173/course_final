@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 
-<head> 
+<head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('backend/assets/images/favicon-32x32.png') }}" type="image/png"/>
- 
+
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!--tagsinput-->
@@ -67,7 +67,7 @@
 	</div>
 	<!--end wrapper-->
 
- 
+
 	<!--end switcher-->
 	<!-- Bootstrap JS -->
 	<script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -126,12 +126,12 @@
 
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
-    break; 
+    break;
  }
- @endif 
+ @endif
 </script>
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/4dp0686fem1pftn51021xaj9vtqfph05mmbv61u6gqg97wsv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 	<script>
 	   tinymce.init({
 		 selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE

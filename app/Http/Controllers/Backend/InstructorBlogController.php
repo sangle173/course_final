@@ -9,12 +9,12 @@ use App\Models\BlogPost;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 
-class BlogController extends Controller
+class InstructorBlogController extends Controller
 {
-   public function AllBlogCategory(){
+   public function InstructorAllBlogCategory(){
 
     $category = BlogCategory::latest()->get();
-    return view('admin.backend.blogcategory.blog_category',compact('category'));
+    return view('instructor.blogcategory.blog_category',compact('category'));
 
    }// End Method
 
@@ -26,7 +26,7 @@ class BlogController extends Controller
     ]);
 
     $notification = array(
-        'message' => 'BlogCategory Inserted Successfully',
+        'message' => 'Tạo danh mục bài viết thành công',
         'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
@@ -35,7 +35,7 @@ class BlogController extends Controller
    }// End Method
 
 
-   public function EditBlogCategory($id){
+   public function InstructorEditBlogCategory($id){
 
     $categories = BlogCategory::find($id);
     return response()->json($categories);
@@ -43,7 +43,7 @@ class BlogController extends Controller
    }// End Method
 
 
-   public function UpdateBlogCategory(Request $request){
+   public function InstructorUpdateBlogCategory(Request $request){
     $cat_id = $request->cat_id;
 
     BlogCategory::find($cat_id)->update([
@@ -52,7 +52,7 @@ class BlogController extends Controller
     ]);
 
     $notification = array(
-        'message' => 'BlogCategory Updated Successfully',
+        'message' => 'Chỉnh sửa danh mục thành công',
         'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
@@ -60,12 +60,12 @@ class BlogController extends Controller
 
    }// End Method
 
-   public function DeleteBlogCategory($id){
+   public function InstructorDeleteBlogCategory($id){
 
     BlogCategory::find($id)->delete();
 
     $notification = array(
-        'message' => 'BlogCategory Deleted Successfully',
+        'message' => 'Xóa danh mục thanh công',
         'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
@@ -75,21 +75,26 @@ class BlogController extends Controller
 
    //////////// All Blog Post Method .//
 
-   public function BlogPost(){
+   public function InstructorBlogPost(){
     $post = BlogPost::latest()->get();
-    return view('admin.backend.post.all_post',compact('post'));
+    return view('instructor.post.all_post',compact('post'));
    }// End Method
 
 
-   public function AddBlogPost(){
+   public function InstructorAddBlogPost(){
 
     $blogcat = BlogCategory::latest()->get();
-    return view('admin.backend.post.add_post',compact('blogcat'));
+    return view('instructor.post.add_post',compact('blogcat'));
 
    }// End Method
 
-   public function StoreBlogPost(Request $request){
-
+   public function InstructorStoreBlogPost(Request $request){
+       $request->validate([
+           'blogcat_id' => 'required',
+           'post_title' => 'required',
+           'long_descp' => 'required',
+           'post_image' => 'required',
+       ]);
     $image = $request->file('post_image');
     $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
     Image::make($image)->resize(370,247)->save('upload/post/'.$name_gen);
@@ -107,23 +112,23 @@ class BlogController extends Controller
     ]);
 
     $notification = array(
-        'message' => 'Blog Post Inserted Successfully',
+        'message' => 'Tạo bài viết thành công',
         'alert-type' => 'success'
     );
     return redirect()->route('blog.post')->with($notification);
 
    }// End Method
 
-   public function EditBlogPost($id){
+   public function InstructorEditBlogPost($id){
 
     $blogcat = BlogCategory::latest()->get();
     $post = BlogPost::find($id);
-    return view('admin.backend.post.edit_post',compact('post','blogcat'));
+    return view('instructor.post.edit_post',compact('post','blogcat'));
 
    }// End Method
 
 
-   public function UpdateBlogPost(Request $request){
+   public function InstructorUpdateBlogPost(Request $request){
 
     $post_id = $request->id;
 
@@ -146,7 +151,7 @@ class BlogController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Blog Post Updated Successfully',
+            'message' => 'Cập nhật bài viết thành công',
             'alert-type' => 'success'
         );
         return redirect()->route('blog.post')->with($notification);
@@ -174,7 +179,7 @@ class BlogController extends Controller
 }// End Method
 
 
-public function DeleteBlogPost($id){
+public function InstructorDeleteBlogPost($id){
 
     $item = BlogPost::find($id);
     $img = $item->post_image;
@@ -190,36 +195,36 @@ public function DeleteBlogPost($id){
 
 }// End Method
 
-public function BlogDetails($slug){
-
-    $blog = BlogPost::where('post_slug',$slug)->first();
-    $tags = $blog->post_tags;
-    $tags_all = explode(',',$tags);
-    $bcategory = BlogCategory::latest()->get();
-    $post = BlogPost::latest()->limit(3)->get();
-    return view('frontend.blog.blog_details',compact('blog','tags_all','bcategory','post'));
-
-}// End Method
-
-public function BlogCatList($id){
-
-    $blog = BlogPost::where('blogcat_id',$id)->get();
-    $breadcat = BlogCategory::where('id',$id)->first();
-    $bcategory = BlogCategory::latest()->get();
-    $post = BlogPost::latest()->limit(3)->get();
-    return view('frontend.blog.blog_cat_list',compact('blog','breadcat','bcategory','post'));
-
-}// End Method
-
-public function BlogList(){
-
-    $blog = BlogPost::latest()->paginate(2);
-    $bcategory = BlogCategory::latest()->get();
-    $post = BlogPost::latest()->limit(3)->get();
-    return view('frontend.blog.blog_list',compact('blog','bcategory','post'));
-
-
-}// End Method
-
+//public function BlogDetails($slug){
+//
+//    $blog = BlogPost::where('post_slug',$slug)->first();
+//    $tags = $blog->post_tags;
+//    $tags_all = explode(',',$tags);
+//    $bcategory = BlogCategory::latest()->get();
+//    $post = BlogPost::latest()->limit(3)->get();
+//    return view('frontend.blog.blog_details',compact('blog','tags_all','bcategory','post'));
+//
+//}// End Method
+//
+//public function BlogCatList($id){
+//
+//    $blog = BlogPost::where('blogcat_id',$id)->get();
+//    $breadcat = BlogCategory::where('id',$id)->first();
+//    $bcategory = BlogCategory::latest()->get();
+//    $post = BlogPost::latest()->limit(3)->get();
+//    return view('frontend.blog.blog_cat_list',compact('blog','breadcat','bcategory','post'));
+//
+//}// End Method
+//
+//public function BlogList(){
+//
+//    $blog = BlogPost::latest()->paginate(2);
+//    $bcategory = BlogCategory::latest()->get();
+//    $post = BlogPost::latest()->limit(3)->get();
+//    return view('frontend.blog.blog_list',compact('blog','bcategory','post'));
+//
+//
+//}// End Method
+//
 
 }
