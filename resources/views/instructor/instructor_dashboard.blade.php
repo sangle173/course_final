@@ -10,6 +10,9 @@
 
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!--tagsinput-->
+    <link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
+    <!--tagsinput-->
 
 	<!--plugins-->
 	<link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
@@ -78,7 +81,9 @@
     <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/index.js') }}"></script>
-
+    <!--tagsinput-->
+    <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
+    <!--tagsinput-->
 	<script>
 		new PerfectScrollbar('.chat-list');
 		new PerfectScrollbar('.chat-content');
@@ -134,7 +139,7 @@
 	</script>
 	<!--End Datatable-->
 
-	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="https://cdn.tiny.cloud/1/4dp0686fem1pftn51021xaj9vtqfph05mmbv61u6gqg97wsv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 	<script>
 	   tinymce.init({
 		 selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE

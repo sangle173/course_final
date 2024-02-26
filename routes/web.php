@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\InstructorBlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -206,30 +207,6 @@ Route::controller(ReviewController::class)->group(function(){
 Route::controller(ActiveUserController::class)->group(function(){
     Route::get('/all/user','AllUser')->name('all.user');
     Route::get('/all/instructor','AllInstructor')->name('all.instructor');
-});
-
-
-
-// Blog Category All Route
-Route::controller(BlogController::class)->group(function(){
-    Route::get('/blog/category','AllBlogCategory')->name('blog.category');
-    Route::post('/blog/category/store','StoreBlogCategory')->name('blog.category.store');
-    Route::get('/edit/blog/category/{id}','EditBlogCategory');
-    Route::post('/blog/category/update','UpdateBlogCategory')->name('blog.category.update');
-    Route::get('/delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blog.category');
-
-});
-
-// Blog Post All Route
-Route::controller(BlogController::class)->group(function(){
-    Route::get('/blog/post','BlogPost')->name('blog.post');
-    Route::get('/add/blog/post','AddBlogPost')->name('add.blog.post');
-    Route::post('/store/blog/post','StoreBlogPost')->name('store.blog.post');
-    Route::get('/edit/post/{id}','EditBlogPost')->name('edit.post');
-    Route::post('/update/blog/post','UpdateBlogPost')->name('update.blog.post');
-    Route::get('/delete/post/{id}','DeleteBlogPost')->name('delete.post');
-
-
 });
 
 
@@ -480,4 +457,42 @@ Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
     Route::get('/instructor/course/details/{id}','InstructorCourseDetails')->name('instructor.course.details');
     Route::get('/instructor/course/addstudent/{id}','InstructorCourseAddStudent')->name('instructor.course.addstudent');
+});
+
+// Blog Category All Route
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/blog/category','AllBlogCategory')->name('blog.category');
+    Route::post('/blog/category/store','StoreBlogCategory')->name('blog.category.store');
+    Route::get('/edit/blog/category/{id}','EditBlogCategory');
+    Route::post('/blog/category/update','UpdateBlogCategory')->name('blog.category.update');
+    Route::get('/delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blog.category');
+
+});
+
+Route::controller(InstructorBlogController::class)->group(function(){
+    Route::get('instructor/blog/category','InstructorAllBlogCategory')->name('instructor.blog.category');
+    Route::post('instructor/blog/category/store','InstructorStoreBlogCategory')->name('instructor.blog.category.store');
+    Route::get('instructor/edit/blog/category/{id}','InstructorEditBlogCategory');
+    Route::post('instructor/blog/category/update','InstructorUpdateBlogCategory')->name('instructor.blog.category.update');
+    Route::get('instructor/delete/blog/category/{id}','InstructorDeleteBlogCategory')->name('instructor.delete.blog.category');
+});
+
+// Blog Post All Route
+Route::controller(InstructorBlogController::class)->group(function(){
+    Route::get('instructor/blog/post','InstructorBlogPost')->name('instructor.blog.post');
+    Route::get('instructor/add/blog/post','InstructorAddBlogPost')->name('instructor.add.blog.post');
+    Route::post('instructor/store/blog/post','InstructorStoreBlogPost')->name('instructor.store.blog.post');
+    Route::get('instructor/edit/post/{id}','InstructorEditBlogPost')->name('instructor.edit.post');
+    Route::post('instructor/update/blog/post','InstructorUpdateBlogPost')->name('instructor.update.blog.post');
+    Route::get('instructor/delete/post/{id}','InstructorDeleteBlogPost')->name('instructor.delete.post');
+});
+
+// Blog Post All Route
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/blog/post','BlogPost')->name('blog.post');
+    Route::get('/add/blog/post','AddBlogPost')->name('add.blog.post');
+    Route::post('/store/blog/post','StoreBlogPost')->name('store.blog.post');
+    Route::get('/edit/post/{id}','EditBlogPost')->name('edit.post');
+    Route::post('/update/blog/post','UpdateBlogPost')->name('update.blog.post');
+    Route::get('/delete/post/{id}','DeleteBlogPost')->name('delete.post');
 });
