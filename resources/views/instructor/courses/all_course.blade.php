@@ -52,7 +52,7 @@
                                 <td>{{ number_format($item->selling_price, 0, '.', ',') }}<sup>₫</sup></td>
                                 <td>{{ $item->duration }}</td>
                                 <td>{{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}</td>
-                                <td>{{count( DB::table("course_sections") -> where("course_id", $item->id) ->get())}}</td>
+                                <td>{{count( DB::table("course_lectures") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>{{ $item['user']['name'] }}</td>
                                 <td>
                                     @if($item -> updated_at)

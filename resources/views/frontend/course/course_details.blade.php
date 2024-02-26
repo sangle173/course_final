@@ -311,7 +311,7 @@
                                             class="la la-bolt mr-2 text-color"></i>Bài kiểm tra</span> 1
                                 </li>
                                 <li class="d-flex align-items-center justify-content-between"><span><i
-                                            class="la la-eye mr-2 text-color"></i>Bài học</span> {{count( DB::table("course_sections") -> where("course_id", $course->id) ->get())}}
+                                            class="la la-eye mr-2 text-color"></i>Bài học</span> {{count( DB::table("course_lectures") -> where("course_id", $course->id) ->get())}}
                                 </li>
                                 {{--                                <li class="d-flex align-items-center justify-content-between"><span><i--}}
                                 {{--                                            class="la la-language mr-2 text-color"></i>Ngôn ngữ</span> --}}

@@ -305,17 +305,17 @@
                     @else
                     @endif
 
-{{--                    @if ($course->discount_price == NULL)--}}
-{{--                    <div class="course-badge blue">Mới</div>--}}
-{{--                    @else--}}
-{{--                    <div class="course-badge blue">{{ round($discount) }}%</div>--}}
-{{--                    @endif--}}
+                    @if ($course->discount_price == NULL)
+                    <div class="course-badge blue">Mới</div>
+                    @else
+                    <div class="course-badge blue">{{ round($discount) }}%</div>
+                    @endif
                 </div>
             </div><!-- end card-image -->
             <div class="card-body">
                 <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">{{ $course->label }}</h6>
                 <h5 class="card-title"><a href="{{ url('course/details/'.$course->id.'/'.$course->course_name_slug) }}">{{ $course->course_name }}</a></h5>
-                <p class="card-text"><a href=" ">{{ $course['user']['name'] }}</a></p>
+                <p class="card-text"><a href="#">Giảng viên: <span class="text-danger">{{ $course['user']['name'] }}</span></a></p>
                 <div class="d-flex justify-content-between align-items-center">
                     @if ($course->discount_price == NULL)
                         <p class="card-price text-black font-weight-bold">{{ number_format($course->selling_price, 0, '.', ',') }}<sup>₫</sup> </p>
