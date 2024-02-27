@@ -200,33 +200,33 @@
 
 <!-- tooltip_templates -->
 @foreach ($courseData as $item)
-
     <div class="tooltip_templates">
         <div id="tooltip_content_1{{ $item->id }}">
             <div class="card card-item">
                 <div class="card-body">
-                    <p class="card-text pb-2">Tạo bởi <a href="teacher-detail.html">{{ $item['user']['name'] }}</a></p>
-                    <h5 class="card-title pb-1"><a href="course-details.html"> {{ $item->course_name }}</a></h5>
+                    <p class="card-text pb-2">Tạo bởi <a href="{{ route('instructor.details',$item->instructor_id) }}">{{ $item['user']['name'] }}</a></p>
+                    <h5 class="card-title pb-1"><a href="{{ url('course/details/'.$item->id.'/'.$item->course_name_slug) }}"> {{ $item->course_name }}</a></h5>
                     <div class="d-flex align-items-center pb-1">
                         @if ($item->bestseller == 1)
-                            <h6 class="ribbon fs-14 mr-2">Nhiều nhất</h6>
+                            <h6 class="ribbon fs-14 mr-2">Mua nhiều nhất</h6>
                         @else
                             <h6 class="ribbon fs-14 mr-2">Mới</h6>
                         @endif
 
-                        <p class="text-success fs-14 font-weight-medium">Cập nhật<span
-                                class="font-weight-bold pl-1">{{ $item->created_at->format('d M Y') }}</span></p>
+                        <p class="text-success fs-14 font-weight-medium">Cập nhật: <span
+                                class="font-weight-bold pl-1">{{ $item->created_at->format('d/m/y') }}</span></p>
                     </div>
                     <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>{{ $item->duration }}</li>
-                        <li>{{ $item->label }}</li>
+                        <li><span class="text-black">Thời lượng: </span> {{ $item->duration }}</li>
+                        <li><span class="text-black">Đối tượng học: </span> {{ $item->label }}</li>
                     </ul>
-                    <p class="card-text pt-1 fs-14 lh-22">{{ $item->prerequisites }}</p>
+                    <p class="card-text pt-1 fs-14 lh-22"><span class="text-black">Giới thiệu: </span> {{ $item->description }}</p>
 
                     @php
                         $goals = App\Models\Course_goal::where('course_id',$item->id)->orderBy('id','DESC')->get();
                     @endphp
                     <ul class="generic-list-item fs-14 py-3">
+                        <span class="text-black">Bạn sẽ học được gì? </span>
                         @foreach ($goals as $goal)
                             <li><i class="la la-check mr-1 text-black"></i> {{ $goal->goal_name }}</li>
                         @endforeach

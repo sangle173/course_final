@@ -48,7 +48,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong>Giảng viên :</strong></td>
-                                        <td> {{ $course['user']['name'] }}</td>
+                                        <td> {{ $course -> instructor_id == Auth::user() ->id ? $course['user']['name'] .' (Bạn)': $course['user']['name']}}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Nhãn :</strong></td>
