@@ -73,7 +73,7 @@
                     <div class="col-lg-2">
                         <div class="logo-box">
                             <a href="{{ url('/') }}" class="logo"><img src="{{ asset('frontend/images/logo.png') }}"
-                                                                       width="300px" height="70px" alt="logo"></a>
+                                                                       width="250px" height="60px" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2"
                                      data-toggle="tooltip" data-placement="top" title="Tìm kiếm">

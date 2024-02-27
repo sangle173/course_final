@@ -169,6 +169,9 @@
                                                      title="Thêm vào yêu thích"><i class="la la-heart-o"></i></div>
                                             </div>
                                         </div><!-- end card-body -->
+                                        <div class="card-footer text-muted">
+                                            2 days ago
+                                        </div>
                                     </div><!-- end card -->
                                 </div><!-- end col-lg-4 -->
 

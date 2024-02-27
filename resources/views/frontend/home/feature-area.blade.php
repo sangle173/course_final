@@ -52,7 +52,7 @@
                             </svg>
                     </div>
                     <h3 class="info__title">Giảng viên nhiều kinh nghiệm</h3>
-                    <p class="info__text">Timply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                    <p class="info__text">Hệ thống Luyện thi công chức cung cấp các khóa ôn thi công chức Tổng cục Thuế, Kho bạc Nhà nước… chất lượng từ cơ bản đến chuyên sâu. Phương pháp dạy theo hệ thống, logic cùng bộ câu hỏi thực hành lý thuyết, bài tập và trắc nghiệm bám sát nội dung đề thi.</p>
                 </div><!-- end info-box -->
             </div><!-- end col-lg-3 -->
             <div class="col-lg-4 responsive-column-half">
@@ -61,7 +61,7 @@
                     <div class="icon-element mx-auto shadow-sm">
                         <svg class="svg-icon-color-2" viewBox="0 0 74 74" width="45" xmlns="http://www.w3.org/2000/svg"><path d="m31.841 26.02a1 1 0 0 1 -.52-1.855l2.59-1.57a1 1 0 1 1 1.037 1.71l-2.59 1.57a1 1 0 0 1 -.517.145z"/><path d="m57.42 58.09a.985.985 0 0 1 -.294-.045l-20.09-6.179a1 1 0 0 1 -.546-1.5l26.054-40.382-39.324 38.55a1 1 0 0 1 -1.087.208l-16.76-7.03a1 1 0 0 1 -.131-1.777l11.358-6.871a1 1 0 0 1 1.035 1.711l-9.675 5.853 14.334 6.013 39.106-38.341-20.363 12.316a1 1 0 0 1 -1.037-1.716l27.709-16.747a1 1 0 0 1 .372-.14s0 0 0 0a.986.986 0 0 1 .156-.013 1 1 0 0 1 .609.206l.079.067a1 1 0 0 1 .312.713 1.023 1.023 0 0 1 -.023.227l-10.814 54.073a1 1 0 0 1 -.98.8zm-18.533-7.747 17.769 5.466 9.572-47.844z"/><path d="m23.221 31.23a1 1 0 0 1 -.519-1.856l2.53-1.53a1 1 0 0 1 1.036 1.712l-2.531 1.53a1 1 0 0 1 -.516.144z"/><path d="m28.7 72h-.072a1 1 0 0 1 -.894-.74l-6.178-23.184a1 1 0 1 1 1.931-.515l5.438 20.389 7.488-17.435a1 1 0 1 1 1.838.789l-8.629 20.096a1 1 0 0 1 -.922.6z"/><path d="m28.709 72a1 1 0 0 1 -.736-1.677l16.092-17.515a1 1 0 0 1 1.473 1.354l-16.093 17.515a1 1 0 0 1 -.736.323z"/></svg>
                     </div>
-                    <h3 class="info__title">Hỏi đáp dễ dàng</h3>
+                    <h3 class="info__title">Bám sát chương trình</h3>
                     <p class="info__text">Timply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                 </div><!-- end info-box -->
             </div><!-- end col-lg-3 -->

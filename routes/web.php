@@ -138,7 +138,6 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/all/course','AdminAllCourse')->name('admin.all.course');
     Route::post('/update/course/stauts','UpdateCourseStatus')->name('update.course.stauts');
     Route::get('/admin/course/details/{id}','AdminCourseDetails')->name('admin.course.details');
-
 });
 
 
@@ -327,6 +326,7 @@ Route::controller(CourseController::class)->group(function(){
     Route::post('/update/course/video','UpdateCourseVideo')->name('update.course.video');
     Route::post('/update/course/goal','UpdateCourseGoal')->name('update.course.goal');
     Route::get('/delete/course/{id}','DeleteCourse')->name('delete.course');
+    Route::post('/update/course/status','UpdateCourseStatus')->name('update.course.status');
 });
 
 

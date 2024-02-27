@@ -45,10 +45,10 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('instructor.edit.post',$item->id) }}" class="btn btn-info px-5">
+                                    <a href="{{ route('instructor.edit.post',$item->id) }}" class="btn btn-info">
                                         <i class="lni lni-eraser"></i> </a>
                                     <a href="{{ route('instructor.delete.post',$item->id) }}"
-                                       class="btn btn-danger px-5" id="delete"><i class="lni lni-trash"></i> </a>
+                                       class="btn btn-danger" id="delete"><i class="lni lni-trash"></i> </a>
                                 </td>
                             </tr>
                         @endforeach

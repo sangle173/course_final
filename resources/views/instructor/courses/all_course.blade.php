@@ -1,5 +1,6 @@
 @extends('instructor.instructor_dashboard')
 @section('instructor')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <div class="page-content">
         <!--breadcrumb-->
@@ -35,6 +36,7 @@
                             <th>Thời lượng</th>
                             <th>Số học viên</th>
                             <th>Số bài học</th>
+                            <th title="Bật để công khai khóa học/ tắt để ở chế độ ẩn">Mở</th>
                             <th>Tạo bởi</th>
                             <th>Cập nhật lúc</th>
                             <th>Hành động</th>
@@ -55,6 +57,11 @@
                                 <td>{{count( DB::table("course_lectures") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>{{ $item -> instructor_id == Auth::user() ->id ? $item['user']['name'] .' (Bạn)': $item['user']['name']}}
                                     </td>
+                                <td style="text-align: right!important;">
+                                    <div class="form-check-danger form-check form-switch">
+                                        <input class="form-check-input status-toggle large-checkbox" title="Tắt/Bật trạng thái của khóa học" type="checkbox" id="flexSwitchCheckCheckedDanger" data-course-id="{{ $item->id }}" {{ $item->status ? 'checked' : ''}}  >
+                                    </div>
+                                </td>
                                 <td>
                                     @if($item -> updated_at)
                                         {{ $item->updated_at -> format('d/m/Y H:i') }}
@@ -72,7 +79,7 @@
                                     <a href="{{ route('instructor.course.details',$item->id) }}" class="btn btn-success"><i
                                             class="lni lni-eye"></i></a>
 
-{{--                                    <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger"--}}
+                                    {{--                                    <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger"--}}
 {{--                                       id="delete"--}}
 {{--                                       title="Xóa"><i class="lni lni-trash"></i> </a>--}}
 
@@ -90,5 +97,31 @@
 
 
 
+    <script>
+        $(document).ready(function(){
+            $('.status-toggle').on('change', function(){
+                var courseId = $(this).data('course-id');
+                var isChecked = $(this).is(':checked');
 
+                // send an ajax request to update status
+
+                $.ajax({
+                    url: "{{ route('update.course.status') }}",
+                    method: "POST",
+                    data: {
+                        course_id : courseId,
+                        is_checked: isChecked ? 1 : 0,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response){
+                        toastr.success(response.message);
+                    },
+                    error: function(){
+
+                    }
+                });
+
+            });
+        });
+    </script>
 @endsection

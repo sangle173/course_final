@@ -84,11 +84,17 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="input1" class="form-label">Tài liệu </label>
-                        <input type="file" name="lecture_document" class="form-control"
+                        <label for="lecture_document" class="form-label">Tài liệu </label>
+                        <input type="file" name="files[]" id="lecture_document" onchange="javascript:updateList()" multiple class="form-control @error('files') is-invalid @enderror"
                                accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
+                        @error('files')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        <p>Tài liệu đã chọn:</p>
+                        <div id="fileList"></div>
                     </div>
                     <div class="form-group col-md-6">
+
                     </div>
                     <div class="col-md-12">
                         <div class="d-md-flex d-grid align-items-center gap-3">
@@ -106,6 +112,15 @@
             let file = event.target.files[0];
             let blobURL = URL.createObjectURL(file);
             document.querySelector("video").src = blobURL;
+        }
+        updateList = function() {
+            var input = document.getElementById('lecture_document');
+            var output = document.getElementById('fileList');
+            var children = "";
+            for (var i = 0; i < input.files.length; ++i) {
+                children += '<li>' + input.files.item(i).name + '</li>';
+            }
+            output.innerHTML = '<ul>'+children+'</ul>';
         }
     </script>
 @endsection

@@ -3,7 +3,7 @@
     <i class="la la-times"></i>
 </div><!-- end off-canvas-menu-close -->
 <div class="logo-box px-4">
-    <a href="{{ route('dashboard')}}" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" width="250"
+    <a href="{{ route('dashboard')}}" class="logo"><img src="{{ asset('frontend/images/logo.png') }}" width="250px" height="60px"
                                                         alt="logo"></a>
 </div>
 <ul class="generic-list-item off-canvas-menu-list off--canvas-menu-list pt-35px">

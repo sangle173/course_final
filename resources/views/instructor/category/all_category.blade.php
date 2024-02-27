@@ -42,7 +42,7 @@
                                 <td>{{ $item->category_name }}</td>
                                 <td>
                                     {{--     @if (Auth::user()->can('category.edit')) --}}
-                                    <a href="{{ route('instructor.edit.category',$item->id) }}" title="Chỉnh sửa" class="btn btn-info px-5">
+                                    <a href="{{ route('instructor.edit.category',$item->id) }}" title="Chỉnh sửa" class="btn btn-info">
                                         <i class="lni lni-eraser"></i> </a>
                                     {{--     @endif --}}
                                     {{--     @if (Auth::user()->can('category.delete'))  --}}
