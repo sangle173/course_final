@@ -62,16 +62,16 @@
                                         <div class="courseHide" id="lectureContainer{{ $key }}">
                                             <div class="container">
                                                 <table class="table table-striped">
-{{--                                                    <thead>--}}
-{{--                                                    <tr>--}}
-{{--                                                        <th scope="col">#</th>--}}
-{{--                                                        <th scope="col">Tiêu đề</th>--}}
-{{--                                                        <th scope="col">Nội dung</th>--}}
-{{--                                                        <th scope="col">Video</th>--}}
-{{--                                                        <th scope="col">Tài liệu</th>--}}
-{{--                                                        <th scope="col">Hành động</th>--}}
-{{--                                                    </tr>--}}
-{{--                                                    </thead>--}}
+                                                    {{--                                                    <thead>--}}
+                                                    {{--                                                    <tr>--}}
+                                                    {{--                                                        <th scope="col">#</th>--}}
+                                                    {{--                                                        <th scope="col">Tiêu đề</th>--}}
+                                                    {{--                                                        <th scope="col">Nội dung</th>--}}
+                                                    {{--                                                        <th scope="col">Video</th>--}}
+                                                    {{--                                                        <th scope="col">Tài liệu</th>--}}
+                                                    {{--                                                        <th scope="col">Hành động</th>--}}
+                                                    {{--                                                    </tr>--}}
+                                                    {{--                                                    </thead>--}}
                                                     <tbody>
                                                     @foreach ($item->lectures as $key=>$lecture)
                                                         <tr>
@@ -80,16 +80,22 @@
                                                             <td width="20%">{{ \Illuminate\Support\Str::limit($lecture -> content, 100, $end='...') }}</td>
                                                             <td width="10%">
                                                                 @if($lecture->status == '0')
-                                                                    <span class="badge badge-pill bg-secondary">Riêng tư </span>
+                                                                    <span
+                                                                        class="badge badge-pill bg-secondary">Riêng tư </span>
                                                                 @else
-                                                                    <span class="badge badge-pill bg-primary">Công khai </span>
+                                                                    <span
+                                                                        class="badge badge-pill bg-primary">Công khai </span>
                                                                 @endif
                                                             </td>
                                                             <td width="10%">
-                                                                <a href="#" data-bs-toggle="modal"
-                                                                   class="text-decoration-none"
-                                                                   data-bs-target="#exampleModal{{$lecture->id}}">{!! substr(str_replace('upload/lecture/video/', '', $lecture -> video), 11) !!}
-                                                                </a>
+                                                                @if($lecture -> video)
+                                                                    <a href="#" data-bs-toggle="modal"
+                                                                       class="text-decoration-none"
+                                                                       data-bs-target="#exampleModal{{$lecture->id}}">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}
+                                                                    </a>
+
+                                                                @else
+                                                                @endif
                                                                 <div class="modal fade"
                                                                      id="exampleModal{{$lecture->id}}" tabindex="-1"
                                                                      aria-labelledby="exampleModalLabel"
@@ -98,7 +104,7 @@
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
-                                                                                    id="exampleModalLabel">{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}</h5>
+                                                                                    id="exampleModalLabel">{{ $lecture->lecture_title }}</h5>
                                                                                 <button type="button"
                                                                                         class="btn-close"
                                                                                         data-bs-dismiss="modal"
@@ -140,25 +146,30 @@
                                                                 </div>
                                                             </td>
                                                             <td width="25%">
-                                                                <ul>
-                                                                @foreach (explode(';', $lecture->url) as $info)
-                                                                    <li>
-                                                                        <a href="{{  asset('upload/lecture/document/'.$info) }}"
-                                                                           class="btn-lg btn-link text-primary text-decoration-none"
-                                                                           target="_blank" title="Tài liệu">
-                                                                            {!! str_replace('upload/lecture/document/', '', $info) !!}
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                                </ul>
+                                                                @if($lecture->url)
+                                                                    <ul>
+                                                                        @foreach (explode(';', $lecture->url) as $info)
+                                                                            <li>
+                                                                                <a href="{{  asset('upload/lecture/document/'.$info) }}"
+                                                                                   class="btn-lg btn-link text-primary text-decoration-none"
+                                                                                   target="_blank" title="Tài liệu">
+                                                                                    {!! str_replace('upload/lecture/document/', '', $info) !!}
+                                                                                </a>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @else
+                                                                @endif
                                                             </td>
                                                             <td width="15%">
                                                                 <a href="{{ route('edit.lecture',['id' => $lecture->id]) }}"
-                                                                   class="btn btn-link text-info" title="Chỉnh sửa bài học">
+                                                                   class="btn btn-link text-info"
+                                                                   title="Chỉnh sửa bài học">
                                                                     <i class="lni lni-pencil text-info"></i></a> &nbsp;
-                                                                <a href="{{ route('delete.lecture',['id' => $lecture->id]) }}"
+                                                                <a href="{{ route('delete.lecture',['id' => $lecture->id]) }}" id="delete"
                                                                    class="btn btn-link text-danger" title="Xóa bài học"><i
-                                                                        id="delete" class="lni lni-cross-circle"></i> </a>
+                                                                         class="lni lni-cross-circle"></i>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
