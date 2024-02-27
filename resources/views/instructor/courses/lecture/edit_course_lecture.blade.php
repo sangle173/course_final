@@ -85,7 +85,7 @@
                                 <video width="300" height="130" controls>
                                     <source src="{{ asset( $lecture->video ) }}" type="video/mp4">
                                 </video>
-                                <p>{!! substr(str_replace('upload/lecture/video/', '', $lecture -> video), 11) !!}</p>
+                                <p>{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}</p>
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                                                 <a href="{{  asset('upload/lecture/document/'.$info) }}"
                                                    class="btn-lg btn-link text-primary text-decoration-none"
                                                    target="_blank" title="Tài liệu">
-                                                    {!! substr(str_replace('upload/lecture/document/', '', $info), 11) !!}
+                                                    {!! str_replace('upload/lecture/document/', '', $info) !!}
                                                 </a>
                                             </li>
                                         @endforeach
