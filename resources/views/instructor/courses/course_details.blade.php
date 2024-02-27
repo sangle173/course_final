@@ -79,9 +79,13 @@
                                     <tr>
                                         <td><strong>Video :</strong></td>
                                         <td>
-                                            <video width="300" height="200" controls>
-                                                <source src="{{ asset($course->video) }}" type="video/mp4">
-                                            </video>
+                                            @if($course->video)
+                                                <video width="300" height="200" controls>
+                                                    <source src="{{ asset($course->video) }}" type="video/mp4">
+                                                </video>
+                                            @else
+                                            Khóa học chưa có video giới thiệu
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>

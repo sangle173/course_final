@@ -10,7 +10,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Chính sửa khóa học/li>
+                        <li class="breadcrumb-item active" aria-current="page">Chính sửa khóa học</li>
                     </ol>
                 </nav>
             </div>
@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="prerequisites" class="form-label">Điều kiện tiên quyếts </label>
+                        <label for="prerequisites" class="form-label">Điều kiện tiên quyết </label>
                         <textarea name="prerequisites" class="form-control" id="prerequisites"
                                   placeholder="Điều kiệ ..." rows="3">{{ $course->prerequisites }}</textarea>
                     </div>
@@ -249,13 +249,16 @@
                             <input type="file" name="video" class="form-control" accept="video/mp4, video/webm">
                         </div>
 
-                        <div class="col-md-6">
-                            <video width="300" height="130" controls>
-                                <source src="{{ asset( $course->video ) }}" type="video/mp4">
-                            </video>
-                        </div>
+                        @if($course->video)
+                            <div class="col-md-6">
+                                <video width="300" height="130" controls>
+                                    <source src="{{ asset( $course->video ) }}" type="video/mp4">
+                                </video>
+                            </div>
+                        @else<br>
+                        <p>Khóa học chưa có video giới thiệu</p>
+                        @endif
                     </div>
-
                     <br><br>
                     <div class="col-md-12">
                         <div class="d-md-flex d-grid align-items-center gap-3">
@@ -355,14 +358,14 @@
 
 
                         <div class="form-group col-md-6">
-                            <label for="goals">Goals</label>
+                            <label for="goals">Mục tiêu</label>
                             <input type="text" name="course_goals[]" id="goals" class="form-control"
-                                   placeholder="Goals  ">
+                                   placeholder="Mục tiêu  ">
                         </div>
                         <div class="form-group col-md-6" style="padding-top: 20px">
                             <span class="btn btn-success btn-sm addeventmore"><i
-                                    class="fa fa-plus-circle">Add</i></span>
-                            <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Remove</i></span>
+                                    class="fa fa-plus-circle">Thêm</i></span>
+                            <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle">Xóa</i></span>
                         </div>
                     </div>
                 </div>
