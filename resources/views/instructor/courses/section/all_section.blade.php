@@ -146,7 +146,7 @@
                                                                         <a href="{{  asset('upload/lecture/document/'.$info) }}"
                                                                            class="btn-lg btn-link text-primary text-decoration-none"
                                                                            target="_blank" title="Tài liệu">
-                                                                            {!! substr(str_replace('upload/lecture/document/', '', $info), 11) !!}
+                                                                            {!! str_replace('upload/lecture/document/', '', $info) !!}
                                                                         </a>
                                                                     </li>
                                                                 @endforeach
