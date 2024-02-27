@@ -53,7 +53,8 @@
                                 <td>{{ $item->duration }}</td>
                                 <td>{{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>{{count( DB::table("course_lectures") -> where("course_id", $item->id) ->get())}}</td>
-                                <td>{{ $item['user']['name'] }}</td>
+                                <td>{{ $item -> instructor_id == Auth::user() ->id ? $item['user']['name'] .' (Bạn)': $item['user']['name']}}
+                                    </td>
                                 <td>
                                     @if($item -> updated_at)
                                         {{ $item->updated_at -> format('d/m/Y H:i') }}

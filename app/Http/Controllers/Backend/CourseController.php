@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -27,8 +28,9 @@ class CourseController extends Controller
     {
 
         $categories = Category::latest()->get();
-        return view('instructor.courses.add_course', compact('categories'));
-
+        $instructors = User::where('role','instructor')->latest()->get();
+        $currentInstructor = Auth::user();
+        return view('instructor.courses.add_course', compact('categories', 'instructors', 'currentInstructor'));
     }// End Method
 
 
@@ -70,7 +72,7 @@ class CourseController extends Controller
 
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
-            'instructor_id' => Auth::user()->id,
+            'instructor_id' => $request->instructor_id,
             'course_title' => $request->course_title,
             'course_name' => $request->course_name,
             'course_name_slug' => strtolower(str_replace(' ', '-', $request->course_name)),
@@ -123,7 +125,9 @@ class CourseController extends Controller
         $goals = Course_goal::where('course_id', $id)->get();
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
-        return view('instructor.courses.edit_course', compact('course', 'categories', 'subcategories', 'goals'));
+        $instructors = User::where('role','instructor')->latest()->get();
+        $currentInstructor = Auth::user();
+        return view('instructor.courses.edit_course', compact('course', 'categories', 'subcategories', 'goals', 'instructors', 'currentInstructor'));
 
     }// End Method
 
@@ -136,7 +140,7 @@ class CourseController extends Controller
         Course::find($cid)->update([
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
-            'instructor_id' => Auth::user()->id,
+            'instructor_id' => $request->instructor_id,
             'course_title' => $request->course_title,
             'course_name' => $request->course_name,
             'course_name_slug' => strtolower(str_replace(' ', '-', $request->course_name)),

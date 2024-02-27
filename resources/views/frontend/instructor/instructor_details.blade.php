@@ -14,7 +14,7 @@
                 </div>
                 <div class="media-body">
                     <h2 class="section__title fs-30">{{ $instructor->name }}</h2>
-                    <span class="d-block lh-18 pt-1 pb-2">Tạo ngày {{ Carbon\Carbon::parse($instructor->created_at)->diffForHumans()  }}</span>
+                    <span class="d-block lh-18 pt-1 pb-2">Online lúc {{ Carbon\Carbon::parse($instructor->created_at)->diffForHumans()  }}</span>
                     <p class="lh-18">{{ $instructor->email }}</p>
                 </div>
             </div><!-- end media -->
@@ -23,7 +23,6 @@
                 <li><a href="#"><i class="la la-twitter"></i></a></li>
                 <li><a href="#"><i class="la la-instagram"></i></a></li>
                 <li><a href="#"><i class="la la-linkedin"></i></a></li>
-                <li><a href="#"><i class="la la-youtube"></i></a></li>
             </ul>
         </div><!-- end breadcrumb-content -->
     </div><!-- end container -->
@@ -214,62 +213,62 @@
             <div class="tab-content pt-40px" id="myTabContent">
                 <div class="tab-pane fade show active" id="about-me" role="tabpanel" aria-labelledby="about-me-tab">
                     <div class="card card-item">
-                        <div class="card-body">
-                            <p class="card-text pb-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis est fugiat ipsa laboriosam laudantium possimus quo? Aperiam architecto laborum provident rerum, totam ullam! Accusantium eius eum perferendis quasi, repellendus suscipit voluptate voluptatem! Delectus dolorem maxime nulla numquam quasi quod.</p>
-                            <p class="card-text pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque ipsa magnam, magni nobis quam ratione reiciendis totam? Accusantium aliquam aspernatur, assumenda cupiditate deleniti eius, ex fuga iusto minus, nihil perspiciatis porro provident quasi soluta ut! Consequuntur earum eos magnam?</p>
-                            <div class="collapse" id="collapseReadMore">
-                                <p class="card-text pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur consequuntur dolorem enim error est fuga iure magnam voluptas, voluptates.</p>
-                            </div>
-                            <a class="collapse-btn collapse--btn fs-15" data-toggle="collapse" href="#collapseReadMore" role="button" aria-expanded="false" aria-controls="collapseReadMore">
-                                <span class="collapse-btn-hide">Read more<i class="la la-angle-down ml-1 fs-14"></i></span>
-                                <span class="collapse-btn-show">Read less<i class="la la-angle-up ml-1 fs-14"></i></span>
-                            </a>
-                        </div>
+{{--                        <div class="card-body">--}}
+{{--                            <p class="card-text pb-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis est fugiat ipsa laboriosam laudantium possimus quo? Aperiam architecto laborum provident rerum, totam ullam! Accusantium eius eum perferendis quasi, repellendus suscipit voluptate voluptatem! Delectus dolorem maxime nulla numquam quasi quod.</p>--}}
+{{--                            <p class="card-text pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque ipsa magnam, magni nobis quam ratione reiciendis totam? Accusantium aliquam aspernatur, assumenda cupiditate deleniti eius, ex fuga iusto minus, nihil perspiciatis porro provident quasi soluta ut! Consequuntur earum eos magnam?</p>--}}
+{{--                            <div class="collapse" id="collapseReadMore">--}}
+{{--                                <p class="card-text pb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur consequuntur dolorem enim error est fuga iure magnam voluptas, voluptates.</p>--}}
+{{--                            </div>--}}
+{{--                            <a class="collapse-btn collapse--btn fs-15" data-toggle="collapse" href="#collapseReadMore" role="button" aria-expanded="false" aria-controls="collapseReadMore">--}}
+{{--                                <span class="collapse-btn-hide">Read more<i class="la la-angle-down ml-1 fs-14"></i></span>--}}
+{{--                                <span class="collapse-btn-show">Read less<i class="la la-angle-up ml-1 fs-14"></i></span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
                     </div>
                 </div><!-- end tab-pane -->
                 <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
                     <div class="card card-item">
-                        <div class="card-body">
-                            <p>
-                                There are many variations of passages of Lorem Ipsum available,
-                                but the majority have suffered alteration in some form, by injected humour,
-                                or randomised words which don't look even slightly believable.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                cupiditate deleniti eius, ex fuga iusto minus,
-                                nihil perspiciatis porro provident quasi soluta ut! Consequuntur earum eos magnam?
-                            </p>
-                            <div class="skills-wrap pt-30px">
-                                <div class="skills">
-                                    <div class="skill">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between">
-                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">HTML</span>
-                                            <span>99%</span>
-                                        </div>
-                                        <div class="progress_bg">
-                                            <div class="progress_bar"></div>
-                                        </div>
-                                    </div>
-                                    <div class="skill">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between">
-                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">CSS</span>
-                                            <span>99%</span>
-                                        </div>
-                                        <div class="progress_bg">
-                                            <div class="progress_bar"></div>
-                                        </div>
-                                    </div>
-                                    <div class="skill">
-                                        <div class="d-flex flex-wrap align-items-center justify-content-between">
-                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">Javascript</span>
-                                            <span>95%</span>
-                                        </div>
-                                        <div class="progress_bg">
-                                            <div class="progress_bar"></div>
-                                        </div>
-                                    </div>
-                                </div><!-- end skills-->
-                            </div>
-                        </div>
+{{--                        <div class="card-body">--}}
+{{--                            <p>--}}
+{{--                                There are many variations of passages of Lorem Ipsum available,--}}
+{{--                                but the majority have suffered alteration in some form, by injected humour,--}}
+{{--                                or randomised words which don't look even slightly believable.--}}
+{{--                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.--}}
+{{--                                cupiditate deleniti eius, ex fuga iusto minus,--}}
+{{--                                nihil perspiciatis porro provident quasi soluta ut! Consequuntur earum eos magnam?--}}
+{{--                            </p>--}}
+{{--                            <div class="skills-wrap pt-30px">--}}
+{{--                                <div class="skills">--}}
+{{--                                    <div class="skill">--}}
+{{--                                        <div class="d-flex flex-wrap align-items-center justify-content-between">--}}
+{{--                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">HTML</span>--}}
+{{--                                            <span>99%</span>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="progress_bg">--}}
+{{--                                            <div class="progress_bar"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="skill">--}}
+{{--                                        <div class="d-flex flex-wrap align-items-center justify-content-between">--}}
+{{--                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">CSS</span>--}}
+{{--                                            <span>99%</span>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="progress_bg">--}}
+{{--                                            <div class="progress_bar"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="skill">--}}
+{{--                                        <div class="d-flex flex-wrap align-items-center justify-content-between">--}}
+{{--                                            <span class="fs-16 text-black font-weight-semi-bold pr-3">Javascript</span>--}}
+{{--                                            <span>95%</span>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="progress_bg">--}}
+{{--                                            <div class="progress_bar"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- end skills-->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div><!-- end tab-pane -->
             </div><!-- end tab-content -->
@@ -286,7 +285,7 @@
 <section class="course-area section-padding">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between pb-3">
-            <h3 class="fs-24 font-weight-semi-bold">My courses</h3>
+            <h3 class="fs-24 font-weight-semi-bold">Khóa học</h3>
             <span class="ribbon ribbon-lg">{{ count($courses) }}</span>
         </div>
         <div class="divider"><span></span></div>
@@ -309,12 +308,12 @@
 
                         <div class="course-badge-labels">
                             @if ($course->bestseller == 1)
-                            <div class="course-badge">Bestseller</div>
+                            <div class="course-badge">Mua nhiều nhất</div>
                             @else
                             @endif
 
                      @if ($course->discount_price == NULL)
-                    <div class="course-badge blue">New</div>
+                    <div class="course-badge blue">Mới</div>
                     @else
                     <div class="course-badge blue">{{ round($discount) }}%</div>
                     @endif
@@ -333,7 +332,7 @@
                                 <span class="la la-star"></span>
                                 <span class="la la-star-o"></span>
                             </div>
-                            <span class="rating-total pl-1">(20,230)</span>
+                            <span class="rating-total pl-1">(50)</span>
                         </div><!-- end rating-wrap -->
                         <div class="d-flex justify-content-between align-items-center">
                             @if ($course->discount_price == NULL)
@@ -358,7 +357,7 @@
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true"><i class="la la-arrow-left"></i></span>
-                            <span class="sr-only">Previous</span>
+                            <span class="sr-only">Trước</span>
                         </a>
                     </li>
                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -367,12 +366,11 @@
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true"><i class="la la-arrow-right"></i></span>
-                            <span class="sr-only">Next</span>
+                            <span class="sr-only">Sau</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <p class="fs-14 pt-2">Showing 1-6 of 24 results</p>
         </div>
     </div><!-- end container -->
 </section><!-- end courses-area -->
@@ -387,45 +385,52 @@
 
 <!-- tooltip_templates -->
 @foreach ($courseData as $item)
+    <div class="tooltip_templates">
+        <div id="tooltip_content_1{{ $item->id }}">
+            <div class="card card-item">
+                <div class="card-body">
+                    <p class="card-text pb-2">Tạo bởi <a href="{{ route('instructor.details',$item->instructor_id) }}">{{ $item['user']['name'] }}</a></p>
+                    <h5 class="card-title pb-1"><a href="{{ url('course/details/'.$item->id.'/'.$item->course_name_slug) }}"> {{ $item->course_name }}</a></h5>
+                    <div class="d-flex align-items-center pb-1">
+                        @if ($item->bestseller == 1)
+                            <h6 class="ribbon fs-14 mr-2">Mua nhiều nhất</h6>
+                        @else
+                            <h6 class="ribbon fs-14 mr-2">Mới</h6>
+                        @endif
 
-<div class="tooltip_templates">
-    <div id="tooltip_content_1{{ $item->id }}">
-        <div class="card card-item">
-            <div class="card-body">
-                <p class="card-text pb-2">By <a href="teacher-detail.html">{{ $item['user']['name'] }}</a></p>
-                <h5 class="card-title pb-1"><a href="course-details.html"> {{ $item->course_name }}</a></h5>
-                <div class="d-flex align-items-center pb-1">
-                    @if ($item->bestseller == 1)
-                    <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
-                    @else
-                    <h6 class="ribbon fs-14 mr-2">New</h6>
-                    @endif
+                        <p class="text-success fs-14 font-weight-medium">Cập nhật: <span
+                                class="font-weight-bold pl-1">{{ $item->created_at->format('d/m/y') }}</span></p>
+                    </div>
+                    <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+                        <li><span class="text-black">Thời lượng: </span> {{ $item->duration }}</li>
+                        <li><span class="text-black">Đối tượng học: </span> {{ $item->label }}</li>
+                    </ul>
+                    <p class="card-text pt-1 fs-14 lh-22"><span class="text-black">Giới thiệu: </span> {{ $item->description }}</p>
 
-                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">{{ $item->created_at->format('M d Y') }}</span></p>
+                    @php
+                        $goals = App\Models\Course_goal::where('course_id',$item->id)->orderBy('id','DESC')->get();
+                    @endphp
+                    <ul class="generic-list-item fs-14 py-3">
+                        <span class="text-black">Bạn sẽ học được gì? </span>
+                        @foreach ($goals as $goal)
+                            <li><i class="la la-check mr-1 text-black"></i> {{ $goal->goal_name }}</li>
+                        @endforeach
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center">
+
+
+                        <button type="submit" class="btn theme-btn flex-grow-1 mr-3"
+                                onclick="addToCart({{ $item->id }}, '{{ $item->course_name }}','{{ $item->instructor_id }}','{{ $item->course_name_slug }}' )">
+                            <i class="la la-shopping-cart mr-1 fs-18"></i>Đăng ký ngay
+                        </button>
+
+                        <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Thêm vào yêu thích"><i
+                                class="la la-heart-o"></i></div>
+                    </div>
                 </div>
-                <ul class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                    <li>{{ $item->duration }} total hours</li>
-                    <li>{{ $item->label }}</li>
-                </ul>
-                <p class="card-text pt-1 fs-14 lh-22">{{ $item->prerequisites }}</p>
-
-    @php
-       $goals = App\Models\Course_goal::where('course_id',$item->id)->orderBy('id','DESC')->get();
-    @endphp
-                <ul class="generic-list-item fs-14 py-3">
-                    @foreach ($goals as $goal)
-                    <li><i class="la la-check mr-1 text-black"></i> {{ $goal->goal_name }}</li>
-                    @endforeach
-                </ul>
-                <div class="d-flex justify-content-between align-items-center">
-                    <a href="#" class="btn theme-btn flex-grow-1 mr-3"><i class="la la-shopping-cart mr-1 fs-18"></i> Add to Cart</a>
-                    <div class="icon-element icon-element-sm shadow-sm cursor-pointer" title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                </div>
-            </div>
-        </div><!-- end card -->
-    </div>
-</div><!-- end tooltip_templates -->
+            </div><!-- end card -->
+        </div>
+    </div><!-- end tooltip_templates -->
 @endforeach
-
 
 @endsection
