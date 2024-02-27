@@ -8,7 +8,7 @@
             <div class="col-lg-3 responsive-column-half">
                 <div class="footer-item">
                     <a href="index.html">
-                        <img src="{{ asset('frontend/images/logo.png') }}" width="250px" height="70px" alt="footer logo" class="footer__logo">
+                        <img src="{{ asset('frontend/images/logo.png') }}" width="250px" height="60px" alt="footer logo" class="footer__logo">
                     </a>
                     <ul class="generic-list-item pt-4">
 {{--                        <li><a href="tel:+1631237884">{{ $setting->phone }}</a></li>--}}

@@ -41,9 +41,9 @@
                             <td> {{ $item->category_name }}  </td>
                             <td>
 
-       <button type="button" class="btn btn-info px-5" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id)"> <i class="lni lni-eraser"></i></button>
+       <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id)"> <i class="lni lni-eraser"></i></button>
 
-       <a href="{{ route('instructor.delete.blog.category',$item->id) }}" class="btn btn-danger px-5" id="delete"><i class="lni lni-trash"></i> </a>
+       <a href="{{ route('instructor.delete.blog.category',$item->id) }}" class="btn btn-danger" id="delete"><i class="lni lni-trash"></i> </a>
                             </td>
                         </tr>
                         @endforeach

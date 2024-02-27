@@ -85,7 +85,7 @@
                                 <video width="300" height="130" controls>
                                     <source src="{{ asset( $lecture->video ) }}" type="video/mp4">
                                 </video>
-                                <p>{!! str_replace('upload/lecture/video/', '', $lecture -> video) !!}</p>
+                                <p>{!! substr(str_replace('upload/lecture/video/', '', $lecture -> video), 11) !!}</p>
                             </div>
                         </div>
 
@@ -114,11 +114,30 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="section_document" class="form-label">Tài liệu </label>
-                                <input type="file" name="lecture_document" id="section_document" class="form-control"
-                                       accept="application/pdf, application/msword, application/vnd.ms-powerpoint"
-                                       value="{{ $lecture->url }}">
+{{--                                <input type="file" name="lecture_document" id="section_document" class="form-control"--}}
+{{--                                       accept="application/pdf, application/msword, application/vnd.ms-powerpoint"--}}
+{{--                                       value="{{ $lecture->url }}">--}}
+                                <input type="file" name="files[]" id="lecture_document" onchange="javascript:updateList()" multiple class="form-control @error('files') is-invalid @enderror"
+                                       accept="application/pdf, application/msword, application/vnd.ms-powerpoint">
                                 <br>
-                                <span>{!! str_replace('upload/lecture/document/', '', $lecture -> url) !!}</span>
+                                @error('files')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                <p>Tài liệu đã chọn:</p>
+                                <div id="fileList">
+                                    <ul>
+                                        @foreach (explode(';', $lecture->url) as $info)
+                                            <li>
+                                                <a href="{{  asset('upload/lecture/document/'.$info) }}"
+                                                   class="btn-lg btn-link text-primary text-decoration-none"
+                                                   target="_blank" title="Tài liệu">
+                                                    {!! substr(str_replace('upload/lecture/document/', '', $info), 11) !!}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
 
@@ -141,6 +160,16 @@
             let file = event.target.files[0];
             let blobURL = URL.createObjectURL(file);
             document.querySelector("video").src = blobURL;
+        }
+
+        updateList = function() {
+            var input = document.getElementById('lecture_document');
+            var output = document.getElementById('fileList');
+            var children = "";
+            for (var i = 0; i < input.files.length; ++i) {
+                children += '<li>' + input.files.item(i).name + '</li>';
+            }
+            output.innerHTML = '<ul>'+children+'</ul>';
         }
     </script>
 @endsection

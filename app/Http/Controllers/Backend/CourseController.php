@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Course_goal;
 use App\Models\CourseSection;
 use App\Models\CourseLecture;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -265,19 +266,27 @@ class CourseController extends Controller
     public function UpdateLectureDocument(Request $request)
     {
         $lecture_id = $request-> lecture_id;
-        $oldDoc = $request-> old_doc;
-
-        $document = $request->file('lecture_document');
-        $documentName = time().'_'.$document->getClientOriginalName();
-        $document->move(public_path('upload/lecture/document/'), $documentName);
-        $save_document = 'upload/lecture/document/' . $documentName;
-
-        if (file_exists($oldDoc)) {
-            unlink($oldDoc);
+        $oldDocs = $request-> old_doc;
+        $multiplePaths = "";
+        if ($request->file('files')){
+            foreach($request->file('files') as $key => $file)
+            {
+                $fileName = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('upload/lecture/document/'), $fileName);
+                $multiplePaths .= ";".$fileName;
+            }
         }
 
+        foreach(explode(';', $oldDocs) as $key => $oldDoc)
+        {
+            if (file_exists($oldDoc)) {
+                unlink($oldDoc);
+            }
+        }
+
+
         CourseLecture::find($lecture_id)->update([
-            'url' => $save_document,
+            'url' => Str::replaceFirst(';', '', $multiplePaths),
             'updated_at' => Carbon::now(),
         ]);
 
@@ -285,41 +294,9 @@ class CourseController extends Controller
             'message' => 'Cập nhật tài liệu bài học thành công',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('course.all.lecture', CourseLecture::find($lecture_id) -> course_id)->with($notification);
 
     }
-
-//    public function UpdateLectureVideo(Request $request)
-//    {
-//
-//        $course_id = $request->vid;
-//        $oldVideo = $request->old_vid;
-//
-//        $request->validate([
-//            'video' => 'required|mimes:mp4|max:300000',
-//        ]);
-//
-//        $video = $request->file('video');
-//        $videoName = time() . '.' . $video->getClientOriginalExtension();
-//        $video->move(public_path('upload/lecture/video/'), $videoName);
-//        $save_video = 'upload/lecture/video/' . $videoName;
-//
-//        if (file_exists($oldVideo)) {
-//            unlink($oldVideo);
-//        }
-//
-//        Course::find($course_id)->update([
-//            'video' => $save_video,
-//            'updated_at' => Carbon::now(),
-//        ]);
-//
-//        $notification = array(
-//            'message' => 'Course Video Updated Successfully',
-//            'alert-type' => 'success'
-//        );
-//        return redirect()->back()->with($notification);
-//    }
-
 
     public function UpdateCourseGoal(Request $request)
     {
@@ -461,11 +438,14 @@ class CourseController extends Controller
             $save_video = 'upload/lecture/video/' . $videoName;
         }
 
-        if ($request->file('lecture_document')) {
-            $document = $request->file('lecture_document');
-            $documentName = time().'_'.$document->getClientOriginalName();
-            $document->move(public_path('upload/lecture/document/'), $documentName);
-            $save_document = 'upload/lecture/document/' . $documentName;
+        $multiplePaths = "";
+        if ($request->file('files')){
+            foreach($request->file('files') as $key => $file)
+            {
+                $fileName = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path('upload/lecture/document/'), $fileName);
+                $multiplePaths .= ";".$fileName;
+            }
         }
 
         CourseLecture::insert([
@@ -474,7 +454,7 @@ class CourseController extends Controller
             'lecture_title' => $request->lecture_title,
             'content' => $request->lecture_content,
             'video' => $save_video,
-            'url' => $save_document,
+            'url' => Str::replaceFirst(';', '', $multiplePaths),
             'status' => $request->lecture_status,
         ]);
 
@@ -562,5 +542,19 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }// End Method
+
+    public function UpdateCourseStatus(Request $request){
+
+        $courseId = $request->input('course_id');
+        $isChecked = $request->input('is_checked',0);
+
+        $course = Course::find($courseId);
+        if ($course) {
+            $course->status = $isChecked;
+            $course->save();
+        }
+
+        return response()->json(['message' => 'Cập nhật trạng thái khóa học thành công!']);
     }// End Method
 }
