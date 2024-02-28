@@ -36,6 +36,7 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
+                            <th>Khóa học</th>
                             <th>Cập nhật lúc</th>
                             <th>Hành động</th>
                         </tr>
