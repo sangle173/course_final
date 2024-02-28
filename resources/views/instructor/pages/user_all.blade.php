@@ -53,14 +53,12 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td>
-{{--                                    @if ($item->UserOnline())--}}
-{{--                                        <span class="badge badge-pill bg-success">Bình thường</span>--}}
-{{--                                    @else--}}
-{{--                                        <span--}}
-{{--                                            class="badge badge-pill bg-danger">{{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }} </span>--}}
-
-{{--                                    @endif--}}
                                     {{ $item->address }}
+                                </td>
+                                <td>
+                                    <ul>
+
+                                    </ul>
                                 </td>
                                 <td>
                                     @if($item -> updated_at)
