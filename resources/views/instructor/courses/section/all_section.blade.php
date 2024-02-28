@@ -67,6 +67,7 @@
                                                         <th scope="col">#</th>
                                                         <th scope="col">Tiêu đề</th>
                                                         <th scope="col">Nội dung</th>
+                                                        <th scope="col">Trạng thái</th>
                                                         <th scope="col">Video</th>
                                                         <th scope="col">Tài liệu</th>
                                                         <th scope="col">Hành động</th>
