@@ -36,6 +36,7 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
+                            <th>Khóa học</th>
                             <th>Cập nhật lúc</th>
                             <th>Hành động</th>
                         </tr>
@@ -60,6 +61,13 @@
 
 {{--                                    @endif--}}
                                     {{ $item->address }}
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach (\App\Models\Order::where('course_id',$course_id)->where('user_id',$item)->first() as $key=> $item)
+                                            <li></li>
+                                        @endforeach
+                                    </ul>
                                 </td>
                                 <td>
                                     @if($item -> updated_at)

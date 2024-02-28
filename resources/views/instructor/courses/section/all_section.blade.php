@@ -62,18 +62,18 @@
                                         <div class="courseHide" id="lectureContainer{{ $key }}">
                                             <div class="container">
                                                 <table class="table table-striped">
-                                                    {{--                                                    <thead>--}}
-                                                    {{--                                                    <tr>--}}
-                                                    {{--                                                        <th scope="col">#</th>--}}
-                                                    {{--                                                        <th scope="col">Tiêu đề</th>--}}
-                                                    {{--                                                        <th scope="col">Nội dung</th>--}}
-                                                    {{--                                                        <th scope="col">Video</th>--}}
-                                                    {{--                                                        <th scope="col">Tài liệu</th>--}}
-                                                    {{--                                                        <th scope="col">Hành động</th>--}}
-                                                    {{--                                                    </tr>--}}
-                                                    {{--                                                    </thead>--}}
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Tiêu đề</th>
+                                                        <th scope="col">Nội dung</th>
+                                                        <th scope="col">Video</th>
+                                                        <th scope="col">Tài liệu</th>
+                                                        <th scope="col">Hành động</th>
+                                                    </tr>
+                                                    </thead>
                                                     <tbody>
-                                                    @foreach ($item->lectures as $key=>$lecture)
+                                                    @foreach ($item->lectures -> sortBy('lecture_title') as $key=>$lecture)
                                                         <tr>
                                                             <th width="5%" scope="row">{{$key + 1}}</th>
                                                             <td width="15%">{{ $lecture->lecture_title }}</td>
