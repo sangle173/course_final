@@ -63,13 +63,6 @@
                                     {{ $item->address }}
                                 </td>
                                 <td>
-                                    <ul>
-                                        @foreach (\App\Models\Order::where('course_id',$course_id)->where('user_id',$item)->first() as $key=> $item)
-                                            <li></li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
                                     @if($item -> updated_at)
                                         {{ $item->updated_at -> format('d/m/Y H:i') }}
                                     @else
