@@ -235,7 +235,7 @@ class CourseController extends Controller
     {
 
         $request->validate([
-            'video' => 'required|mimes:mp4|max:500000',
+            'video' => 'required|mimes:mp4|max:800000',
         ]);
 
         $lecture_id = $request->lecture_id;
@@ -426,7 +426,7 @@ class CourseController extends Controller
         $course_id = $request->course_id;
         $section_id = $request->section_id;
         $request->validate([
-            'lecture_video' => 'mimes:mp4|max:500000',
+            'lecture_video' => 'mimes:mp4|max:800000',
             'lecture_title' => 'required',
         ]);
         $save_video = null;
