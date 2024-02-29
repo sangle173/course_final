@@ -212,6 +212,13 @@ class InstructorController extends Controller
             $user->delete();
         }
 
+        $orders = Order::where('user_id',$id)-> get();
+        foreach($orders as $key => $order)
+        {
+            if (!is_null($order)) {
+                $order->delete();
+            }
+        }
         $notification = array(
             'message' => 'Xóa người dùng thành công',
             'alert-type' => 'success'
