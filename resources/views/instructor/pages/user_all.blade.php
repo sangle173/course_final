@@ -17,7 +17,11 @@
             <div class="ms-auto">
                 <div class="btn-group">
                     <div class="btn-group">
-                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary">Thêm học viên </a>
+                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary"><i class="lni lni-plus"></i> Thêm học viên </a>
+                        &nbsp;&nbsp;
+                        <a href="{{ route('instructor.import.user') }}" class="btn btn-warning "> <i class="lni lni-upload"></i>Import </a>
+                        &nbsp;&nbsp;
+                        <a href="{{ route('instructor.export') }}" class="btn btn-danger "><i class="lni lni-download"></i> Export </a>
                     </div>
                 </div>
             </div>
@@ -55,9 +59,25 @@
                                 <td>
                                     {{ $item->address }}
                                 </td>
-                                <td class="text-center">
-                                    <a href="{{ route('instructor.user.course',$item->id) }}" title="Danh sách khóa học đã mua">
-                                       Danh sách <i class="lni lni-ticket-alt"></i> </a>
+                                <td class="text-left" width="20%">
+                                    @php
+                                        $latestOrders = \App\Models\Order::where('user_id',$item->id)->select('course_id', \DB::raw('MAX(id) as max_id'))->groupBy('course_id');
+                                        $orders = \App\Models\Order::joinSub($latestOrders, 'latest_order', function($join) {
+                                         $join->on('orders.id', '=', 'latest_order.max_id');
+                                        })->orderBy('latest_order.max_id','DESC')->get();
+                                    @endphp
+                                    @if( \App\Models\Order::where('user_id',$item->id) -> get())
+                                        @foreach ($orders as $key=> $order)
+                                            @if($order-> course)
+                                                <span>
+                                                    <i class="lni lni-ticket-alt"></i> {{$order-> course -> course_name}}
+                                                    <br>
+                                                </span>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <span>Không có khóa học</span>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($item -> updated_at)
@@ -67,7 +87,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('instructor.edit.user',$item->id) }}" title="Chỉnh sửa" class="btn btn-info">
+                                    <a href="{{ route('instructor.edit.user',$item->id) }}" title="Chỉnh sửa"
+                                       class="btn btn-info">
                                         <i class="lni lni-eraser"></i> </a>
                                     <a href="{{ route('instructor.delete.user',$item->id) }}" class="btn btn-danger"
                                        id="delete">

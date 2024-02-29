@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PermissionExport;
+use App\Exports\UserExport;
+use App\Imports\PermissionImport;
+use App\Imports\UserImport;
 use App\Models\Course;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -9,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 
 class InstructorController extends Controller
@@ -264,5 +269,34 @@ class InstructorController extends Controller
 //            }
 //        }
         return view('instructor.courses.add_student_to_course',compact('course', 'users'));
+    }// End Method
+
+
+    public function ImportUser(){
+
+        return view('instructor.pages.import_user');
+
+    }// End Method
+
+
+    public function Export(){
+
+        return Excel::download(new UserExport, 'user.xlsx');
+
+    }// End Method
+
+    public function Import(Request $request){
+        $request->validate([
+            'import_file' => 'required',
+        ]);
+
+        Excel::import(new UserImport, $request->file('import_file'));
+
+        $notification = array(
+            'message' => 'Tải lên học viên thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
     }// End Method
 }

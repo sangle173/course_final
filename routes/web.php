@@ -222,9 +222,6 @@ Route::controller(RoleController::class)->group(function(){
     Route::get('/import/permission','ImportPermission')->name('import.permission');
     Route::get('/export','Export')->name('export');
     Route::post('/import','Import')->name('import');
-
-
-
 });
 
 
@@ -458,6 +455,9 @@ Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
     Route::get('/instructor/course/details/{id}','InstructorCourseDetails')->name('instructor.course.details');
     Route::get('/instructor/course/addstudent/{id}','InstructorCourseAddStudent')->name('instructor.course.addstudent');
+    Route::get('instructor/import/user','ImportUser')->name('instructor.import.user');
+    Route::get('instructor/export','Export')->name('instructor.export');
+    Route::post('instructor/import','Import')->name('instructor.import');
 });
 
 // Blog Category All Route

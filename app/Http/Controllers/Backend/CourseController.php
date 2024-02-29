@@ -49,7 +49,7 @@ class CourseController extends Controller
         $request->validate([
             'video' => 'mimes:mp4|max:500000',
             'course_title' => 'required',
-            'course_name' => 'required',
+            'course_name' => 'required|unique:courses,course_name',
             'category_id' => 'required',
             'subcategory_id' => 'required',
             'selling_price' => 'required',
