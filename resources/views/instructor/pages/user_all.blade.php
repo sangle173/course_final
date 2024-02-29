@@ -17,7 +17,7 @@
             <div class="ms-auto">
                 <div class="btn-group">
                     <div class="btn-group">
-                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary  ">Thêm học viên </a>
+                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary">Thêm học viên </a>
                     </div>
                 </div>
             </div>
@@ -55,10 +55,9 @@
                                 <td>
                                     {{ $item->address }}
                                 </td>
-                                <td>
-                                    <ul>
-
-                                    </ul>
+                                <td class="text-center">
+                                    <a href="{{ route('instructor.user.course',$item->id) }}" title="Danh sách khóa học đã mua">
+                                       Danh sách <i class="lni lni-ticket-alt"></i> </a>
                                 </td>
                                 <td>
                                     @if($item -> updated_at)

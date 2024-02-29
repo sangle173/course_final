@@ -76,7 +76,7 @@
                                                     <tbody>
                                                     @foreach ($item->lectures -> sortBy('lecture_title') as $key=>$lecture)
                                                         <tr>
-                                                            <th width="5%" scope="row">{{$key + 1}}</th>
+                                                            <th width="5%" scope="row">{{$loop-> index + 1}}</th>
                                                             <td width="15%">{{ $lecture->lecture_title }}</td>
                                                             <td width="20%">{{ \Illuminate\Support\Str::limit($lecture -> content, 100, $end='...') }}</td>
                                                             <td width="10%">
