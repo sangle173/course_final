@@ -32,7 +32,7 @@
                             <div id="collapse{{ $sec->id }}" class="collapse "
                                  aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
                                 <div class="card-body mb-2">
-                                        @foreach ($lecture as $lect)
+                                        @foreach ($lecture -> sortBy('lecture_title') as $lect)
                                         <div class="row">
                                             <div class="col-md-10">
                                                 <h6 class="card-title"><a

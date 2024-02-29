@@ -54,18 +54,18 @@
                     <label for="input1" class="form-label">Địa chỉ</label>
                     <input type="text" name="address" class="form-control" id="input1"  value="{{ $user->address }}" >
                 </div>
-                <div class="form-group col-md-12">
-                    <label for="input1" class="form-label">Chọn khóa học</label>
-                    @foreach ($courses as $course)
-                        <div class="form-check">
-                            <input class="form-check-input" name="course[]" type="checkbox"  value="{{$course -> id}}" id="defaultCheck{{$course->id}}">
+{{--                <div class="form-group col-md-12">--}}
+{{--                    <label for="input1" class="form-label">Chọn khóa học</label>--}}
+{{--                    @foreach ($courses as $course)--}}
+{{--                        <div class="form-check">--}}
+{{--                            <input class="form-check-input" name="course[]" type="checkbox"  value="{{$course -> id}}" id="defaultCheck{{$course->id}}">--}}
 {{--                            {{ \Illuminate\Support\Facades\DB::table("orders") -> where("user_id", $user->id) ->get() -> course_id? 'checked' : '' }}--}}
-                            <label class="form-check-label" for="defaultCheck{{$course->id}}">
-                                {{ $course->course_title }}
-                            </label>
-                        </div>
-                    @endforeach
-                </div>
+{{--                            <label class="form-check-label" for="defaultCheck{{$course->id}}">--}}
+{{--                                {{ $course->course_name }}--}}
+{{--                            </label>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
                 <div class="form-group col-md-12">
                     <label for="input1" class="form-label"> Quyền truy cập</label>
                     <input type="text" name="address" class="form-control" id="input1" disabled value="Học Viên" >

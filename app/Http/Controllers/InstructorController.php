@@ -171,6 +171,18 @@ class InstructorController extends Controller
 
     }// End Method
 
+    public function InstructorUserCourseList($id){
+
+        $user = User::find($id);
+        $latestOrders = Order::where('user_id',$id)->select('course_id', \DB::raw('MAX(id) as max_id'))->groupBy('course_id');
+
+        $courses = Order::joinSub($latestOrders, 'latest_order', function($join) {
+            $join->on('orders.id', '=', 'latest_order.max_id');
+        })->orderBy('latest_order.max_id','DESC')->get();
+        return view('instructor.pages.user_course_list',compact('user', 'courses'));
+
+    }// End Method
+
     public function InstructorUpdateUser(Request $request,$id){
         $request->validate([
             'username' => 'required',

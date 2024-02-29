@@ -451,6 +451,7 @@ Route::post('/mark-notification-as-read/{notification}', [CartController::class,
 Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/all/user','InstructorAllUser')->name('instructor.all.user');
     Route::get('instructor/add/user','InstructorAddUser')->name('instructor.add.user');
+    Route::get('instructor/user/course/list/{id}','InstructorUserCourseList')->name('instructor.user.course');
     Route::post('instructor/store/user','InstructorStoreUser')->name('instructor.store.user');
     Route::get('instructor/edit/user/{id}','InstructorEditUser')->name('instructor.edit.user');
     Route::post('instructor/update/user/{id}','InstructorUpdateUser')->name('instructor.update.user');
