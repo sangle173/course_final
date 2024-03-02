@@ -18,6 +18,6 @@ class UserExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ['Họ Tên', 'Tên đăng nhập(Duy nhất)', 'Email(Duy nhất)', 'Số Điện Thoại', 'Địa Chỉ', 'Tên Khóa học 1', 'Tên Khóa học 2', 'Tên Khóa học 3'];
+        return ['Họ Tên', 'Tên đăng nhập(Duy nhất)', 'Email(Duy nhất)', 'Số Điện Thoại', 'Địa Chỉ', 'Mật khẩu', 'Tên Khóa học 1', 'Tên Khóa học 2', 'Tên Khóa học 3'];
     }
 }

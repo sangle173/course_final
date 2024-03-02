@@ -281,7 +281,7 @@ class InstructorController extends Controller
 
     public function Export(){
 
-        return Excel::download(new UserExport, 'user.xlsx');
+        return Excel::download(new UserExport, 'hoc_vien.xlsx');
 
     }// End Method
 
@@ -299,4 +299,27 @@ class InstructorController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method
+
+    public function InstructorResetUser($id){
+
+        $user = User::find($id);
+        return view('instructor.pages.reset_user_password',compact('user'));
+
+    }// End Method
+
+    public function InstructorResetUserPassword(Request $request,$id){
+        $request->validate([
+            'new_password' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->password = $request->new_password;
+        $user->save();
+
+        $notification = array(
+            'message' => 'Reset mật khẩu học viên thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('instructor.all.user')->with($notification);
+    }// End Method
+
 }

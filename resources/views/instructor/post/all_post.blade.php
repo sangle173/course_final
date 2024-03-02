@@ -15,7 +15,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('instructor.add.blog.post') }}" class="btn btn-primary px-5">Thêm bài viết </a>
+                    <a href="{{ route('instructor.add.blog.post') }}" class="btn btn-primary px-3"><i class="bx bx-book-add"></i>Thêm bài viết </a>
                 </div>
             </div>
         </div>
@@ -45,10 +45,10 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('instructor.edit.post',$item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('instructor.edit.post',$item->id) }}" class="btn btn-info" title="Chỉnh sửa bài viết">
                                         <i class="lni lni-eraser"></i> </a>
                                     <a href="{{ route('instructor.delete.post',$item->id) }}"
-                                       class="btn btn-danger" id="delete"><i class="lni lni-trash"></i> </a>
+                                       class="btn btn-danger" id="delete" title="Xóa bài viết"><i class="lni lni-trash" ></i> </a>
                                 </td>
                             </tr>
                         @endforeach

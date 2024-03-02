@@ -15,7 +15,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('instructor.add.category') }}" class="btn btn-primary px-5">Thêm danh mục </a>
+                    <a href="{{ route('instructor.add.category') }}" class="btn btn-primary px-5"><i class="bx bx-book-add"></i>Thêm danh mục </a>
                 </div>
             </div>
         </div>

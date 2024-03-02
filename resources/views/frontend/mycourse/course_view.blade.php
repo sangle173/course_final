@@ -1,5 +1,6 @@
 @extends('frontend.dashboard.user_dashboard')
 @section('userdashboard')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="container-fluid">
 
         <div class="section-block mb-5"></div>
@@ -32,12 +33,13 @@
                             <div id="collapse{{ $sec->id }}" class="collapse "
                                  aria-labelledby="heading{{ $sec->id }}" data-parent="#accordion">
                                 <div class="card-body mb-2">
-                                        @foreach ($lecture -> sortBy('lecture_title') as $lect)
+                                    @foreach ($lecture -> sortBy('lecture_title') as $lect)
                                         <div class="row">
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 <h6 class="card-title"><a
                                                         href="{{ route('course.lecture.details',$lect->id) }}"><i
-                                                            class="lni lni-ticket-alt text-primary"></i> {{ $lect->lecture_title }}</a>
+                                                            class="lni lni-ticket-alt text-primary"></i> {{ $lect->lecture_title }}
+                                                    </a>
                                                 </h6>
                                                 <p class="card-text">
                                                     {{ $lect->content }}
@@ -45,13 +47,34 @@
                                             </div>
                                             <div class="col-md-2">
                                                 @if(!empty($lect -> video))
-                                                    <a title="Xem bài giảng" href="{{ route('course.lecture.details',$lect->id) }}" type="button" class="btn-lg btn-link text-primary"><i
-                                                            class="lni lni-play"></i></a>
+                                                    <a title="Xem bài giảng"
+                                                       href="{{ route('course.lecture.details',$lect->id) }}"
+                                                       type="button" class="btn btn-success text-white"><i
+                                                            class="bx bx-play-circle"></i> Bắt đầu</a>
                                                 @endif
+                                            </div>
+                                            <div class="col-md-2">
                                                 @if(!empty($lect -> url))
-                                                    <a href="{{  asset($lect->url) }}" title="Tải tài liệu" class="btn-lg btn-link text-primary"
-                                                       target="_blank" title="Tài liệu"><i
-                                                            class="lni lni-files"></i></a>
+
+
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <i
+                                                                class="bx bx-cloud-download"></i>Tài liệu
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            @foreach (explode(';', $lect->url) as $doc)
+                                                                <a href="{{  asset('upload/lecture/document/'.$doc) }}"
+                                                                   class="dropdown-item"
+                                                                   target="_blank" title="Tài liệu">
+                                                                    <i
+                                                                        class="bx bxs-file"></i> {!! str_replace('upload/lecture/document/', '', $doc) !!}
+                                                                </a>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -66,8 +89,6 @@
 
                 </div><!-- end generic-accordion -->
             </div><!-- end curriculum-content -->        </div><!-- end col-lg-12 -->
-        </div><!-- end col-lg-12 -->
-
-
+    </div><!-- end col-lg-12 -->
     </div><!-- end container-fluid -->
 @endsection

@@ -453,6 +453,8 @@ Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/edit/user/{id}','InstructorEditUser')->name('instructor.edit.user');
     Route::post('instructor/update/user/{id}','InstructorUpdateUser')->name('instructor.update.user');
     Route::get('instructor/delete/user/{id}','InstructorDeleteUser')->name('instructor.delete.user');
+    Route::post('instructor/reset/user/{id}','InstructorResetUserPassword')->name('instructor.reset.user.password');
+    Route::get('instructor/reset/user/{id}','InstructorResetUser')->name('instructor.reset.user');
     Route::get('/instructor/course/details/{id}','InstructorCourseDetails')->name('instructor.course.details');
     Route::get('/instructor/course/addstudent/{id}','InstructorCourseAddStudent')->name('instructor.course.addstudent');
     Route::get('instructor/import/user','ImportUser')->name('instructor.import.user');

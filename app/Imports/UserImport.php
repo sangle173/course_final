@@ -59,22 +59,12 @@ class UserImport implements WithStartRow, WithValidation, OnEachRow
             'name' => $row[0],
             'username' => $row[1],
             'email' => $row[2],
-            'password' => '123456',
             'phone' => $row[3],
             'address' => $row[4],
+            'password' => $row[5]
         ]);
 
 
-        if ($row[5]){
-            $course = Course::where('course_name', $row[5])->pluck('id');
-            $user->pluck('id');
-            $order = new Order();
-            $order->payment_id = 1;
-            $order->user_id = $user -> id;
-            $order->course_id = $course -> first();
-            $order->instructor_id = Auth::user()->id;
-            $order->save();
-        }
         if ($row[6]){
             $course = Course::where('course_name', $row[6])->pluck('id');
             $user->pluck('id');
@@ -85,7 +75,6 @@ class UserImport implements WithStartRow, WithValidation, OnEachRow
             $order->instructor_id = Auth::user()->id;
             $order->save();
         }
-
         if ($row[7]){
             $course = Course::where('course_name', $row[7])->pluck('id');
             $user->pluck('id');
@@ -97,5 +86,15 @@ class UserImport implements WithStartRow, WithValidation, OnEachRow
             $order->save();
         }
 
+        if ($row[8]){
+            $course = Course::where('course_name', $row[8])->pluck('id');
+            $user->pluck('id');
+            $order = new Order();
+            $order->payment_id = 1;
+            $order->user_id = $user -> id;
+            $order->course_id = $course -> first();
+            $order->instructor_id = Auth::user()->id;
+            $order->save();
+        }
     }
 }

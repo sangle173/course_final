@@ -16,7 +16,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.course') }}" class="btn btn-primary px-5">Thêm khóa học </a>
+                    <a href="{{ route('add.course') }}" class="btn btn-primary px-5"><i class="bx bx-message-add"></i>Thêm khóa học </a>
                 </div>
             </div>
         </div>
@@ -51,7 +51,19 @@
                                          style="width: 70px; height:40px;"></td>
                                 <td>{{ $item->course_name }}</td>
                                 <td>{{ $item['category']['category_name'] }}</td>
-                                <td>{{ number_format($item->selling_price, 0, '.', ',') }}<sup>₫</sup></td>
+                                @php
+                                    $amount = $item->selling_price - $item->discount_price;
+                                    $discount = ($amount/$item->selling_price) * 100;
+                                @endphp
+                                <td>
+                                    @if ($item->discount_price == NULL)
+                                        <p class="card-price text-black font-weight-bold">{{ number_format($item->selling_price, 0, '.', ',') }}
+                                            <sup>₫</sup></p>
+                                    @else
+                                        <p class="card-price text-black font-weight-bold">{{ number_format($item->discount_price, 0, '.', ',') }}
+                                            <sup>₫</sup> <span class="text-decoration-line-through before-price font-weight-medium">{{ number_format($item->selling_price, 0, '.', ',') }}<sup>₫</sup></span>
+                                        </p>
+                                    @endif
                                 <td>{{ $item->duration }}</td>
                                 <td>{{count( DB::table("orders") -> where("course_id", $item->id) ->get())}}</td>
                                 <td>{{count( DB::table("course_lectures") -> where("course_id", $item->id) ->get())}}</td>

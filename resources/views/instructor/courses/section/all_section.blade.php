@@ -25,7 +25,7 @@
                             </div>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">Thêm Chương
+                                        data-bs-target="#exampleModal"><i class="bx bx-book-add"></i>Thêm Chương
                                 </button>
                             </div>
                         </div>
