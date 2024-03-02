@@ -11,7 +11,6 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <a href="{{ route('instructor.export') }}" class="btn btn-warning "><i class="lni lni-download"></i>Tải file Xlsx </a>
                 </ol>
-                <p>(Lưu ý, email, tên đăng nhập của học viên không được trùng lặp, mật khẩu mặt định sẽ là "123456")</p>
             </nav>
         </div>
 
@@ -36,6 +35,7 @@
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">File Excel</label>
                     <input type="file" name="import_file" class="form-control" id="input1"  >
+                    <p>(Lưu ý, email, tên đăng nhập của học viên không được trùng lặp)</p>
                 </div>
 
 

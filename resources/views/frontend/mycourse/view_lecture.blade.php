@@ -386,7 +386,7 @@
             </li>
         </ul>
     </div>
-    <video id="myVideo" oncontextmenu="return false;" src="{{ asset($lecture->video) }}"></video>
+    <video id="myVideo" oncontextmenu="return false;" autoplay src="{{ asset($lecture->video) }}"></video>
 
 </div>
 @else

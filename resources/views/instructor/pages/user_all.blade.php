@@ -17,11 +17,11 @@
             <div class="ms-auto">
                 <div class="btn-group">
                     <div class="btn-group">
-                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary"><i class="lni lni-plus"></i> Thêm học viên </a>
+                        <a href="{{ route('instructor.add.user') }}" class="btn btn-primary"><i class="bx bx-book-add"></i>Thêm học viên </a>
                         &nbsp;&nbsp;
-                        <a href="{{ route('instructor.import.user') }}" class="btn btn-warning "> <i class="lni lni-upload"></i>Import </a>
+                        <a href="{{ route('instructor.import.user') }}" class="btn btn-warning "> <i class="bx bx-cloud-upload"></i>Import </a>
                         &nbsp;&nbsp;
-                        <a href="{{ route('instructor.export') }}" class="btn btn-danger "><i class="lni lni-download"></i> Export </a>
+                        <a href="{{ route('instructor.export') }}" class="btn btn-danger "><i class="bx bx-cloud-download"></i>Export </a>
                     </div>
                 </div>
             </div>
@@ -88,14 +88,17 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('instructor.edit.user',$item->id) }}" title="Chỉnh sửa"
-                                       class="btn btn-info">
+                                       class="btn btn-info" title="Chỉnh sủa học viên">
                                         <i class="lni lni-eraser"></i> </a>
+                                    <a href="{{ route('instructor.reset.user',$item->id) }}" class="btn btn-success"
+                                       title="Reset mật khẩu">
+                                        <i class='bx bx-reset'></i>
+                                    </a>
                                     <a href="{{ route('instructor.delete.user',$item->id) }}" class="btn btn-danger"
-                                       id="delete">
+                                       id="delete" title="Xóa học viên">
                                         <i class="lni lni-trash"></i>
                                     </a>
                                 </td>
-
                             </tr>
                         @endforeach
 
