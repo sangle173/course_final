@@ -151,22 +151,28 @@
                                                                     {{ $lect->lecture_title }} <br></strong>
                                                                         <div>
                                                                         <ul>
-                                                                <li>Nội dung: {{$lect -> content}}</li>
+                                                                <li><strong>Nội dung:</strong> <br>{{$lect -> content}}</li>
+                                                                            @if($lect->url)
                                                                 <li>
-                                                                    Tài liệu: <br>
-                                                                    <a href="{{  asset($lect->url) }}"
+                                                                    <strong>Tài liệu:</strong> <br>
+                                                                     @foreach (explode(';', $lect->url) as $doc)
+                                                                    <a href="{{  asset('upload/lecture/document/'.$doc) }}"
                                                                        class="text-decoration-none"
-                                                                       target="_blank" title="Tài liệu"><i><i
-                                                                                class="la la-file"></i> Xem tài liệu</i>
-                                                                    </a>
+                                                                       target="_blank" title="Tài liệu"><i
+                                                                            class="bx bxs-file"></i> {!! str_replace('upload/lecture/document/', '', $doc) !!}
+                                                                    </a><br>
+                                                                    @endforeach
                                                                 </li>
+                                                                            @endif
+                                                                            @if($lect->video)
                                                                             <li>
-                                                                                Bài giảng: <br>
+                                                                                <strong>Bài giảng:</strong> <br>
                                                                                 <video width="320" height="240"
                                                                                        controls>
                                     <source src="{{ asset( $lect->video ) }}" type="video/mp4">
                                 </video>
                                                                             </li>
+                                                                            @endif
                                                             </ul>
                                                                         </div>
                                                                     @else
