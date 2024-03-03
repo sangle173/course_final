@@ -5,6 +5,19 @@
 @section('title')
     {{ $course->course_name }} | Luyện Thi Công chức
 @endsection
+<style>
+    video::-internal-media-controls-download-button {
+        display:none;
+    }
+
+    video::-webkit-media-controls-enclosure {
+        overflow:hidden;
+    }
+
+    video::-webkit-media-controls-panel {
+        width: calc(100% + 30px);
+    }
+</style>
 
 
 <!-- ================================
@@ -165,11 +178,11 @@
                                                                 </li>
                                                                             @endif
                                                                             @if($lect->video)
-                                                                            <li>
+                                                                                <li>
                                                                                 <strong>Bài giảng:</strong> <br>
-                                                                                <video width="320" height="240"
+                                                                                <video oncontextmenu="return false;" controlsList="nodownload" width="320" height="240"
                                                                                        controls>
-                                    <source src="{{ asset( $lect->video ) }}" type="video/mp4">
+                                    <source  src="{{ asset( $lect->video ) }}" type="video/mp4" >
                                 </video>
                                                                             </li>
                                                                             @endif
