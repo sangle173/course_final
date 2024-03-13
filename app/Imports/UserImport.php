@@ -52,6 +52,7 @@ class UserImport implements WithStartRow, WithValidation, OnEachRow
 
     public function onRow(Row $row)
     {
+        dd($row);
         $rowIndex = $row->getIndex();
         $row = $row->toArray();
 

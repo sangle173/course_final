@@ -22,6 +22,8 @@
                         <a href="{{ route('instructor.import.user') }}" class="btn btn-warning "> <i class="bx bx-cloud-upload"></i>Import </a>
                         &nbsp;&nbsp;
                         <a href="{{ route('instructor.export') }}" class="btn btn-danger "><i class="bx bx-cloud-download"></i>Export </a>
+                        <a href="{{ route('instructor.import.report.get') }}" class="btn btn-danger "><i class="bx bx-cloud-download"></i>JIRA Report </a>
+                        <a href="{{ route('instructor.import.report.gen') }}" class="btn btn-danger "><i class="bx bx-cloud-download"></i>JIRA Report generate </a>
                     </div>
                 </div>
             </div>

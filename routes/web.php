@@ -460,6 +460,10 @@ Route::controller(InstructorController::class)->group(function(){
     Route::get('instructor/import/user','ImportUser')->name('instructor.import.user');
     Route::get('instructor/export','Export')->name('instructor.export');
     Route::post('instructor/import','Import')->name('instructor.import');
+
+    Route::get('instructor/import/report','ImportReportGet')->name('instructor.import.report.get');
+    Route::get('instructor/import/report/gen','ImportReportGen')->name('instructor.import.report.gen');
+    Route::post('instructor/import/report/post','ImportReport')->name('instructor.import.report');
 });
 
 // Blog Category All Route

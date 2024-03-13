@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\PermissionExport;
 use App\Exports\UserExport;
 use App\Imports\PermissionImport;
+use App\Imports\ReportImport;
 use App\Imports\UserImport;
 use App\Models\Course;
 use App\Models\Order;
@@ -322,4 +323,32 @@ class InstructorController extends Controller
         return redirect()->route('instructor.all.user')->with($notification);
     }// End Method
 
+    public function ImportReport(Request $request){
+        $request->validate([
+            'import_file' => 'required',
+        ]);
+
+//        dd($request->file('import_file'));
+
+        Excel::import(new ReportImport, $request->file('import_file'));
+
+        $notification = array(
+            'message' => 'Tải lên file thành công',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }// End Method
+
+    public function ImportReportGet(){
+
+        return view('instructor.pages.import_report');
+
+    }// End Method
+
+    public function ImportReportGen(){
+
+        return view('instructor.pages.report');
+
+    }// End Method
 }
