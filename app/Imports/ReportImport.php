@@ -59,17 +59,17 @@ class ReportImport implements WithStartRow, WithValidation, OnEachRow, WithCalcu
         $row = $row->toArray();
 
         $report = Report::create([
-            'date' => $row[0],
-            'team' => $row[1],
-            'action' => $row[2],
-            'jira_id' => $row[3],
-            'jira_summary' => $row[4],
-            'working_status' => $row[5],
-            'ticket_status' => $row[6],
-            'tester_1' => $row[7],
-            'tester_2' => $row[8],
-            'tester_3' => $row[9],
-            'id_summary' => $row[10]
+            'First_fragment_label' => $row[0],
+            'String' => $row[1],
+            'String_Length' => $row[2],
+            'Comment' => $row[3],
+            'Gender' => $row[4],
+            'Plurality' => $row[5],
+            'Language' => $row[6],
+            'Platform' => $row[7],
+            'TV_Brand' => $row[8],
+            'Tip_ID' => $row[9],
+            'Location' => $row[10]
         ]);
     }
 }

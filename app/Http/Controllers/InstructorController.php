@@ -9,6 +9,7 @@ use App\Imports\ReportImport;
 use App\Imports\UserImport;
 use App\Models\Course;
 use App\Models\Order;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -349,6 +350,31 @@ class InstructorController extends Controller
     public function ImportReportGen(){
 
         return view('instructor.pages.report');
+
+    }// End Method
+
+
+    public function InstructorAllReport(){
+        $reports = Report::paginate(1000);
+        return view('instructor.pages.report_all',compact('reports'));
+
+    }// End Method
+
+    public function InstructorAllReportQuery(){
+        $reports = Report::paginate(1000);
+        $result = null;
+        return view('instructor.pages.report_query',compact('result'));
+
+    }// End Method
+
+    public function InstructorAllReportQueryPost(Request $request){
+        $request->validate([
+            'string' => 'required',
+            'locale_name' => 'required',
+        ]);
+        $stringInEnglish = Report::where('String',$request -> string)-> where('Language', 'EN?') ->latest()->get();
+        $result = Report::where('First_fragment_label', $stringInEnglish[0] -> First_fragment_label)-> where('Language', $request -> locale_name) ->latest()->get();
+        return view('instructor.pages.report_query',compact('result', 'stringInEnglish'));
 
     }// End Method
 }
